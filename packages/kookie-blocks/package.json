@@ -1,0 +1,116 @@
+{
+  "name": "@kushagradhawan/kookie-blocks",
+  "version": "0.1.0",
+  "description": "Pre-built composable blocks built on top of Kookie UI",
+  "keywords": [
+    "react",
+    "ui",
+    "blocks",
+    "design-system",
+    "kookie"
+  ],
+  "author": "Kushagra Dhawan",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
+  "type": "commonjs",
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "style": "./styles.css",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      },
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      }
+    },
+    "./components/*": {
+      "require": {
+        "types": "./dist/cjs/components/*.d.ts",
+        "default": "./dist/cjs/components/*.js"
+      },
+      "import": {
+        "types": "./dist/esm/components/*.d.ts",
+        "default": "./dist/esm/components/*.js"
+      }
+    },
+    "./*": "./*"
+  },
+  "typesVersions": {
+    "*": {
+      "components/*": [
+        "dist/*"
+      ]
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "src/**",
+    "dist/**",
+    "*.css"
+  ],
+  "scripts": {
+    "build": "pnpm clean:dist && pnpm build:js && pnpm build:css",
+    "clean:dist": "rm -rf dist && mkdir -p dist/cjs dist/esm",
+    "build:js": "pnpm build:js:cjs && pnpm build:js:esm && pnpm build:js:cjs:types && pnpm build:js:esm:types",
+    "build:js:cjs": "node scripts/esbuild-cjs.mjs",
+    "build:js:cjs:types": "tsc --outdir dist/cjs",
+    "build:js:esm": "node scripts/esbuild-esm.mjs",
+    "build:js:esm:types": "tsc --outdir dist/esm",
+    "build:css": "pnpm build:css:index && pnpm build:css:components",
+    "build:css:index": "postcss src/styles/index.css -o styles.css",
+    "build:css:components": "postcss src/components/index.css -o components.css",
+    "dev": "pnpm dev:js & pnpm dev:css",
+    "dev:js": "pnpm dev:js:cjs & pnpm dev:js:esm & pnpm dev:js:cjs:types & pnpm dev:js:esm:types",
+    "dev:js:cjs": "node scripts/esbuild-cjs.mjs watch=true",
+    "dev:js:cjs:types": "tsc --watch --incremental --outdir dist/cjs",
+    "dev:js:esm": "node scripts/esbuild-esm.mjs watch=true",
+    "dev:js:esm:types": "tsc --watch --incremental --outdir dist/esm >/dev/null",
+    "dev:css": "postcss src/styles/index.css -o styles.css --watch",
+    "lint": "pnpm lint:js && pnpm lint:css && pnpm lint:ts",
+    "lint:js": "eslint \"src/**/*.ts*\"",
+    "lint:ts": "tsc --noEmit",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "clean": "rm -rf .turbo node_modules dist *.css",
+    "prepublishOnly": "pnpm lint"
+  },
+  "dependencies": {
+    "@kushagradhawan/kookie-ui": "latest",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "10.4.19",
+    "esbuild": "0.20.0",
+    "eslint": "^9.18.0",
+    "globals": "^15.14.0",
+    "postcss": "8.4.33",
+    "postcss-cli": "11.0.0",
+    "postcss-combine-duplicated-selectors": "10.0.3",
+    "postcss-custom-media": "10.0.2",
+    "postcss-discard-empty": "6.0.1",
+    "postcss-import": "16.0.0",
+    "postcss-nesting": "12.0.2",
+    "stylelint": "16.6.1",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1"
+  }
+}
