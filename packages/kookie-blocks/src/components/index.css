@@ -1,1 +1,89 @@
 /* Components CSS aggregator for Kookie Blocks (e.g., hero variants if styled). */
+
+/* ============================================
+   Code Block Component Styles
+   ============================================ */
+
+/* Code block wrapper - constrain width in flex containers */
+.code-block-wrapper {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Code block content (the pre part, below the header) */
+.code-block-content {
+  width: 100%;
+  min-width: 0;
+}
+
+.code-block-wrapper pre,
+.code-block-wrapper .code-block-content pre {
+  overflow-x: auto;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure Shiki-generated pre elements fill width */
+.code-block-content > pre {
+  width: 100% !important;
+  min-width: 0;
+}
+
+/* Code elements inside pre */
+.code-block-wrapper pre code,
+.code-block-wrapper .code-block-content pre code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-2);
+  line-height: 1.75;
+  background: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  counter-reset: line;
+}
+
+/* Shiki line spans */
+.code-block-wrapper pre code .line,
+.code-block-wrapper .code-block-content pre code .line {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* Line numbers */
+.code-block-wrapper pre code .line::before,
+.code-block-wrapper .code-block-content pre code .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  min-width: 2ch;
+  text-align: right;
+  font-size: var(--font-size-1);
+  color: var(--gray-a9);
+  user-select: none;
+  flex-shrink: 0;
+  margin-right: var(--space-4);
+}
+
+/* Default to light theme for all tokens (codeToHtml with defaultColor: false) */
+.code-block-wrapper pre.shiki span {
+  color: var(--shiki-light) !important;
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+}
+
+/* Override with dark theme colors when inside a dark context */
+.dark .code-block-wrapper pre.shiki span,
+.dark-theme .code-block-wrapper pre.shiki span,
+[data-appearance="dark"] .code-block-wrapper pre.shiki span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+  text-decoration: var(--shiki-dark-text-decoration);
+}
