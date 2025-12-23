@@ -1,6 +1,14 @@
 {
   "name": "@kushagradhawan/kookie-blocks",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KushagraDhawan1997/kookie-blocks.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KushagraDhawan1997/kookie-blocks.git"
+  },
   "description": "Pre-built composable blocks built on top of Kookie UI",
   "keywords": [
     "react",
