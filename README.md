@@ -2,6 +2,10 @@
 
 Pre-built composable blocks built on top of Kookie UI.
 
+## Status
+
+✅ Publishing infrastructure set up with GitHub Actions and npm OIDC
+
 ## Installation
 
 ```bash
