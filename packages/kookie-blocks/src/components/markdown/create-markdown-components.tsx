@@ -59,24 +59,24 @@ export function createMarkdownComponents(options: MarkdownComponentOptions = {})
   const { codeBlockCollapsible = false, imageComponent, inlineCodeHighContrast = true } = options;
 
   return {
-    // Headings with consistent visual hierarchy
+    // Headings with consistent visual hierarchy (9-6-5-4-3-2)
     h1: ({ children }: MarkdownChildrenProps) => (
-      <Heading size="8" weight="medium" as="h1" style={{ marginTop: "1rem", marginBottom: "0.5rem" }}>
+      <Heading size="9" weight="medium" as="h1" style={{ marginTop: "1rem", marginBottom: "0.5rem" }}>
         {children}
       </Heading>
     ),
     h2: ({ children }: MarkdownChildrenProps) => (
-      <Heading weight="medium" size="5" as="h2" style={{ marginTop: "0.875rem", marginBottom: "0.5rem" }}>
+      <Heading weight="medium" size="6" as="h2" style={{ marginTop: "0.875rem", marginBottom: "0.5rem" }}>
         {children}
       </Heading>
     ),
     h3: ({ children }: MarkdownChildrenProps) => (
-      <Heading weight="medium" size="4" as="h3" style={{ marginTop: "0.75rem", marginBottom: "0.5rem" }}>
+      <Heading weight="medium" size="5" as="h3" style={{ marginTop: "0.75rem", marginBottom: "0.5rem" }}>
         {children}
       </Heading>
     ),
     h4: ({ children }: MarkdownChildrenProps) => (
-      <Heading weight="medium" size="3" as="h4" style={{ marginTop: "0.625rem", marginBottom: "0.5rem" }}>
+      <Heading weight="medium" size="4" as="h4" style={{ marginTop: "0.625rem", marginBottom: "0.5rem" }}>
         {children}
       </Heading>
     ),
@@ -86,7 +86,7 @@ export function createMarkdownComponents(options: MarkdownComponentOptions = {})
       </Heading>
     ),
     h6: ({ children }: MarkdownChildrenProps) => (
-      <Heading weight="medium" size="3" as="h6" style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
+      <Heading weight="medium" size="2" as="h6" style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
         {children}
       </Heading>
     ),
@@ -203,4 +203,3 @@ export function createMarkdownComponents(options: MarkdownComponentOptions = {})
     summary: ({ children }: MarkdownChildrenProps) => <summary style={{ cursor: "pointer", fontWeight: 500 }}>{children}</summary>,
   };
 }
-
