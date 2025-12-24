@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback, memo, type ReactNode } from "react";
-import { Box, Card, Flex, Button, Code, Theme } from "@kushagradhawan/kookie-ui";
+import { Box, Card, Flex, Button, Code, Theme, ScrollArea } from "@kushagradhawan/kookie-ui";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Copy01Icon, Tick01Icon, ArrowDown01Icon } from "@hugeicons/core-free-icons";
 import { codeToHtml } from "shiki";
@@ -203,13 +203,15 @@ const CodeSection = memo(function CodeSection({
           </Flex>
 
           <Box ref={contentRef} style={contentStyle} className="code-content">
-            {highlighted ? (
-              <Box className="code-block-content" width="100%" style={{ minWidth: 0 }} dangerouslySetInnerHTML={{ __html: highlighted }} />
-            ) : (
-              <pre className="code-block-content">
-                <Code size="3">{code}</Code>
-              </pre>
-            )}
+            <ScrollArea type="auto" scrollbars="horizontal">
+              {highlighted ? (
+                <Box dangerouslySetInnerHTML={{ __html: highlighted }} />
+              ) : (
+                <pre>
+                  <Code size="3">{code}</Code>
+                </pre>
+              )}
+            </ScrollArea>
           </Box>
 
           {shouldShowToggle && !isExpanded && <Box className="code-scroll-shadow visible" />}
@@ -249,11 +251,20 @@ function extractLanguageFromChildren(children?: ReactNode): string {
     if (!node) return null;
     if (typeof node === "object" && "props" in node) {
       const props = node.props;
+
+      // Check data-language attribute (rehype-pretty-code)
+      if (props?.["data-language"]) {
+        return props["data-language"];
+      }
+
+      // Check className for language-xxx
       const className = props?.className || props?.class || "";
       if (typeof className === "string") {
         const match = className.match(/language-([\w-]+)/i);
         if (match) return match[1];
       }
+
+      // Recursively check children
       if (props?.children) {
         if (Array.isArray(props.children)) {
           for (const child of props.children) {
@@ -377,7 +388,9 @@ const ChildrenCodeSection = memo(function ChildrenCodeSection({ children, showCo
           </Flex>
 
           <Box ref={contentRef} style={contentStyle} className="code-content">
-            <div className="code-block-content">{children}</div>
+            <ScrollArea type="auto" scrollbars="horizontal">
+              {children}
+            </ScrollArea>
           </Box>
 
           {shouldShowToggle && !isExpanded && <Box className="code-scroll-shadow visible" />}

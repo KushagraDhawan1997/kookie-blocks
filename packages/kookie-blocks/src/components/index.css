@@ -16,68 +16,15 @@
   position: relative;
 }
 
-/* Code block content (the pre part, below the header) */
-.code-block-content {
-  width: 100%;
-  min-width: 0;
-  overflow-x: auto;
-  /* Hide scrollbars while keeping scroll functionality */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
-}
-
-/* Hide scrollbars for webkit browsers */
-.code-block-content::-webkit-scrollbar,
-.code-block-content::-webkit-scrollbar-horizontal,
-.code-block-content::-webkit-scrollbar-vertical,
-.code-block-content::-webkit-scrollbar-track,
-.code-block-content::-webkit-scrollbar-thumb,
-.code-block-content::-webkit-scrollbar-corner {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
-/* Also hide scrollbars on any pre/code elements inside code content */
-.code-block-content pre::-webkit-scrollbar,
-.code-block-content pre::-webkit-scrollbar-horizontal,
-.code-block-content pre::-webkit-scrollbar-vertical,
-.code-block-content pre::-webkit-scrollbar-track,
-.code-block-content pre::-webkit-scrollbar-thumb,
-.code-block-content pre::-webkit-scrollbar-corner,
-.code-block-content code::-webkit-scrollbar,
-.code-block-content code::-webkit-scrollbar-horizontal,
-.code-block-content code::-webkit-scrollbar-vertical,
-.code-block-content code::-webkit-scrollbar-track,
-.code-block-content code::-webkit-scrollbar-thumb,
-.code-block-content code::-webkit-scrollbar-corner {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
 /* Pre elements inside code content */
-.code-content pre,
-.code-block-content pre {
-  overflow-x: visible;
-  max-width: 100%;
-  min-width: 0;
+.code-content pre {
   margin: 0;
   width: 100%;
   box-sizing: border-box;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-/* Ensure Shiki-generated pre elements fill width */
-.code-block-content > pre {
-  width: 100% !important;
-  min-width: 0;
 }
 
 /* Code elements inside pre */
-.code-content pre code,
-.code-block-content pre code {
+.code-content pre code {
   font-family: var(--font-mono);
   font-size: var(--font-size-2);
   line-height: 1.75;
@@ -89,16 +36,14 @@
 }
 
 /* Shiki line spans */
-.code-content pre code .line,
-.code-block-content pre code .line {
+.code-content pre code .line {
   display: flex;
   align-items: center;
   gap: 0;
 }
 
 /* Line numbers */
-.code-content pre code .line::before,
-.code-block-content pre code .line::before {
+.code-content pre code .line::before {
   counter-increment: line;
   content: counter(line);
   display: inline-block;
@@ -140,7 +85,6 @@
 }
 
 /* Default to light theme for all tokens (codeToHtml with defaultColor: false) */
-.code-block-content pre.shiki span,
 .code-content pre.shiki span {
   color: var(--shiki-light) !important;
   font-style: var(--shiki-light-font-style);
@@ -149,9 +93,6 @@
 }
 
 /* Override with dark theme colors when inside a dark context */
-.dark .code-block-content pre.shiki span,
-.dark-theme .code-block-content pre.shiki span,
-[data-appearance="dark"] .code-block-content pre.shiki span,
 .dark .code-content pre.shiki span,
 .dark-theme .code-content pre.shiki span,
 [data-appearance="dark"] .code-content pre.shiki span {
