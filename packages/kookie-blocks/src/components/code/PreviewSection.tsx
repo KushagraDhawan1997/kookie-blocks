@@ -15,7 +15,7 @@ interface PreviewSectionProps {
 }
 
 export function PreviewSection({ children, background = "none", backgroundProps = {} }: PreviewSectionProps) {
-  const { dotSize = 24, color = "var(--gray-10)", backgroundColor = "var(--gray-2)", height = "300px", width = "100%", radius = "3" } = backgroundProps;
+  const { dotSize = 24, color = "var(--gray-10)", backgroundColor = "var(--gray-2)", height, width = "100%", radius = "3" } = backgroundProps;
 
   // Render with no background (default card styling)
   if (background === "none") {
@@ -36,8 +36,8 @@ export function PreviewSection({ children, background = "none", backgroundProps 
       backgroundSize: `${dotSize}px ${dotSize}px`,
       backgroundPosition: "center",
       backgroundColor,
-      height,
       width,
+      ...(height && { height }),
     };
 
     return (
@@ -56,8 +56,8 @@ export function PreviewSection({ children, background = "none", backgroundProps 
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     borderRadius: `var(--radius-${radius})`,
-    height,
     width,
+    ...(height && { height }),
   };
 
   return (

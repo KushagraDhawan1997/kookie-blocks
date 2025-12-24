@@ -1,15 +1,19 @@
-/* Components CSS aggregator for Kookie Blocks (e.g., hero variants if styled). */
+/* Components CSS aggregator for Kookie Blocks */
 
 /* ============================================
    Code Block Component Styles
    ============================================ */
 
-/* Code block wrapper - constrain width in flex containers */
-.code-block-wrapper {
-  min-width: 0;
-  max-width: 100%;
+/* Main docs code block wrapper */
+.docs-code-block {
   width: 100%;
+}
+
+/* Code content area - handles expand/collapse */
+.code-content {
   overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  position: relative;
 }
 
 /* Code block content (the pre part, below the header) */
@@ -52,14 +56,17 @@
   height: 0 !important;
 }
 
-.code-block-wrapper pre,
-.code-block-wrapper .code-block-content pre {
-  overflow-x: visible; /* Let .code-block-content handle scrolling */
+/* Pre elements inside code content */
+.code-content pre,
+.code-block-content pre {
+  overflow-x: visible;
   max-width: 100%;
   min-width: 0;
   margin: 0;
   width: 100%;
   box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 /* Ensure Shiki-generated pre elements fill width */
@@ -69,8 +76,8 @@
 }
 
 /* Code elements inside pre */
-.code-block-wrapper pre code,
-.code-block-wrapper .code-block-content pre code {
+.code-content pre code,
+.code-block-content pre code {
   font-family: var(--font-mono);
   font-size: var(--font-size-2);
   line-height: 1.75;
@@ -82,16 +89,16 @@
 }
 
 /* Shiki line spans */
-.code-block-wrapper pre code .line,
-.code-block-wrapper .code-block-content pre code .line {
+.code-content pre code .line,
+.code-block-content pre code .line {
   display: flex;
   align-items: center;
   gap: 0;
 }
 
 /* Line numbers */
-.code-block-wrapper pre code .line::before,
-.code-block-wrapper .code-block-content pre code .line::before {
+.code-content pre code .line::before,
+.code-block-content pre code .line::before {
   counter-increment: line;
   content: counter(line);
   display: inline-block;
@@ -104,8 +111,37 @@
   margin-right: var(--space-4);
 }
 
+/* Scroll shadow overlay for collapsed state */
+.code-scroll-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, var(--color-panel-solid), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.code-scroll-shadow.visible {
+  opacity: 1;
+}
+
+/* Action buttons styling */
+.code-action-buttons {
+  flex-shrink: 0;
+}
+
+/* Chevron rotation animation */
+.code-chevron {
+  transition: transform 0.2s ease-in-out;
+}
+
 /* Default to light theme for all tokens (codeToHtml with defaultColor: false) */
-.code-block-wrapper pre.shiki span {
+.code-block-content pre.shiki span,
+.code-content pre.shiki span {
   color: var(--shiki-light) !important;
   font-style: var(--shiki-light-font-style);
   font-weight: var(--shiki-light-font-weight);
@@ -113,9 +149,12 @@
 }
 
 /* Override with dark theme colors when inside a dark context */
-.dark .code-block-wrapper pre.shiki span,
-.dark-theme .code-block-wrapper pre.shiki span,
-[data-appearance="dark"] .code-block-wrapper pre.shiki span {
+.dark .code-block-content pre.shiki span,
+.dark-theme .code-block-content pre.shiki span,
+[data-appearance="dark"] .code-block-content pre.shiki span,
+.dark .code-content pre.shiki span,
+.dark-theme .code-content pre.shiki span,
+[data-appearance="dark"] .code-content pre.shiki span {
   color: var(--shiki-dark) !important;
   font-style: var(--shiki-dark-font-style);
   font-weight: var(--shiki-dark-font-weight);
