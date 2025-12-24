@@ -83,6 +83,8 @@
     "dev:js:esm": "node scripts/esbuild-esm.mjs watch=true",
     "dev:js:esm:types": "tsc --watch --incremental --outdir dist/esm >/dev/null",
     "dev:css": "postcss src/styles/index.css -o styles.css --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "lint": "pnpm lint:js && pnpm lint:css && pnpm lint:ts",
     "lint:js": "eslint \"src/**/*.ts*\"",
     "lint:ts": "tsc --noEmit",
@@ -126,6 +128,7 @@
     "postcss-nesting": "12.0.2",
     "stylelint": "16.6.1",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.1"
+    "typescript-eslint": "^8.18.1",
+    "vitest": "^2.0.0"
   }
 }
