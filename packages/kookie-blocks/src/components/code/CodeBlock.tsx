@@ -185,7 +185,6 @@ const RuntimeCodeSection = memo(function RuntimeCodeSection({
   shikiConfig,
 }: RuntimeCodeSectionProps) {
   const [highlighted, setHighlighted] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   // Memoize Shiki config to prevent unnecessary re-highlights
   const shikiOptions = useMemo(() => {
@@ -207,19 +206,16 @@ const RuntimeCodeSection = memo(function RuntimeCodeSection({
 
   useEffect(() => {
     let cancelled = false;
-    setIsLoading(true);
 
     codeToHtml(code, shikiOptions)
       .then((html) => {
         if (!cancelled) {
           setHighlighted(html);
-          setIsLoading(false);
         }
       })
       .catch((error) => {
         if (!cancelled) {
-          setHighlighted(null);
-          setIsLoading(false);
+          // Keep previous highlighted content on error (stale while revalidate)
           if (process.env.NODE_ENV === "development") {
             console.error("[CodeBlock] Shiki highlighting failed:", error);
           }
@@ -231,6 +227,10 @@ const RuntimeCodeSection = memo(function RuntimeCodeSection({
     };
   }, [code, shikiOptions]);
 
+  // Only show loading skeleton on initial render (no highlighted content yet)
+  // During updates, keep showing previous highlighted content (stale while revalidate)
+  const isInitialLoading = highlighted === null;
+
   return (
     <CodeCard
       code={code}
@@ -241,7 +241,7 @@ const RuntimeCodeSection = memo(function RuntimeCodeSection({
       collapsible={collapsible}
       collapsedHeight={collapsedHeight}
       file={file}
-      isLoading={isLoading}
+      isLoading={isInitialLoading}
     >
       {highlighted ? <Box dangerouslySetInnerHTML={{ __html: highlighted }} /> : null}
     </CodeCard>
