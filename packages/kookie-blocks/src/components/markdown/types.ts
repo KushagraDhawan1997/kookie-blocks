@@ -20,6 +20,14 @@ export type MarkdownComponentOptions = {
    * @default true
    */
   inlineCodeHighContrast?: boolean;
+
+  /**
+   * Spacing density for markdown elements
+   * - "compact": Tighter spacing, ideal for chat/conversational interfaces
+   * - "spacious": More breathing room, ideal for documentation/articles
+   * @default "spacious"
+   */
+  spacing?: "compact" | "spacious";
 };
 
 /**

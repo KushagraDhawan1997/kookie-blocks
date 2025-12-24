@@ -1,6 +1,6 @@
 import React, { type ReactNode } from "react";
 import type { Components } from "react-markdown";
-import { Blockquote, Box, Code, Flex, Heading, Text, Table } from "@kushagradhawan/kookie-ui";
+import { Blockquote, Box, Code, Flex, Heading, Text, Table, Separator } from "@kushagradhawan/kookie-ui";
 import { CodeBlock } from "../code";
 import type { MarkdownComponentOptions, MarkdownChildrenProps } from "./types";
 
@@ -56,44 +56,61 @@ function extractCode(children?: ReactNode): string {
  * ```
  */
 export function createMarkdownComponents(options: MarkdownComponentOptions = {}): Components {
-  const { codeBlockCollapsible = false, imageComponent, inlineCodeHighContrast = true } = options;
+  const { codeBlockCollapsible = false, imageComponent, inlineCodeHighContrast = true, spacing = "spacious" } = options;
+
+  // Spacing configuration
+  const isCompact = spacing === "compact";
+  const headingMargins = {
+    h1: { top: isCompact ? "1.5rem" : "3rem", bottom: isCompact ? "1rem" : "1.5rem" },
+    h2: { top: isCompact ? "2rem" : "3rem", bottom: isCompact ? "0.375rem" : "0.5rem" },
+    h3: { top: isCompact ? "1.5rem" : "2rem", bottom: isCompact ? "0.375rem" : "0.5rem" },
+    h4: { top: isCompact ? "0.5rem" : "0.625rem", bottom: isCompact ? "0.25rem" : "0.5rem" },
+    h5: { top: isCompact ? "0.375rem" : "0.5rem", bottom: isCompact ? "0.25rem" : "0.5rem" },
+    h6: { top: isCompact ? "0.375rem" : "0.5rem", bottom: isCompact ? "0.25rem" : "0.5rem" },
+  };
+  const listMargin = isCompact ? "0.25rem" : "0.5rem";
+  const listItemMargin = isCompact ? "0.125rem" : "0.25rem";
+  const codeBlockMargin = isCompact ? "1" : "2";
+  const hrMargin = isCompact ? "0.375rem" : "0.5rem";
+  const paragraphMargin = isCompact ? "0" : "0.5rem";
+  const blockquoteMargin = isCompact ? "0.5rem" : "1rem";
 
   return {
     // Headings with consistent visual hierarchy (9-6-5-4-3-2)
     h1: ({ children }: MarkdownChildrenProps) => (
-      <Heading size="9" weight="medium" as="h1" style={{ marginTop: "1rem", marginBottom: "0.5rem" }}>
+      <Heading size="9" weight="medium" as="h1" style={{ marginTop: headingMargins.h1.top, marginBottom: headingMargins.h1.bottom }}>
         {children}
       </Heading>
     ),
     h2: ({ children }: MarkdownChildrenProps) => (
-      <Heading weight="medium" size="6" as="h2" style={{ marginTop: "0.875rem", marginBottom: "0.5rem" }}>
+      <Heading weight="medium" size="7" as="h2" style={{ marginTop: headingMargins.h2.top, marginBottom: headingMargins.h2.bottom }}>
         {children}
       </Heading>
     ),
     h3: ({ children }: MarkdownChildrenProps) => (
-      <Heading weight="medium" size="5" as="h3" style={{ marginTop: "0.75rem", marginBottom: "0.5rem" }}>
+      <Heading weight="medium" size="5" as="h3" style={{ marginTop: headingMargins.h3.top, marginBottom: headingMargins.h3.bottom }}>
         {children}
       </Heading>
     ),
     h4: ({ children }: MarkdownChildrenProps) => (
-      <Heading weight="medium" size="4" as="h4" style={{ marginTop: "0.625rem", marginBottom: "0.5rem" }}>
+      <Heading weight="medium" size="4" as="h4" style={{ marginTop: headingMargins.h4.top, marginBottom: headingMargins.h4.bottom }}>
         {children}
       </Heading>
     ),
     h5: ({ children }: MarkdownChildrenProps) => (
-      <Heading weight="medium" size="3" as="h5" style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
+      <Heading weight="medium" size="3" as="h5" style={{ marginTop: headingMargins.h5.top, marginBottom: headingMargins.h5.bottom }}>
         {children}
       </Heading>
     ),
     h6: ({ children }: MarkdownChildrenProps) => (
-      <Heading weight="medium" size="2" as="h6" style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
+      <Heading weight="medium" size="2" as="h6" style={{ marginTop: headingMargins.h6.top, marginBottom: headingMargins.h6.bottom }}>
         {children}
       </Heading>
     ),
 
     // Paragraph text
     p: ({ children }: MarkdownChildrenProps) => (
-      <Text size="3" as="p" style={{ lineHeight: "1.6" }}>
+      <Text size="3" as="p" style={{ lineHeight: "1.6", marginTop: paragraphMargin, marginBottom: paragraphMargin }}>
         {children}
       </Text>
     ),
@@ -115,7 +132,7 @@ export function createMarkdownComponents(options: MarkdownComponentOptions = {})
       }
 
       return (
-        <Box my="2" style={{ minWidth: 0 }}>
+        <Box my={codeBlockMargin} style={{ minWidth: 0 }}>
           <CodeBlock code={code} language={extractLanguage(className)} collapsible={codeBlockCollapsible} />
         </Box>
       );
@@ -123,15 +140,19 @@ export function createMarkdownComponents(options: MarkdownComponentOptions = {})
 
     // Lists
     ul: ({ children }: MarkdownChildrenProps) => (
-      <ul style={{ marginTop: "0.5rem", marginBottom: "0.5rem", lineHeight: "1.6", paddingLeft: "1.5rem", listStyleType: "disc" }}>{children}</ul>
+      <ul style={{ marginTop: listMargin, marginBottom: listMargin, lineHeight: "1.6", paddingLeft: "1.5rem", listStyleType: "disc" }}>{children}</ul>
     ),
     ol: ({ children }: MarkdownChildrenProps) => (
-      <ol style={{ marginTop: "0.5rem", marginBottom: "0.5rem", lineHeight: "1.6", paddingLeft: "1.5rem", listStyleType: "decimal" }}>{children}</ol>
+      <ol style={{ marginTop: listMargin, marginBottom: listMargin, lineHeight: "1.6", paddingLeft: "1.5rem", listStyleType: "decimal" }}>{children}</ol>
     ),
-    li: ({ children }: MarkdownChildrenProps) => <li style={{ marginBottom: "0.25rem", lineHeight: "1.6" }}>{children}</li>,
+    li: ({ children }: MarkdownChildrenProps) => <li style={{ marginBottom: listItemMargin, lineHeight: "1.6" }}>{children}</li>,
 
     // Blockquote
-    blockquote: ({ children }: MarkdownChildrenProps) => <Blockquote>{children}</Blockquote>,
+    blockquote: ({ children }: MarkdownChildrenProps) => (
+      <Blockquote size="1" my={blockquoteMargin}>
+        {children}
+      </Blockquote>
+    ),
 
     // Links
     a: ({ href, children }: { href?: string; children?: ReactNode }) => (
@@ -150,16 +171,9 @@ export function createMarkdownComponents(options: MarkdownComponentOptions = {})
 
     // Horizontal rule
     hr: () => (
-      <hr
-        style={{
-          color: "var(--gray-6)",
-          marginTop: "0.5rem",
-          marginBottom: "0.5rem",
-          height: "1px",
-          width: "100%",
-          opacity: 0.5,
-        }}
-      />
+      <Box style={{ marginTop: hrMargin, marginBottom: hrMargin }}>
+        <Separator orientation="horizontal" light />
+      </Box>
     ),
 
     // Pre wrapper (pass through to let code handle it)

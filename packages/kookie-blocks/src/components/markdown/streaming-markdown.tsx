@@ -4,11 +4,15 @@ import React, { memo, useMemo, type ReactNode } from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import hardenReactMarkdown from "harden-react-markdown";
+import hardenReactMarkdownModule from "harden-react-markdown";
 import { Box, Flex } from "@kushagradhawan/kookie-ui";
 import { createMarkdownComponents } from "./create-markdown-components";
 import { completeUnterminatedMarkdown, parseMarkdownIntoBlocks } from "./utils/markdown-streaming";
 import type { MarkdownComponentOptions } from "./types";
+
+// Handle different export formats
+const hardenReactMarkdown =
+  typeof hardenReactMarkdownModule === "function" ? hardenReactMarkdownModule : (hardenReactMarkdownModule as any).default || hardenReactMarkdownModule;
 
 const HardenedMarkdown = hardenReactMarkdown(ReactMarkdown);
 
