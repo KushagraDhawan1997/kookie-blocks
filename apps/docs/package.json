@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@kushagradhawan/kookie-blocks": "workspace:*",
-    "@kushagradhawan/kookie-ui": "latest",
+    "@kushagradhawan/kookie-ui": "^0.1.80",
     "next": "15.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
