@@ -305,7 +305,7 @@ export function CodeBlock({
 
   return (
     <CodeBlockContext.Provider value={true}>
-      <Box className="docs-code-block" mt="6" mb="8">
+      <Box className="docs-code-block" mt="2" mb="4">
         <Flex direction="column" gap="2">
           {preview && (
             <PreviewSection background={background} backgroundProps={backgroundProps}>
