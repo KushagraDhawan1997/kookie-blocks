@@ -5,8 +5,8 @@ import { Copy01Icon, Tick01Icon, ArrowDown01Icon } from "@hugeicons/core-free-ic
 import { codeToHtml, type BundledLanguage, type BundledTheme } from "shiki";
 import type { CodeBlockProps, ShikiConfig, PreviewBackgroundProps } from "./types";
 import { extractTextFromChildren, extractLanguageFromChildren } from "./types";
-import { useCodeCard } from "./useCodeCard";
-import { LanguageBadge } from "./LanguageBadge";
+import { useCodeCard } from "./use-code-card";
+import { LanguageBadge } from "./language-badge";
 
 const CodeBlockContext = createContext<boolean>(false);
 

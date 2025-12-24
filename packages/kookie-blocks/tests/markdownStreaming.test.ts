@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { completeUnterminatedMarkdown } from "../src/components/markdown/utils/markdownStreaming";
+import { completeUnterminatedMarkdown } from "../src/components/markdown/utils/markdown-streaming";
 
 describe("completeUnterminatedMarkdown", () => {
   describe("empty and whitespace handling", () => {

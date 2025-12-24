@@ -6,8 +6,8 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import hardenReactMarkdown from "harden-react-markdown";
 import { Box, Flex } from "@kushagradhawan/kookie-ui";
-import { createMarkdownComponents } from "./createMarkdownComponents";
-import { completeUnterminatedMarkdown, parseMarkdownIntoBlocks } from "./utils/markdownStreaming";
+import { createMarkdownComponents } from "./create-markdown-components";
+import { completeUnterminatedMarkdown, parseMarkdownIntoBlocks } from "./utils/markdown-streaming";
 import type { MarkdownComponentOptions } from "./types";
 
 const HardenedMarkdown = hardenReactMarkdown(ReactMarkdown);
