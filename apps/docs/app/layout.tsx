@@ -5,7 +5,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <Theme accentColor="blue" grayColor="gray" material="solid" radius="full" fontFamily="sans">
+        <Theme accentColor="blue" grayColor="gray" material="solid" radius="medium" fontFamily="sans">
           {children}
         </Theme>
       </body>

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback, memo, type ReactNode } from "react";
 import { Box, Card, Flex, Button, Code, Theme } from "@kushagradhawan/kookie-ui";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Copy01Icon, Tick01Icon } from "@hugeicons/core-free-icons";
+import { Copy01Icon, Tick01Icon, ArrowDown01Icon } from "@hugeicons/core-free-icons";
 import { codeToHtml } from "shiki";
 import type { CodeBlockProps } from "./types";
 
@@ -152,8 +152,16 @@ const CodeSection = memo(function CodeSection({
 
   const displayLanguage = language === "text" ? "plaintext" : language;
 
+  const handleToggle = useCallback(() => {
+    setIsExpanded((prev) => !prev);
+  }, []);
+
   const contentStyle: React.CSSProperties = {
     maxHeight: isExpanded ? `${contentHeight}px` : `${COLLAPSED_HEIGHT}px`,
+  };
+
+  const chevronStyle: React.CSSProperties = {
+    transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
   };
 
   return (
@@ -167,6 +175,18 @@ const CodeSection = memo(function CodeSection({
               </Code>
             )}
             <Flex align="center" gap="2" className="code-action-buttons">
+              {shouldShowToggle && (
+                <Button
+                  size="2"
+                  variant="ghost"
+                  color="gray"
+                  onClick={handleToggle}
+                  tooltip={isExpanded ? "Collapse" : "Expand"}
+                  aria-label={isExpanded ? "Collapse code" : "Expand code"}
+                >
+                  <HugeiconsIcon icon={ArrowDown01Icon} style={chevronStyle} className="code-chevron" />
+                </Button>
+              )}
               {showCopy && (
                 <Button
                   size="2"
@@ -210,35 +230,44 @@ interface ChildrenCodeSectionProps {
 }
 
 function extractCodeFromChildren(children?: ReactNode): string {
-  if (!children) return "";
-  if (typeof children === "object" && children !== null && "props" in children) {
-    const childProps = (children as any).props;
-    if (childProps?.children && typeof childProps.children === "object") {
-      const codeProps = (childProps.children as any).props;
-      const codeChildren = codeProps?.children;
-      if (typeof codeChildren === "string") return codeChildren;
+  const extractText = (node: any): string => {
+    if (typeof node === "string") return node;
+    if (typeof node === "number") return String(node);
+    if (!node) return "";
+    if (Array.isArray(node)) return node.map(extractText).join("");
+    if (typeof node === "object" && "props" in node) {
+      const props = node.props;
+      if (props?.children) return extractText(props.children);
     }
-    if (typeof childProps?.children === "string") return childProps.children;
-  }
-  if (typeof children === "string") return children;
-  return "";
+    return "";
+  };
+  return extractText(children);
 }
 
 function extractLanguageFromChildren(children?: ReactNode): string {
-  if (!children) return "text";
-  if (typeof children === "object" && children !== null && "props" in children) {
-    const childProps = (children as any).props;
-    if (childProps?.children && typeof childProps.children === "object") {
-      const codeProps = (childProps.children as any).props;
-      const className = codeProps?.className || "";
-      const match = className.match(/language-([\w-]+)/i);
-      if (match) return match[1];
+  const findLanguage = (node: any): string | null => {
+    if (!node) return null;
+    if (typeof node === "object" && "props" in node) {
+      const props = node.props;
+      const className = props?.className || props?.class || "";
+      if (typeof className === "string") {
+        const match = className.match(/language-([\w-]+)/i);
+        if (match) return match[1];
+      }
+      if (props?.children) {
+        if (Array.isArray(props.children)) {
+          for (const child of props.children) {
+            const lang = findLanguage(child);
+            if (lang) return lang;
+          }
+        } else {
+          return findLanguage(props.children);
+        }
+      }
     }
-    const className = childProps?.className || "";
-    const match = className.match(/language-([\w-]+)/i);
-    if (match) return match[1];
-  }
-  return "text";
+    return null;
+  };
+  return findLanguage(children) || "text";
 }
 
 function formatLanguageLabel(lang: string): string {
@@ -301,6 +330,14 @@ const ChildrenCodeSection = memo(function ChildrenCodeSection({ children, showCo
     maxHeight: isExpanded ? `${contentHeight}px` : `${COLLAPSED_HEIGHT}px`,
   };
 
+  const handleToggle = useCallback(() => {
+    setIsExpanded((prev) => !prev);
+  }, []);
+
+  const chevronStyle: React.CSSProperties = {
+    transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+  };
+
   return (
     <Box position="relative">
       <Card size="1" variant="soft">
@@ -312,6 +349,18 @@ const ChildrenCodeSection = memo(function ChildrenCodeSection({ children, showCo
               </Code>
             )}
             <Flex align="center" gap="2" className="code-action-buttons">
+              {shouldShowToggle && (
+                <Button
+                  size="2"
+                  variant="ghost"
+                  color="gray"
+                  onClick={handleToggle}
+                  tooltip={isExpanded ? "Collapse" : "Expand"}
+                  aria-label={isExpanded ? "Collapse code" : "Expand code"}
+                >
+                  <HugeiconsIcon icon={ArrowDown01Icon} style={chevronStyle} className="code-chevron" />
+                </Button>
+              )}
               {showCopy && (
                 <Button
                   size="2"
