@@ -16,11 +16,45 @@
 .code-block-content {
   width: 100%;
   min-width: 0;
+  overflow-x: auto;
+  /* Hide scrollbars while keeping scroll functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+/* Hide scrollbars for webkit browsers */
+.code-block-content::-webkit-scrollbar,
+.code-block-content::-webkit-scrollbar-horizontal,
+.code-block-content::-webkit-scrollbar-vertical,
+.code-block-content::-webkit-scrollbar-track,
+.code-block-content::-webkit-scrollbar-thumb,
+.code-block-content::-webkit-scrollbar-corner {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Also hide scrollbars on any pre/code elements inside code content */
+.code-block-content pre::-webkit-scrollbar,
+.code-block-content pre::-webkit-scrollbar-horizontal,
+.code-block-content pre::-webkit-scrollbar-vertical,
+.code-block-content pre::-webkit-scrollbar-track,
+.code-block-content pre::-webkit-scrollbar-thumb,
+.code-block-content pre::-webkit-scrollbar-corner,
+.code-block-content code::-webkit-scrollbar,
+.code-block-content code::-webkit-scrollbar-horizontal,
+.code-block-content code::-webkit-scrollbar-vertical,
+.code-block-content code::-webkit-scrollbar-track,
+.code-block-content code::-webkit-scrollbar-thumb,
+.code-block-content code::-webkit-scrollbar-corner {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .code-block-wrapper pre,
 .code-block-wrapper .code-block-content pre {
-  overflow-x: auto;
+  overflow-x: visible; /* Let .code-block-content handle scrolling */
   max-width: 100%;
   min-width: 0;
   margin: 0;

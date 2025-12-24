@@ -1,5 +1,5 @@
 import React, { type ReactNode } from "react";
-import { Box } from "@kushagradhawan/kookie-ui";
+import { Card, Flex, Theme } from "@kushagradhawan/kookie-ui";
 
 interface PreviewSectionProps {
   children: ReactNode;
@@ -15,38 +15,56 @@ interface PreviewSectionProps {
 }
 
 export function PreviewSection({ children, background = "none", backgroundProps = {} }: PreviewSectionProps) {
-  const { dotSize = 2, color = "#d4d4d8", backgroundColor = "transparent", height = "auto", width = "100%", radius = "var(--radius-3)" } = backgroundProps;
+  const { dotSize = 24, color = "var(--gray-10)", backgroundColor = "var(--gray-2)", height = "300px", width = "100%", radius = "3" } = backgroundProps;
 
-  const backgroundStyle =
-    background === "dots"
-      ? {
-          backgroundImage: `radial-gradient(circle, ${color} ${dotSize}px, ${backgroundColor} ${dotSize}px)`,
-          backgroundSize: "20px 20px",
-        }
-      : background !== "none"
-        ? {
-            backgroundImage: `url(${background})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }
-        : {};
+  // Render with no background (default card styling)
+  if (background === "none") {
+    return (
+      <Card size="1" variant="soft">
+        <Flex justify="center" align="center" py="4">
+          <Theme fontFamily="sans">{children}</Theme>
+        </Flex>
+      </Card>
+    );
+  }
+
+  // Render with dots pattern background
+  if (background === "dots") {
+    const dotsStyle: React.CSSProperties = {
+      backgroundImage: `radial-gradient(circle, ${color} 1px, transparent 1px)`,
+      borderRadius: `var(--radius-${radius})`,
+      backgroundSize: `${dotSize}px ${dotSize}px`,
+      backgroundPosition: "center",
+      backgroundColor,
+      height,
+      width,
+    };
+
+    return (
+      <Card size="1" variant="soft">
+        <Flex justify="center" align="center" py="4" style={dotsStyle}>
+          <Theme fontFamily="sans">{children}</Theme>
+        </Flex>
+      </Card>
+    );
+  }
+
+  // Render with custom image background
+  const imageStyle: React.CSSProperties = {
+    backgroundImage: `url(${background})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    borderRadius: `var(--radius-${radius})`,
+    height,
+    width,
+  };
 
   return (
-    <Box
-      p="4"
-      style={{
-        ...backgroundStyle,
-        height,
-        width,
-        borderRadius: radius,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "200px",
-      }}
-    >
-      {children}
-    </Box>
+    <Card size="1" variant="soft">
+      <Flex justify="center" align="center" py="4" style={imageStyle}>
+        <Theme fontFamily="sans">{children}</Theme>
+      </Flex>
+    </Card>
   );
 }
-
