@@ -1,3 +1,3 @@
-export * from './code';
-export * from './hero';
-export * from './markdown';
+export * from './code/index.js';
+export * from './hero/index.js';
+export * from './markdown/index.js';
