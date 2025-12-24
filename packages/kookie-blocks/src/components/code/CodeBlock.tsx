@@ -126,7 +126,6 @@ const CodeCard = memo(function CodeCard({
                   size="2"
                   variant="ghost"
                   color="gray"
-                  highContrast
                   onClick={handleToggle}
                   tooltip={isExpanded ? "Collapse" : "Expand"}
                   aria-label={isExpanded ? "Collapse code" : "Expand code"}
@@ -139,7 +138,6 @@ const CodeCard = memo(function CodeCard({
                   size="2"
                   variant="ghost"
                   color="gray"
-                  highContrast
                   onClick={handleCopy}
                   tooltip={copied ? "Copied!" : "Copy"}
                   aria-label={copied ? "Copied!" : "Copy code"}

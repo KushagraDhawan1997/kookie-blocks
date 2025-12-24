@@ -73,8 +73,8 @@ export function LanguageBadge({ language }: LanguageBadgeProps) {
   const displayLanguage = formatLanguageForDisplay(language);
 
   return (
-    <Code size="1" color="gray" highContrast>
-      {displayLanguage}
+    <Code size="1" color="gray" variant="ghost">
+      {displayLanguage.toLowerCase()}
     </Code>
   );
 }
