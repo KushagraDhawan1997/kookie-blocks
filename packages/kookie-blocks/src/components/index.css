@@ -21,6 +21,32 @@
   margin: 0;
   width: 100%;
   box-sizing: border-box;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-2);
+  line-height: 1.75;
+  padding: var(--space-3);
+  overflow-x: auto;
+}
+
+/* Rehype-pretty-code theme support */
+pre[data-theme] code {
+  background: none !important;
+}
+
+pre[data-theme] code span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+}
+
+.dark pre[data-theme] code span,
+.dark-theme pre[data-theme] code span,
+[data-appearance="dark"] pre[data-theme] code span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
 /* Code elements inside pre */
@@ -42,7 +68,7 @@
   gap: 0;
 }
 
-/* Line numbers */
+/* Line numbers (shown by default) */
 .code-content pre code .line::before {
   counter-increment: line;
   content: counter(line);
@@ -54,6 +80,41 @@
   user-select: none;
   flex-shrink: 0;
   margin-right: var(--space-4);
+}
+
+/* Hide line numbers when disabled */
+.code-content.hide-line-numbers pre code .line::before {
+  display: none;
+}
+
+/* Loading skeleton */
+.code-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+}
+
+.code-skeleton-line {
+  height: 1em;
+  background: linear-gradient(
+    90deg,
+    var(--gray-a3) 0%,
+    var(--gray-a4) 50%,
+    var(--gray-a3) 100%
+  );
+  background-size: 200% 100%;
+  animation: code-skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-1);
+}
+
+@keyframes code-skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* Scroll shadow overlay for collapsed state */

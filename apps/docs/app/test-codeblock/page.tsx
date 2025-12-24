@@ -102,6 +102,21 @@ export default function Page() {
           <Heading size="5">4. Long Code (test scrollbar hiding)</Heading>
           <CodeBlock code={longCode} language="tsx" />
         </Flex>
+
+        <Flex direction="column" gap="3">
+          <Heading size="5">5. Without Line Numbers</Heading>
+          <CodeBlock code={sampleCode} language="javascript" showLineNumbers={false} />
+        </Flex>
+
+        <Flex direction="column" gap="3">
+          <Heading size="5">6. With File Path</Heading>
+          <CodeBlock code={sampleCode} language="typescript" file="src/components/Button.tsx" />
+        </Flex>
+
+        <Flex direction="column" gap="3">
+          <Heading size="5">7. Non-collapsible (short code)</Heading>
+          <CodeBlock code={sampleCode} language="javascript" collapsible={false} />
+        </Flex>
       </Flex>
     </Box>
   );
