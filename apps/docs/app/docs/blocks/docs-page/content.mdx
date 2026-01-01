@@ -1,0 +1,234 @@
+---
+title: Docs Page
+description: Page layout wrapper for documentation content with header, table of contents, and footer.
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/docs
+---
+
+Provides a page layout wrapper with proper spacing, structure, and optional table of contents. Renders page headers from metadata and includes footer support for copyright and links.
+
+Perfect for documentation pages that need consistent structure and automatic header generation from frontmatter or metadata.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { DocsPage, TableOfContents } from '@kushagradhawan/kookie-blocks';
+
+export function MyDocPage() {
+  return (
+    <DocsPage
+      meta={{
+        title: 'Getting Started',
+        description: 'Learn how to get started with the library.',
+      }}
+      tableOfContents={<TableOfContents />}
+    >
+      <h2>Introduction</h2>
+      <p>Your content here...</p>
+    </DocsPage>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `children` | `ReactNode` | Page content to render |
+| `meta` | `DocsPageMeta` | Page metadata for header (`title`, `description`, optional `category` and `source`) |
+| `tableOfContents` | `ReactNode` | Table of contents component to render in sidebar |
+| `maxWidth` | `string \| number` | Maximum content width. Default: `'48rem'` |
+| `padding` | `'3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | Page padding. Default: `'6'` |
+| `headerActions` | `ReactNode` | Custom actions to display in page header |
+| `header` | `ReactNode` | Custom header element (overrides meta-based header) |
+| `showFooter` | `boolean` | Show footer with copyright and links. Default: `false` |
+| `footerCopyright` | `{ name: string; url?: string }` | Copyright holder information for footer |
+| `githubUrl` | `string` | GitHub repository URL for footer link |
+
+## Examples
+
+### With MDX Content
+
+Docs Page works seamlessly with MDX:
+
+```tsx
+import { DocsPage, TableOfContents } from '@kushagradhawan/kookie-blocks';
+import ContentMDX from './content.mdx';
+
+export function DocPage() {
+  return (
+    <DocsPage
+      meta={{
+        title: 'API Reference',
+        description: 'Complete API documentation.',
+        category: 'Reference',
+      }}
+      tableOfContents={<TableOfContents />}
+    >
+      <ContentMDX />
+    </DocsPage>
+  );
+}
+```
+
+### With Footer
+
+Include copyright and GitHub link:
+
+```tsx
+import { DocsPage } from '@kushagradhawan/kookie-blocks';
+
+export function DocPage({ children }) {
+  return (
+    <DocsPage
+      meta={{ title: 'Documentation' }}
+      showFooter={true}
+      footerCopyright={{
+        name: 'Your Company',
+        url: 'https://yoursite.com'
+      }}
+      githubUrl="https://github.com/yourorg/yourrepo"
+    >
+      {children}
+    </DocsPage>
+  );
+}
+```
+
+### With Header Actions
+
+Add custom actions to the page header:
+
+```tsx
+import { DocsPage } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function DocPage({ children }) {
+  return (
+    <DocsPage
+      meta={{
+        title: 'Component Guide',
+        description: 'Learn how to use this component.',
+      }}
+      headerActions={
+        <Button variant="soft" size="2">View Examples</Button>
+      }
+    >
+      {children}
+    </DocsPage>
+  );
+}
+```
+
+### Custom Header
+
+Replace the default header with custom content:
+
+```tsx
+import { DocsPage } from '@kushagradhawan/kookie-blocks';
+import { Heading, Text, Flex } from '@kushagradhawan/kookie-ui';
+
+export function DocPage({ children }) {
+  return (
+    <DocsPage
+      header={
+        <Flex direction="column" gap="4">
+          <Heading size="8">Custom Header</Heading>
+          <Text size="4" color="gray">
+            Completely custom header layout
+          </Text>
+        </Flex>
+      }
+    >
+      {children}
+    </DocsPage>
+  );
+}
+```
+
+### Without Table of Contents
+
+Omit the table of contents for simpler pages:
+
+```tsx
+import { DocsPage } from '@kushagradhawan/kookie-blocks';
+
+export function SimplePage({ children }) {
+  return (
+    <DocsPage
+      meta={{
+        title: 'Simple Page',
+        description: 'A page without table of contents.',
+      }}
+    >
+      {children}
+    </DocsPage>
+  );
+}
+```
+
+### Adjust Content Width and Padding
+
+Customize spacing for different content types:
+
+```tsx
+import { DocsPage } from '@kushagradhawan/kookie-blocks';
+
+export function WideDocPage({ children }) {
+  return (
+    <DocsPage
+      meta={{ title: 'Wide Layout' }}
+      maxWidth="64rem"
+      padding="8"
+    >
+      {children}
+    </DocsPage>
+  );
+}
+```
+
+## Requirements
+
+For the table of contents to work properly:
+
+- Content must include `data-content-area` attribute (automatically added by DocsPage)
+- Headings must have `id` attributes (use `rehype-slug` for MDX)
+- TableOfContents component must be rendered client-side
+
+## Accessibility
+
+Docs Page provides semantic structure for accessibility:
+
+### Semantic HTML
+
+- Proper heading hierarchy with page title as h1
+- Semantic sectioning elements for content areas
+- Footer uses appropriate landmark roles
+
+### Screen Readers
+
+- Page metadata announced clearly
+- Content area properly labeled
+- Footer copyright and links accessible
+
+### Responsive Design
+
+- Mobile-first responsive layout
+- Table of contents repositions on smaller screens
+- Touch-friendly spacing and sizing
+
+## Changelog
+
+### Added
+
+- Page layout wrapper component
+- Automatic header generation from metadata
+- Table of contents sidebar support
+- Footer with copyright and GitHub link
+- Custom header and header actions support
+- Configurable content width and padding

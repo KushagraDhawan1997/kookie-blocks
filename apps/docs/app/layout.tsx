@@ -1,13 +1,20 @@
 import "./global.css";
-import { Theme } from "@kushagradhawan/kookie-ui";
+import "@kushagradhawan/kookie-ui/styles.css";
+import "@kushagradhawan/kookie-blocks/styles.css";
+import { Providers } from "../components/providers";
+import { DocsLayout } from "../components/docs-layout";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>
-        <Theme accentColor="blue" grayColor="gray" material="solid" radius="medium" fontFamily="sans">
-          {children}
-        </Theme>
+        <Providers>
+          <DocsLayout>{children}</DocsLayout>
+        </Providers>
       </body>
     </html>
   );

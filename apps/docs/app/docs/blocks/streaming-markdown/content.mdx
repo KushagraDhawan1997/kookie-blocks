@@ -1,0 +1,192 @@
+---
+title: Streaming Markdown
+description: A markdown renderer with streaming support, designed for AI-generated content and real-time updates.
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/markdown
+---
+
+Renders markdown content with support for streaming text, making it ideal for AI-generated content or real-time updates. Handles incomplete markdown gracefully during streaming and includes block-level memoization for optimal performance.
+
+Built with [react-markdown](https://github.com/remarkjs/react-markdown), GitHub Flavored Markdown support, and integrated with Kookie UI components.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { StreamingMarkdown } from '@kushagradhawan/kookie-blocks';
+
+export function MyContent() {
+  const markdown = '# Hello\n\nThis is **markdown** content.';
+
+  return (
+    <StreamingMarkdown
+      content={markdown}
+      id="my-content"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `content` | `string` | Markdown content to render. Supports incomplete markdown during streaming |
+| `id` | `string` | Unique identifier for this markdown instance. Used for generating block keys |
+| `options` | `StreamingMarkdownOptions` | Configuration options for rendering and behavior |
+
+### Options
+
+| Option | Type | Description |
+| ------ | ---- | ----------- |
+| `defaultOrigin` | `string` | Security origin for link/image validation. Defaults to `window.location.origin` |
+| `enableBlockMemoization` | `boolean` | Enable block-level memoization for performance. Recommended for streaming scenarios. Default: `true` |
+| `blockParser` | `(content: string) => Array<{ raw?: string }>` | Custom parser for splitting content into blocks. For optimal streaming performance, use `marked.lexer` with GFM enabled |
+| `components` | `Partial<Components>` | Override default component mappings for markdown elements |
+| `copyButton` | `boolean` | Show copy button on code blocks. Default: `true` |
+| `copyButtonAlign` | `'left' \| 'right'` | Position of copy button. Default: `'right'` |
+| `disableLanguageLabel` | `boolean` | Hide language label on code blocks. Default: `false` |
+
+## Examples
+
+### Streaming AI Content
+
+StreamingMarkdown handles partial markdown gracefully, making it perfect for AI responses:
+
+```tsx
+import { StreamingMarkdown } from '@kushagradhawan/kookie-blocks';
+import { useState, useEffect } from 'react';
+
+export function StreamingResponse() {
+  const [content, setContent] = useState('');
+
+  useEffect(() => {
+    // Simulate streaming content
+    const stream = fetchStreamingResponse();
+    stream.on('data', (chunk) => {
+      setContent((prev) => prev + chunk);
+    });
+  }, []);
+
+  return (
+    <StreamingMarkdown
+      content={content}
+      id="streaming-response"
+    />
+  );
+}
+```
+
+### With Block Memoization
+
+For optimal performance with streaming content, enable block-level memoization using `marked.lexer`:
+
+```tsx
+import { StreamingMarkdown } from '@kushagradhawan/kookie-blocks';
+import { marked } from 'marked';
+
+export function ChatMessage({ message }) {
+  return (
+    <StreamingMarkdown
+      content={message.content}
+      id={message.id}
+      options={{
+        blockParser: (content) => marked.lexer(content, { gfm: true }),
+        enableBlockMemoization: true,
+      }}
+    />
+  );
+}
+```
+
+### Custom Component Overrides
+
+Override default markdown components with custom implementations:
+
+```tsx
+import { StreamingMarkdown } from '@kushagradhawan/kookie-blocks';
+import { Text, Code } from '@kushagradhawan/kookie-ui';
+
+export function CustomMarkdown({ content }) {
+  return (
+    <StreamingMarkdown
+      content={content}
+      id="custom-md"
+      options={{
+        components: {
+          p: ({ children }) => (
+            <Text size="3" mb="3">{children}</Text>
+          ),
+          code: ({ children }) => (
+            <Code color="blue">{children}</Code>
+          ),
+        },
+      }}
+    />
+  );
+}
+```
+
+### Disable Code Block Features
+
+Customize code block appearance:
+
+```tsx
+import { StreamingMarkdown } from '@kushagradhawan/kookie-blocks';
+
+export function SimpleMarkdown({ content }) {
+  return (
+    <StreamingMarkdown
+      content={content}
+      id="simple-md"
+      options={{
+        copyButton: false,
+        disableLanguageLabel: true,
+      }}
+    />
+  );
+}
+```
+
+## Accessibility
+
+Streaming Markdown provides comprehensive accessibility features:
+
+### Semantic HTML
+
+- Renders proper HTML5 semantic elements (`<h1>-<h6>`, `<p>`, `<ul>`, `<ol>`, etc.)
+- Maintains proper heading hierarchy
+- Uses semantic `<code>` and `<pre>` elements
+
+### Keyboard Navigation
+
+- **Tab** - Navigate between interactive elements (links, buttons)
+- **Enter** - Activate links and copy buttons
+- **Space** - Activate copy buttons
+
+### Screen Readers
+
+- All links include proper ARIA labels
+- Code blocks announce language when present
+- Copy button announces action state
+
+### Security
+
+- Link and image URLs are validated against allowed prefixes
+- Supports `defaultOrigin` for security origin validation
+- Sanitizes HTML content using `harden-react-markdown`
+
+## Changelog
+
+### Added
+
+- Streaming markdown support with unterminated block parsing
+- Block-level memoization for performance optimization
+- GitHub Flavored Markdown support
+- Security hardening for links and images
+- Integration with Kookie UI CodeBlock component
+- Custom component override support

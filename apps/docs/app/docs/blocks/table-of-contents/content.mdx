@@ -1,0 +1,201 @@
+---
+title: Table of Contents
+description: Auto-generated table of contents with scroll tracking using IntersectionObserver.
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/docs
+---
+
+Automatically generates a table of contents from heading elements on the page. Uses IntersectionObserver to track scroll position and highlight the currently visible section.
+
+Perfect for long-form documentation where readers need to quickly navigate between sections and track their progress.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { DocsPage, TableOfContents } from '@kushagradhawan/kookie-blocks';
+
+export function MyDocPage() {
+  return (
+    <DocsPage tableOfContents={<TableOfContents />}>
+      <div data-content-area>
+        <h2 id="intro">Introduction</h2>
+        <p>Content...</p>
+
+        <h2 id="usage">Usage</h2>
+        <p>More content...</p>
+      </div>
+    </DocsPage>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `className` | `string` | Optional CSS class name for custom styling |
+| `levels` | `number[]` | Heading levels to include in TOC (e.g., `[2, 3]` for h2 and h3). Default: `[2]` |
+| `title` | `string` | Title shown above the TOC. Default: `'On this page'` |
+| `renderContainer` | `(tocContent: ReactNode) => ReactNode \| null` | Custom render function for the TOC container |
+
+## Examples
+
+### Include Multiple Heading Levels
+
+Show both h2 and h3 headings:
+
+```tsx
+import { TableOfContents } from '@kushagradhawan/kookie-blocks';
+
+export function DetailedTOC() {
+  return (
+    <TableOfContents levels={[2, 3]} />
+  );
+}
+```
+
+### Custom Title
+
+Change the title displayed above the TOC:
+
+```tsx
+import { TableOfContents } from '@kushagradhawan/kookie-blocks';
+
+export function CustomTOC() {
+  return (
+    <TableOfContents title="Contents" />
+  );
+}
+```
+
+### Custom Container
+
+Wrap the TOC in custom layout:
+
+```tsx
+import { TableOfContents } from '@kushagradhawan/kookie-blocks';
+import { Card, Box } from '@kushagradhawan/kookie-ui';
+
+export function WrappedTOC() {
+  return (
+    <TableOfContents
+      renderContainer={(content) => (
+        <Card size="2">
+          <Box p="4">
+            {content}
+          </Box>
+        </Card>
+      )}
+    />
+  );
+}
+```
+
+### All Heading Levels
+
+Include h2 through h4:
+
+```tsx
+import { TableOfContents } from '@kushagradhawan/kookie-blocks';
+
+export function ComprehensiveTOC() {
+  return (
+    <TableOfContents levels={[2, 3, 4]} />
+  );
+}
+```
+
+### With DocsPage
+
+Standard integration with DocsPage:
+
+```tsx
+import { DocsPage, TableOfContents } from '@kushagradhawan/kookie-blocks';
+
+export function DocPage({ children }) {
+  return (
+    <DocsPage
+      meta={{
+        title: 'Guide',
+        description: 'Complete guide with table of contents.',
+      }}
+      tableOfContents={
+        <TableOfContents levels={[2, 3]} />
+      }
+    >
+      {children}
+    </DocsPage>
+  );
+}
+```
+
+## How It Works
+
+1. **Extraction**: TableOfContents searches for an element with `data-content-area` attribute
+2. **Parsing**: Finds all headings matching the specified levels within that area
+3. **ID Generation**: Automatically generates IDs for headings that don't have them (using slug format)
+4. **Navigation**: Renders clickable links for each heading
+5. **Scroll Tracking**: Uses IntersectionObserver to highlight the currently visible section
+
+## Requirements
+
+For TableOfContents to work properly:
+
+1. **Content Area Marker**: Content must be wrapped in an element with `data-content-area` attribute
+2. **Heading IDs**: Headings should have `id` attributes (automatically generated if missing)
+3. **Client-Side**: Component must be rendered client-side (uses browser APIs)
+
+### With MDX
+
+When using MDX, add `rehype-slug` to automatically generate heading IDs:
+
+```js
+// next.config.js or similar
+import rehypeSlug from 'rehype-slug';
+
+export default {
+  mdxOptions: {
+    rehypePlugins: [rehypeSlug],
+  },
+};
+```
+
+## Accessibility
+
+Table of Contents provides comprehensive accessibility features:
+
+### Keyboard Navigation
+
+- **Tab** - Navigate through TOC links
+- **Enter** - Jump to section
+- Links are keyboard accessible and focusable
+
+### Screen Readers
+
+- TOC announced as navigation landmark
+- Current section highlighted with aria-current
+- Links include descriptive text from headings
+- Scroll position updates announced
+
+### Focus Management
+
+- Clear focus indicators on all links
+- Focus preserved after navigation
+- Smooth scroll behavior for better orientation
+
+## Changelog
+
+### Added
+
+- Auto-generated table of contents from headings
+- IntersectionObserver-based scroll tracking
+- Active section highlighting
+- Configurable heading levels
+- Automatic ID generation for headings without IDs
+- Custom container rendering support
+- Client-side heading extraction

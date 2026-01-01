@@ -1,0 +1,235 @@
+---
+title: Docs Sidebar
+description: Navigation sidebar component for documentation sites with grouped navigation and icons.
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/docs
+---
+
+Provides a navigation sidebar using Kookie UI's Sidebar components. Supports grouped navigation items with icons, active state highlighting, and flexible presentation modes.
+
+Perfect for documentation sites that need organized, hierarchical navigation with visual affordances.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { DocsSidebar } from '@kushagradhawan/kookie-blocks';
+
+const navigation = {
+  groups: [
+    {
+      label: 'Getting Started',
+      items: [
+        { href: '/docs/installation', title: 'Installation' },
+        { href: '/docs/usage', title: 'Usage' },
+      ],
+    },
+  ],
+};
+
+export function Sidebar() {
+  return (
+    <DocsSidebar
+      navigation={navigation}
+      logo={{ src: '/logo.png', alt: 'Docs' }}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `navigation` | `DocsNavigationConfig` | Navigation configuration with groups and items |
+| `logo` | `DocsLogoConfig` | Logo configuration with `src`, `alt`, and optional `href` |
+| `presentation` | `'thin' \| 'expanded'` | Sidebar presentation mode. Controlled by parent Shell |
+| `footer` | `ReactNode` | Custom footer content for the sidebar |
+| `size` | `'1' \| '2'` | Sidebar size scale |
+| `variant` | `'soft' \| 'outline' \| 'surface' \| 'ghost'` | Visual variant for sidebar background |
+| `menuVariant` | `'solid' \| 'soft'` | Visual variant for menu items |
+| `color` | `AccentColor` | Accent color for active items |
+| `pathname` | `string` | Current pathname for active state detection |
+| `linkComponent` | `ComponentType` | Custom link component (e.g., Next.js Link) |
+
+## Examples
+
+### With Icons
+
+Add icons to navigation items using HugeIcons:
+
+```tsx
+import { DocsSidebar } from '@kushagradhawan/kookie-blocks';
+import { Download01Icon, CodeIcon, BookOpen01Icon } from '@hugeicons/core-free-icons';
+
+const navigation = {
+  groups: [
+    {
+      label: 'Getting Started',
+      items: [
+        {
+          href: '/docs/installation',
+          title: 'Installation',
+          icon: Download01Icon
+        },
+        {
+          href: '/docs/usage',
+          title: 'Usage',
+          icon: CodeIcon
+        },
+        {
+          href: '/docs/guide',
+          title: 'Guide',
+          icon: BookOpen01Icon
+        },
+      ],
+    },
+  ],
+};
+
+export function Sidebar() {
+  return <DocsSidebar navigation={navigation} />;
+}
+```
+
+### Multiple Groups
+
+Organize navigation into logical sections:
+
+```tsx
+import { DocsSidebar } from '@kushagradhawan/kookie-blocks';
+
+const navigation = {
+  groups: [
+    {
+      label: 'Getting Started',
+      items: [
+        { href: '/docs/installation', title: 'Installation' },
+        { href: '/docs/quickstart', title: 'Quick Start' },
+      ],
+    },
+    {
+      label: 'Components',
+      items: [
+        { href: '/docs/button', title: 'Button' },
+        { href: '/docs/input', title: 'Input' },
+      ],
+    },
+    {
+      label: 'Guides',
+      items: [
+        { href: '/docs/theming', title: 'Theming' },
+        { href: '/docs/styling', title: 'Styling' },
+      ],
+    },
+  ],
+};
+
+export function Sidebar() {
+  return <DocsSidebar navigation={navigation} />;
+}
+```
+
+### With Footer
+
+Add custom footer content:
+
+```tsx
+import { DocsSidebar } from '@kushagradhawan/kookie-blocks';
+import { Text, Link } from '@kushagradhawan/kookie-ui';
+
+export function Sidebar() {
+  return (
+    <DocsSidebar
+      navigation={navigation}
+      footer={
+        <Text size="1" color="gray">
+          v1.0.0 • <Link href="/changelog">Changelog</Link>
+        </Text>
+      }
+    />
+  );
+}
+```
+
+### Custom Styling
+
+Adjust visual appearance with variants and colors:
+
+```tsx
+import { DocsSidebar } from '@kushagradhawan/kookie-blocks';
+
+export function Sidebar() {
+  return (
+    <DocsSidebar
+      navigation={navigation}
+      variant="surface"
+      menuVariant="solid"
+      color="blue"
+      size="2"
+    />
+  );
+}
+```
+
+### With Next.js
+
+Integrate with Next.js router:
+
+```tsx
+'use client';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { DocsSidebar } from '@kushagradhawan/kookie-blocks';
+
+export function Sidebar() {
+  const pathname = usePathname();
+
+  return (
+    <DocsSidebar
+      navigation={navigation}
+      pathname={pathname}
+      linkComponent={Link}
+    />
+  );
+}
+```
+
+## Accessibility
+
+Docs Sidebar provides comprehensive accessibility features:
+
+### Keyboard Navigation
+
+- **Tab** - Navigate through navigation items
+- **Enter/Space** - Activate links
+- **Arrow Up/Down** - Navigate between items (via Sidebar component)
+
+### Screen Readers
+
+- Proper ARIA roles for navigation structure
+- Active item announced with aria-current
+- Navigation groups properly labeled
+- Logo includes descriptive alt text
+
+### Focus Management
+
+- Clear focus indicators on all interactive elements
+- Focus preserved when sidebar presentation changes
+- Keyboard-accessible at all times
+
+## Changelog
+
+### Added
+
+- Navigation sidebar component
+- Support for grouped navigation
+- Icon support with HugeIcons
+- Active state highlighting
+- Framework-agnostic router integration
+- Customizable variants and colors
+- Footer support

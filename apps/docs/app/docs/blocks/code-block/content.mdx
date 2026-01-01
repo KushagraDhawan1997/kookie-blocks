@@ -1,0 +1,281 @@
+---
+title: Code Block
+description: A syntax-highlighted code block component powered by Shiki with copy, collapse, and preview features.
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/code
+---
+
+Displays syntax-highlighted code with essential developer experience features. Perfect for documentation, blogs, and technical content where code clarity matters.
+
+Powered by [Shiki](https://shiki.style/) for accurate syntax highlighting that matches VS Code themes, with built-in support for copy buttons, line numbers, and collapsible long code blocks.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { CodeBlock } from '@kushagradhawan/kookie-blocks';
+
+export function MyCode() {
+  return (
+    <CodeBlock
+      code="console.log('Hello, world!');"
+      language="javascript"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `code` | `string` | Raw code string for runtime Shiki highlighting. Mutually exclusive with `children` |
+| `language` | `string` | Language identifier for syntax highlighting (e.g., `"typescript"`, `"python"`, `"bash"`). Required when using `code` prop |
+| `children` | `ReactNode` | Pre-highlighted content from MDX/rehype-pretty-code. Mutually exclusive with `code`. Language is auto-detected |
+| `shikiConfig` | `ShikiConfig` | Shiki syntax highlighting configuration. Only applies when using `code` prop |
+| `showCopy` | `boolean` | Show copy-to-clipboard button. Default: `true` |
+| `showLanguage` | `boolean` | Show language badge. Default: `true` |
+| `showLineNumbers` | `boolean` | Show line numbers. Default: `true` |
+| `file` | `string` | File path displayed above the code block (e.g., `"src/components/Button.tsx"`) |
+| `collapsible` | `boolean` | Enable expand/collapse for long code blocks. Default: `true` |
+| `collapsedHeight` | `number` | Height threshold (in pixels) before code is collapsed. Default: `360` |
+| `preview` | `ReactNode` | Preview component displayed above the code block. Useful for showcasing component examples |
+| `background` | `'none' \| 'dots' \| string` | Background style for preview section: `'none'` for plain, `'dots'` for pattern, or image URL for custom. Default: `'none'` |
+| `backgroundProps` | `PreviewBackgroundProps` | Customization for preview background |
+
+### Shiki Config
+
+| Option | Type | Description |
+| ------ | ---- | ----------- |
+| `themes` | `{ light?: string; dark?: string }` | Theme names for light and dark modes. Default: `{ light: 'one-light', dark: 'one-dark-pro' }` |
+| `langAlias` | `Record<string, string>` | Language aliases for custom language mapping (e.g., `{ js: 'javascript' }`) |
+| `transformers` | `any[]` | Shiki transformers for custom code transformations like line highlighting |
+| `meta` | `string` | Metadata string passed to transformers (e.g., `"{1,3-5}"` for line highlighting) |
+
+### Preview Background Props
+
+| Option | Type | Description |
+| ------ | ---- | ----------- |
+| `dotSize` | `number` | Dot size in pixels (for dots background) |
+| `color` | `string` | Dot color (CSS value) |
+| `backgroundColor` | `string` | Background color (CSS value) |
+| `height` | `string` | Preview section height |
+| `width` | `string` | Preview section width |
+| `radius` | `string` | Border radius token (e.g., `"3"` for `var(--radius-3)`) |
+
+## Examples
+
+### Basic Code Block
+
+Display simple code with default settings:
+
+```tsx
+import { CodeBlock } from '@kushagradhawan/kookie-blocks';
+
+export function Example() {
+  const code = `function greet(name: string) {
+  return \`Hello, \${name}!\`;
+}`;
+
+  return <CodeBlock code={code} language="typescript" />;
+}
+```
+
+### With File Path
+
+Show the file name above the code block:
+
+```tsx
+import { CodeBlock } from '@kushagradhawan/kookie-blocks';
+
+export function FileExample() {
+  return (
+    <CodeBlock
+      file="src/utils/greet.ts"
+      code="export function greet(name: string) { return `Hello, ${name}!`; }"
+      language="typescript"
+    />
+  );
+}
+```
+
+### Custom Theme
+
+Use custom Shiki themes for light and dark modes:
+
+```tsx
+import { CodeBlock } from '@kushagradhawan/kookie-blocks';
+
+export function ThemedCode() {
+  return (
+    <CodeBlock
+      code="const message = 'Custom theme!';"
+      language="javascript"
+      shikiConfig={{
+        themes: {
+          light: 'github-light',
+          dark: 'github-dark',
+        },
+      }}
+    />
+  );
+}
+```
+
+### Minimal Code Block
+
+Hide optional UI elements for a cleaner look:
+
+```tsx
+import { CodeBlock } from '@kushagradhawan/kookie-blocks';
+
+export function MinimalCode() {
+  return (
+    <CodeBlock
+      code="npm install @kushagradhawan/kookie-blocks"
+      language="bash"
+      showCopy={false}
+      showLanguage={false}
+      showLineNumbers={false}
+    />
+  );
+}
+```
+
+### With Component Preview
+
+Show a live preview above the code:
+
+```tsx
+import { CodeBlock } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function PreviewExample() {
+  const code = `<Button variant="solid" size="3">
+  Click me
+</Button>`;
+
+  return (
+    <CodeBlock
+      code={code}
+      language="tsx"
+      preview={
+        <Button variant="solid" size="3">Click me</Button>
+      }
+    />
+  );
+}
+```
+
+### Preview with Dots Background
+
+Add visual interest to component previews:
+
+```tsx
+import { CodeBlock } from '@kushagradhawan/kookie-blocks';
+import { IconButton } from '@kushagradhawan/kookie-ui';
+import { HeartIcon } from '@hugeicons/react';
+
+export function DotsPreview() {
+  return (
+    <CodeBlock
+      code="<IconButton size='3'><HeartIcon /></IconButton>"
+      language="tsx"
+      preview={<IconButton size="3"><HeartIcon /></IconButton>}
+      background="dots"
+      backgroundProps={{
+        dotSize: 24,
+        color: 'var(--gray-10)',
+        backgroundColor: 'var(--gray-2)',
+      }}
+    />
+  );
+}
+```
+
+### Collapsed Long Code
+
+Long code blocks automatically collapse:
+
+```tsx
+import { CodeBlock } from '@kushagradhawan/kookie-blocks';
+
+export function LongCode() {
+  const longCode = `// This is a very long code block
+// that will be collapsed by default
+// when it exceeds the collapsedHeight
+
+function processData(data) {
+  // ... many lines of code
+}
+
+// ... more code here
+`;
+
+  return (
+    <CodeBlock
+      code={longCode}
+      language="javascript"
+      collapsible={true}
+      collapsedHeight={360}
+    />
+  );
+}
+```
+
+## Languages
+
+Code Block supports all languages supported by Shiki, including:
+
+- **JavaScript/TypeScript**: `javascript`, `typescript`, `jsx`, `tsx`
+- **Web**: `html`, `css`, `scss`, `sass`, `less`
+- **Backend**: `python`, `java`, `php`, `ruby`, `go`, `rust`
+- **Shell**: `bash`, `sh`, `zsh`, `fish`, `powershell`
+- **Data**: `json`, `yaml`, `toml`, `xml`
+- **Databases**: `sql`, `graphql`
+- **Config**: `dockerfile`, `nginx`, `apache`
+- And 200+ more languages
+
+See [Shiki's language list](https://shiki.style/languages) for the complete list.
+
+## Accessibility
+
+Code Block provides comprehensive accessibility features:
+
+### Keyboard Navigation
+
+- **Tab** - Navigate to copy button and expand/collapse button
+- **Enter/Space** - Activate copy or expand/collapse
+- **Escape** - Dismiss any focus states
+
+### Screen Readers
+
+- Copy button announces action and success state
+- Language badge announces code language
+- Line numbers are hidden from screen readers to avoid noise
+- Expand/collapse button announces current state
+
+### Copy Functionality
+
+- Visual feedback on copy success (checkmark icon)
+- Keyboard accessible copy button
+- Works with screen reader users
+
+## Changelog
+
+### Added
+
+- Syntax highlighting powered by Shiki
+- Copy-to-clipboard functionality
+- Line numbers display
+- Language badge
+- Collapsible long code blocks
+- Component preview section
+- Dotted and custom background patterns
+- File path display
+- Custom theme support
+- Auto theme switching (light/dark)

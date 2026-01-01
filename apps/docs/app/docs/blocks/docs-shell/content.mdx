@@ -1,0 +1,231 @@
+---
+title: Docs Shell
+description: A complete documentation layout shell with sidebar navigation and content area.
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/docs
+---
+
+Provides a complete documentation layout with sidebar navigation, header, and content area. Built on Kookie UI's Shell component with documentation-specific defaults for a consistent docs experience out of the box.
+
+Works with any React router by accepting custom link components and pathname for active state highlighting.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { DocsShell } from '@kushagradhawan/kookie-blocks';
+
+const navigation = {
+  groups: [
+    {
+      label: 'Getting Started',
+      items: [
+        { href: '/docs/installation', title: 'Installation' },
+      ],
+    },
+  ],
+};
+
+export function DocsLayout({ children }) {
+  return (
+    <DocsShell
+      navigation={navigation}
+      logo={{ src: '/logo.png', alt: 'My Docs' }}
+    >
+      {children}
+    </DocsShell>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `children` | `ReactNode` | Page content to render in the main content area |
+| `navigation` | `DocsNavigationConfig` | Navigation configuration with groups and items |
+| `logo` | `DocsLogoConfig` | Logo configuration with `src`, `alt`, and optional `href` |
+| `headerActions` | `ReactNode` | Custom actions for the header (e.g., theme toggle, GitHub link) |
+| `sidebarFooter` | `ReactNode` | Custom footer content for the sidebar |
+| `height` | `'full' \| 'auto' \| string \| number` | Shell height. Use `'full'` for viewport height |
+| `sidebarThinSize` | `number` | Sidebar width when collapsed. Default: `80` |
+| `sidebarResizable` | `boolean` | Whether sidebar is resizable. Default: `true` |
+| `mobileTriggerIcon` | `ReactNode` | Custom icon for mobile sidebar trigger |
+| `pathname` | `string` | Current pathname for active state detection |
+| `linkComponent` | `ComponentType` | Custom link component for navigation (e.g., Next.js Link) |
+
+## Examples
+
+### With Next.js
+
+Integrate with Next.js router for active state highlighting:
+
+```tsx
+'use client';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { DocsShell } from '@kushagradhawan/kookie-blocks';
+
+export function DocsLayout({ children }) {
+  const pathname = usePathname();
+
+  return (
+    <DocsShell
+      navigation={navigation}
+      pathname={pathname}
+      linkComponent={Link}
+      logo={{ src: '/logo.png', alt: 'Docs' }}
+    >
+      {children}
+    </DocsShell>
+  );
+}
+```
+
+### With Header Actions
+
+Add theme toggle, search, or other actions to the header:
+
+```tsx
+import { DocsShell } from '@kushagradhawan/kookie-blocks';
+import { IconButton, Flex } from '@kushagradhawan/kookie-ui';
+import { Moon02Icon, Search01Icon } from '@hugeicons/core-free-icons';
+
+export function DocsLayout({ children }) {
+  return (
+    <DocsShell
+      navigation={navigation}
+      headerActions={
+        <Flex gap="2">
+          <IconButton variant="ghost" size="2">
+            <Search01Icon />
+          </IconButton>
+          <IconButton variant="ghost" size="2">
+            <Moon02Icon />
+          </IconButton>
+        </Flex>
+      }
+    >
+      {children}
+    </DocsShell>
+  );
+}
+```
+
+### With Icons in Navigation
+
+Add icons to navigation items using HugeIcons:
+
+```tsx
+import { DocsShell } from '@kushagradhawan/kookie-blocks';
+import { Download01Icon, CodeIcon } from '@hugeicons/core-free-icons';
+
+const navigation = {
+  groups: [
+    {
+      label: 'Getting Started',
+      items: [
+        {
+          href: '/docs/installation',
+          title: 'Installation',
+          icon: Download01Icon
+        },
+        {
+          href: '/docs/usage',
+          title: 'Usage',
+          icon: CodeIcon
+        },
+      ],
+    },
+  ],
+};
+
+export function DocsLayout({ children }) {
+  return (
+    <DocsShell navigation={navigation}>
+      {children}
+    </DocsShell>
+  );
+}
+```
+
+### With Sidebar Footer
+
+Add custom footer content to the sidebar:
+
+```tsx
+import { DocsShell } from '@kushagradhawan/kookie-blocks';
+import { Text, Link } from '@kushagradhawan/kookie-ui';
+
+export function DocsLayout({ children }) {
+  return (
+    <DocsShell
+      navigation={navigation}
+      sidebarFooter={
+        <Text size="1" color="gray">
+          v1.0.0 • <Link href="/changelog">Changelog</Link>
+        </Text>
+      }
+    >
+      {children}
+    </DocsShell>
+  );
+}
+```
+
+### Full Height Layout
+
+Make the shell fill the viewport height:
+
+```tsx
+import { DocsShell } from '@kushagradhawan/kookie-blocks';
+
+export function DocsLayout({ children }) {
+  return (
+    <DocsShell
+      navigation={navigation}
+      height="full"
+    >
+      {children}
+    </DocsShell>
+  );
+}
+```
+
+## Accessibility
+
+Docs Shell provides comprehensive accessibility features:
+
+### Keyboard Navigation
+
+- **Tab** - Navigate through sidebar items and interactive elements
+- **Enter/Space** - Activate navigation links
+- **Escape** - Close mobile sidebar
+
+### Mobile Support
+
+- Responsive sidebar that collapses on mobile
+- Touch-friendly mobile trigger button
+- Swipe gestures for sidebar (via Shell component)
+
+### Screen Readers
+
+- Proper ARIA landmarks for navigation and main content
+- Active navigation item announced
+- Mobile trigger button announces sidebar state
+
+## Changelog
+
+### Added
+
+- Complete documentation layout shell
+- Sidebar with navigation and logo
+- Header actions support
+- Sidebar footer support
+- Framework-agnostic router integration
+- Resizable sidebar
+- Mobile responsive design
