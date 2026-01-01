@@ -25,12 +25,11 @@
   "pnpm": {
     "overrides": {
       "string-width": "4.2.3",
-      "@kushagradhawan/kookie-ui": "link:../kookie-ui/packages/kookie-ui",
       "@types/react": "19.1.6",
       "@types/react-dom": "19.1.5"
     }
   },
   "dependencies": {
-    "@kushagradhawan/kookie-ui": "^0.1.87"
+    "@kushagradhawan/kookie-ui": "^0.1.89"
   }
 }
