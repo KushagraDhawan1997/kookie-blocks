@@ -1,0 +1,73 @@
+---
+title: PreviewBlock
+description: Live component previews in documentation
+---
+
+import { Button, Flex, Badge } from "@kushagradhawan/kookie-ui";
+import { PreviewBlock } from "../../../components/preview-block";
+
+## Basic Usage
+
+<PreviewBlock background="none">
+  <Button variant="solid" size="2">Click Me!</Button>
+</PreviewBlock>
+
+```tsx
+<Button variant="solid" size="2">Click Me!</Button>
+```
+
+## Soft Variant
+
+<PreviewBlock background="none">
+  <Button variant="soft" color="green" size="2">Success Button</Button>
+</PreviewBlock>
+
+```tsx
+<Button variant="soft" color="green" size="2">Success Button</Button>
+```
+
+## Multiple Components
+
+Use `background="dots"` to show component boundaries clearly when demonstrating layouts with multiple elements.
+
+<PreviewBlock background="dots">
+  <Flex gap="3" align="center">
+    <Button variant="solid" size="2">Primary</Button>
+    <Button variant="outline" size="2">Secondary</Button>
+    <Button variant="ghost" size="2">Ghost</Button>
+  </Flex>
+</PreviewBlock>
+
+```tsx showLineNumbers
+<Flex gap="3" align="center">
+  <Button variant="solid" size="2">Primary</Button>
+  <Button variant="outline" size="2">Secondary</Button>
+  <Button variant="ghost" size="2">Ghost</Button>
+</Flex>
+```
+
+## Badges
+
+<PreviewBlock>
+  <Flex gap="2">
+    <Badge color="blue">New</Badge>
+    <Badge color="green">Active</Badge>
+    <Badge color="red">Urgent</Badge>
+  </Flex>
+</PreviewBlock>
+
+```tsx
+<Flex gap="2">
+  <Badge color="blue">New</Badge>
+  <Badge color="green">Active</Badge>
+  <Badge color="red">Urgent</Badge>
+</Flex>
+```
+
+## Usage
+
+1. Import components and PreviewBlock at the top
+2. Wrap rendered component in `<PreviewBlock>`
+3. Show code separately in markdown fence
+4. Use `background="dots"` for multi-component layouts
+5. Use `background="none"` for components with their own backgrounds

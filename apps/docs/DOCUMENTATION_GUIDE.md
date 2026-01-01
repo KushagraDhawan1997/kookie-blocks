@@ -60,23 +60,47 @@ Only use line breaks when you have:
 
 Follow this exact order for all component documentation:
 
-### 1. Title and Introduction
+### 1. Frontmatter
 
 ```markdown
-# Component Name
-
-Brief, design-oriented description (1-2 sentences). Focus on what the component does and when to use it. Use language that speaks to designers and emphasizes user experience.
-
-Optional: Reference to underlying library/framework if applicable.
-
-[View source →](https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/{component})
+---
+title: Component
+description: Brief description of what this component does
+---
 ```
 
 **Guidelines:**
 
-- Keep description concise and user-focused
-- Mention primary use cases
-- Link to source code in GitHub
+- **Title should be 1-2 words maximum** - just the component name (e.g., "Button", "CodeBlock", "DocsShell")
+- Description should be concise (1 sentence, ~50 characters)
+- Title and description are rendered by the docs system - no need to repeat them in the content
+
+**Examples:**
+
+✅ **Good:**
+```yaml
+---
+title: Button
+description: Clickable button with variants and sizes
+---
+```
+
+```yaml
+---
+title: PreviewBlock
+description: Live component previews in documentation
+---
+```
+
+❌ **Bad:**
+```yaml
+---
+title: Button Component Documentation
+description: This is a comprehensive guide to using the Button component in your projects
+---
+```
+
+**Note:** Do not include an H1 heading in the content - the frontmatter `title` is used as the page title.
 
 ### 2. Installation
 
@@ -89,21 +113,24 @@ npm install @kushagradhawan/kookie-blocks
 ````
 
 **Guidelines:**
+
 - Always include this section
 - Use the exact package name shown above
 
 ### 3. Usage
 
-```markdown
+````markdown
 ## Usage
 
 ```tsx
-import { Component } from '@kushagradhawan/kookie-blocks';
+import { Component } from "@kushagradhawan/kookie-blocks";
 
 export function MyComponent() {
   return <Component>Content</Component>;
 }
 ```
+````
+
 ````
 
 **Guidelines:**
@@ -130,6 +157,7 @@ Component is a compound component with the following parts:
 ````
 
 **Guidelines:**
+
 - List all sub-components
 - Include brief comments describing each part's purpose
 - Show the complete structure
@@ -143,16 +171,16 @@ Document all props in tables. For compound components, organize by sub-component
 
 The Root component manages [purpose] and provides context to child components.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
+| Prop       | Type                | Description                                          |
+| ---------- | ------------------- | ---------------------------------------------------- |
 | `propName` | `Type \| UnionType` | Clear description of what it does and when to use it |
 
 ## SubComponent Props
 
 Description of this sub-component's purpose.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
+| Prop       | Type   | Description |
+| ---------- | ------ | ----------- |
 | `propName` | `Type` | Description |
 ```
 
@@ -181,6 +209,7 @@ Description of when and why to use this variant.
 ````
 
 **Guidelines:**
+
 - Start with a brief intro explaining the `variant` prop
 - Each variant gets its own subsection (###)
 - Include description of use case
@@ -189,7 +218,7 @@ Description of when and why to use this variant.
 
 ### 7. Sizes (If Applicable)
 
-```markdown
+````markdown
 ## Sizes
 
 Set `size` for component density: `1` (24px), `2` (32px), `3` (40px), `4` (48px). [Additional context about responsive support, mobile considerations, etc.]
@@ -201,6 +230,8 @@ For [use case].
 ```tsx
 <Component size="1">Content</Component>
 ```
+````
+
 ````
 
 **Guidelines:**
@@ -223,13 +254,14 @@ Use the `color` prop with semantic colors to communicate [purpose]. Use `highCon
 ````
 
 **Guidelines:**
+
 - Explain semantic color usage
 - Mention `highContrast` when relevant
 - Show examples with and without highContrast
 
 ### 9. Material (If Applicable)
 
-```markdown
+````markdown
 ## Material
 
 Use the `material` prop to set component appearance. Choose `solid` for opaque backgrounds, or `translucent` for depth and separation over images or dynamic backgrounds.
@@ -243,6 +275,7 @@ Components automatically inherit the theme's material setting.
   <Component>Content</Component>
 </Theme>
 ```
+````
 
 ### Custom
 
@@ -253,6 +286,7 @@ Override the theme's material for specific effects.
   <Component material="translucent">Content</Component>
 </Theme>
 ```
+
 ````
 
 ### 10. States
@@ -286,6 +320,7 @@ Description of interactive states (hover, focus, active).
 ````
 
 **Guidelines:**
+
 - Document all interactive states
 - Explain when to use each state
 - Include code examples
@@ -295,7 +330,7 @@ Description of interactive states (hover, focus, active).
 
 Add component-specific sections as needed:
 
-```markdown
+````markdown
 ## Layout
 
 ### Full Width
@@ -305,6 +340,7 @@ Description and use case.
 ```tsx
 <Component fullWidth>Content</Component>
 ```
+````
 
 ## Polymorphism
 
@@ -327,6 +363,7 @@ Description of `asChild` prop usage.
   <a href="/link">Content</a>
 </Component>
 ```
+
 ````
 
 **Guidelines:**
@@ -361,6 +398,7 @@ Another common pattern.
 ````
 
 **Guidelines:**
+
 - Show real-world usage patterns
 - Include complete, working examples
 - Explain the pattern's purpose
@@ -368,14 +406,15 @@ Another common pattern.
 
 ### 13. Responsive (If Applicable)
 
-```markdown
+````markdown
 ## Responsive
 
 Use responsive objects with the `size` prop to adapt sizing across different breakpoints. The component uses a mobile-first approach.
 
 ```tsx
-<Component size={{ initial: '1', sm: '2', md: '3' }}>Content</Component>
+<Component size={{ initial: "1", sm: "2", md: "3" }}>Content</Component>
 ```
+````
 
 ### Breakpoints
 
@@ -387,6 +426,7 @@ Use responsive objects with the `size` prop to adapt sizing across different bre
 | `md`       | 1024px | Medium screens (laptops)   |
 | `lg`       | 1280px | Large screens (desktops)   |
 | `xl`       | 1640px | Extra large screens        |
+
 ````
 
 **Guidelines:**
@@ -472,17 +512,56 @@ Component provides comprehensive accessibility through [methods].
 
 ### Section Headings
 
-Keep section titles short and scannable. Prefer concise headings that can be quickly understood.
+**The larger the heading level, the shorter the title.**
 
-- ✅ **Good**: "Troubleshooting", "Requirements", "CSS", "Usage"
-- ❌ **Avoid**: "Theme Provider Not Working", "How to Install the CSS", "Troubleshooting Common Issues"
+**Important:** Do not use H1 (`#`) in content - the frontmatter `title` is used as the page title.
+
+Heading hierarchy and length:
+- **H1** (`#`): Reserved for frontmatter `title` only - never in content
+- **H2** (`##`): 1-3 words (e.g., "Usage", "Installation", "Props", "Variants")
+- **H3** (`###`): 2-4 words (e.g., "Solid Variant", "Size 2", "Basic Example")
+- **H4+** (`####`): Can be slightly longer if needed, but stay concise
+
+**Examples:**
+
+✅ **Good:**
+```markdown
+---
+title: Button
+---
+
+## Installation
+
+## Props
+
+### Solid Variant
+
+### Size 1
+```
+
+❌ **Avoid:**
+```markdown
+---
+title: Button Component Documentation
+---
+
+# Button
+
+## How to Install the Package
+
+## Troubleshooting Common Issues
+
+### The Solid Variant for Emphasized Actions
+```
 
 **Guidelines:**
 
-- Use single words or short phrases (1-3 words when possible)
+- Start content with H2 (`##`), not H1 (`#`)
+- Titles should be scannable at a glance
 - Avoid full sentences in headings
-- Use descriptive but concise terms
+- Use descriptive but minimal terms
 - Let the content below explain the details, not the heading
+- The heading is a label, not a description
 
 ### Code Examples
 
@@ -491,7 +570,34 @@ Keep section titles short and scannable. Prefer concise headings that can be qui
 - Show imports when introducing new concepts
 - Include comments for clarity when needed
 - Use proper TypeScript/TSX syntax
+- **Prefer showing line numbers** in code blocks for easier reference
 - **Never use line breaks in JSX for simple text content** - keep `<Component>Text</Component>` on one line to avoid MDX parsing issues
+
+**Line Numbers:**
+
+Include line numbers for code blocks longer than 5 lines, or when referencing specific lines in explanations:
+
+````markdown
+```tsx showLineNumbers
+import { Button } from "@kushagradhawan/kookie-blocks";
+
+export function Example() {
+  return (
+    <Button variant="solid" size="2">
+      Click me
+    </Button>
+  );
+}
+```
+````
+
+For short snippets (1-4 lines), line numbers are optional:
+
+````markdown
+```tsx
+<Button variant="solid">Click me</Button>
+```
+````
 
 ### Descriptions
 
@@ -532,19 +638,83 @@ For components like `CodeBlock`:
 
 Before publishing documentation, ensure:
 
-- [ ] Title and introduction are clear and design-oriented
+- [ ] Frontmatter has concise title (1-2 words) and description
+- [ ] No H1 heading in content (frontmatter title is used)
+- [ ] All H2/H3 headings follow length hierarchy (H2: 1-3 words, H3: 2-4 words)
 - [ ] Installation section included
 - [ ] Basic usage example works
 - [ ] All props documented with types and descriptions
 - [ ] Variants, sizes, colors documented if applicable
 - [ ] States section complete
 - [ ] Examples are realistic and useful
+- [ ] Code blocks longer than 5 lines use `showLineNumbers`
 - [ ] Accessibility features documented
 - [ ] Changelog is up to date
 - [ ] All code examples are valid TSX
 - [ ] JSX examples follow single-line rule for simple text content
-- [ ] Links to source code are correct
+- [ ] Links to source code are correct (if applicable)
 - [ ] File is named `content.mdx` in correct directory
+
+## Preview Block Usage
+
+When documenting components that benefit from live visual previews, use the `PreviewBlock` component to show rendered examples alongside code blocks.
+
+### Basic Structure
+
+```markdown
+import { PreviewBlock } from "../../../components/preview-block";
+
+## Example Name
+
+<PreviewBlock>
+  <Component prop="value">Content</Component>
+</PreviewBlock>
+
+```tsx
+<Component prop="value">Content</Component>
+```
+````
+
+### Guidelines
+
+- Import `PreviewBlock` at the top of your MDX file with the correct relative path
+- Use `<PreviewBlock>` to wrap the live rendered component
+- Follow with a standard markdown code fence showing the source code
+- PreviewBlock and CodeBlock are completely separate - don't try to combine them
+
+### Background Options
+
+PreviewBlock supports different background styles:
+
+```markdown
+<!-- Default: Grid background -->
+<PreviewBlock>
+  <Component>Content</Component>
+</PreviewBlock>
+
+<!-- No background -->
+<PreviewBlock background="none">
+  <Component>Content</Component>
+</PreviewBlock>
+
+<!-- Dots background -->
+<PreviewBlock background="dots">
+  <Component>Content</Component>
+</PreviewBlock>
+```
+
+### When to Use PreviewBlock
+
+- Component variations (sizes, colors, variants)
+- Interactive components (buttons, inputs, dropdowns)
+- Layout components (flex, grid demonstrations)
+- Visual components where seeing the result is important
+
+### When NOT to Use PreviewBlock
+
+- Code-only examples (utilities, hooks, TypeScript types)
+- Complex examples requiring full application context
+- Examples that need external data or state
 
 ## Examples
 
@@ -553,3 +723,4 @@ Refer to these files as reference implementations:
 - **Simple Component**: `apps/docs/app/docs/blocks/code-block/content.mdx`
 - **Compound Component**: `apps/docs/app/docs/blocks/docs-shell/content.mdx`
 - **Complex Component**: `apps/docs/app/docs/blocks/hero/content.mdx`
+- **Preview Block Usage**: `apps/docs/app/docs/test-preview/content.mdx`

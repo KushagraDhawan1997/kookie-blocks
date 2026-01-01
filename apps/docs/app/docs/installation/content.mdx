@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: Get started with Kookie Blocks - pre-built, composable blocks for building documentation sites, marketing pages, and application interfaces.
+description: Get started with Kookie Blocks
 ---
 
 import { Callout } from '@kushagradhawan/kookie-ui';
@@ -36,7 +36,7 @@ yarn add @kushagradhawan/kookie-blocks
 
 Kookie Blocks requires Kookie UI as a peer dependency. Make sure you have both installed:
 
-```json
+```json showLineNumbers
 {
   "peerDependencies": {
     "@kushagradhawan/kookie-ui": ">=0.1.0",
@@ -73,7 +73,7 @@ import { Theme } from '@kushagradhawan/kookie-ui';
 
 For Next.js 13+ with the App Router, import the CSS in your root layout:
 
-```tsx
+```tsx showLineNumbers
 import '@kushagradhawan/kookie-ui/styles.css';
 import '@kushagradhawan/kookie-blocks/styles.css';
 import { Theme } from '@kushagradhawan/kookie-ui';
@@ -99,7 +99,7 @@ export default function RootLayout({
 
 For Vite projects, import the CSS in your main entry file:
 
-```tsx
+```tsx showLineNumbers
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '@kushagradhawan/kookie-ui/styles.css';
