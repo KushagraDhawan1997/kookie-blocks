@@ -43,8 +43,13 @@ export function MyDocPage() {
 | `meta` | `DocsPageMeta` | Page metadata for header (`title`, `description`, optional `category` and `source`) |
 | `tableOfContents` | `ReactNode` | Table of contents component to render in sidebar |
 | `maxWidth` | `string \| number` | Maximum content width. Default: `'48rem'` |
-| `padding` | `'3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | Page padding. Default: `'6'` |
+| `padding` | `'3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | Inner content padding. Default: `'6'` |
+| `containerSize` | `'1' \| '2' \| '3' \| '4'` | Container size for content area width. Default: `'2'` |
+| `contentGap` | `'0' \| '1' \| '2' \| ... \| '9'` | Gap between header and content sections. Default: `'8'` |
+| `outerMargin` | `'0' \| '1' \| '2' \| ... \| '9'` | Vertical margin on outer container. Default: `'6'` |
+| `contentPadding` | `{ initial?: '0'..'9'; sm?: '0'..'9' }` | Responsive padding on main content area. Default: `{ initial: '2', sm: '4' }` |
 | `headerActions` | `ReactNode` | Custom actions to display in page header |
+| `headerTabs` | `ReactNode` | Tabs element to render below header |
 | `header` | `ReactNode` | Custom header element (overrides meta-based header) |
 | `showFooter` | `boolean` | Show footer with copyright and links. Default: `false` |
 | `footerCopyright` | `{ name: string; url?: string }` | Copyright holder information for footer |
@@ -192,6 +197,70 @@ export function WideDocPage({ children }) {
 }
 ```
 
+### Compact Layout
+
+Create a tighter layout with reduced spacing:
+
+```tsx
+import { DocsPage } from '@kushagradhawan/kookie-blocks';
+
+export function CompactDocPage({ children }) {
+  return (
+    <DocsPage
+      meta={{ title: 'Compact Layout' }}
+      containerSize="1"
+      contentGap="4"
+      outerMargin="3"
+      contentPadding={{ initial: "1", sm: "2" }}
+    >
+      {children}
+    </DocsPage>
+  );
+}
+```
+
+### Spacious Layout
+
+Create an airy layout with more breathing room:
+
+```tsx
+import { DocsPage } from '@kushagradhawan/kookie-blocks';
+
+export function SpaciousDocPage({ children }) {
+  return (
+    <DocsPage
+      meta={{ title: 'Spacious Layout' }}
+      containerSize="3"
+      contentGap="9"
+      outerMargin="8"
+      padding="9"
+    >
+      {children}
+    </DocsPage>
+  );
+}
+```
+
+### Custom Container Size
+
+Control content width independently of padding:
+
+```tsx
+import { DocsPage } from '@kushagradhawan/kookie-blocks';
+
+export function CustomWidthPage({ children }) {
+  return (
+    <DocsPage
+      meta={{ title: 'Custom Width' }}
+      containerSize="4" // Wider container
+      maxWidth="72rem" // But constrain max width
+    >
+      {children}
+    </DocsPage>
+  );
+}
+```
+
 ## Requirements
 
 For the table of contents to work properly:
@@ -232,3 +301,8 @@ Docs Page provides semantic structure for accessibility:
 - Footer with copyright and GitHub link
 - Custom header and header actions support
 - Configurable content width and padding
+- **New:** `containerSize` prop for controlling content area width
+- **New:** `contentGap` prop for spacing between header and content
+- **New:** `outerMargin` prop for vertical margin on outer container
+- **New:** `contentPadding` prop for responsive padding on main content area
+- **Fixed:** `maxWidth` and `padding` props now actually applied to the layout

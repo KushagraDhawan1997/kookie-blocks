@@ -1,3 +1,8 @@
 @import "tailwindcss/preflight";
 @import "@kushagradhawan/kookie-ui/styles.css";
 @import "@kushagradhawan/kookie-blocks/styles.css";
+
+* {
+  /* outline: dashed 0.1px var(--gray-a6); */
+  --font-sans: "system-ui", sans-serif;
+}

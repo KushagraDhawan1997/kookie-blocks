@@ -12,8 +12,10 @@ export interface PreviewBlockProps {
   width?: string | number;
   /** Height of the preview block */
   height?: string | number;
-  /** Card variant - surface, classic, or soft */
-  variant?: "surface" | "classic" | "soft";
+  /** Card variant - surface, classic, soft, or ghost */
+  variant?: "surface" | "classic" | "soft" | "ghost";
+  /** Theme appearance - light or dark */
+  appearance?: "light" | "dark" | "inherit";
 }
 
 /**
@@ -41,6 +43,7 @@ export function PreviewBlock({
   width,
   height,
   variant = "soft",
+  appearance,
 }: PreviewBlockProps) {
   const backgroundStyle =
     typeof background === "object"
@@ -70,18 +73,20 @@ export function PreviewBlock({
   };
 
   return (
-    <Box my="3">
-      <Card size="1" variant={variant}>
-        <Flex
-          justify="center"
-          align="center"
-          py="4"
-          minHeight={height ? undefined : "240px"}
-          style={combinedStyle}
-        >
-          <Theme fontFamily="sans">{children}</Theme>
-        </Flex>
-      </Card>
-    </Box>
+    <Theme hasBackground={false} fontFamily="sans" appearance={appearance}>
+      <Box my="3">
+        <Card size="1" variant={variant}>
+          <Flex
+            justify="center"
+            align="center"
+            py="4"
+            minHeight={height ? undefined : "240px"}
+            style={combinedStyle}
+          >
+            {children}
+          </Flex>
+        </Card>
+      </Box>
+    </Theme>
   );
 }

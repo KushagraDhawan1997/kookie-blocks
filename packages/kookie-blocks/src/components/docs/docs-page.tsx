@@ -35,6 +35,17 @@ export interface DocsPageProps {
   };
   /** GitHub repo URL for footer */
   githubUrl?: string;
+  /** Container size for content area */
+  containerSize?: "1" | "2" | "3" | "4";
+  /** Gap between header and content sections */
+  contentGap?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+  /** Vertical margin on the outer container */
+  outerMargin?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+  /** Responsive padding on main content area */
+  contentPadding?: {
+    initial?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+    sm?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+  };
 }
 
 export function DocsPage({
@@ -49,13 +60,17 @@ export function DocsPage({
   showFooter = false,
   footerCopyright,
   githubUrl,
+  containerSize = "3",
+  contentGap = "8",
+  outerMargin = "6",
+  contentPadding = { initial: "2", sm: "4" },
 }: DocsPageProps) {
   const currentYear = new Date().getFullYear();
   const showHeader = header || meta;
 
   return (
     <Flex
-      my="6"
+      my={outerMargin}
       gap={{ initial: "6", md: "6" }}
       align="start"
       direction={{ initial: "column", lg: "row" }}
@@ -64,13 +79,17 @@ export function DocsPage({
       <Flex
         direction="column"
         gap="6"
-        p={{ initial: "2", sm: "4" }}
+        p={contentPadding}
         flexGrow="1"
         style={{ minWidth: 0 }}
       >
-        <Container size="2" style={{ minWidth: 0 }} data-content-area>
-          <Box p="4" width="100%">
-            <Flex direction="column" gap="8" width="100%">
+        <Container
+          size={containerSize}
+          style={{ minWidth: 0 }}
+          data-content-area
+        >
+          <Box p={padding} width="100%" style={{ maxWidth }}>
+            <Flex direction="column" gap={contentGap} width="100%">
               {/* Page Header */}
               {header
                 ? header

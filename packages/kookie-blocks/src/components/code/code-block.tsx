@@ -1,9 +1,34 @@
-import React, { useState, useEffect, useMemo, memo, createContext, useContext, type ReactNode } from "react";
-import { Box, Card, Code, Flex, Button, Text, Theme, ScrollArea, IconButton } from "@kushagradhawan/kookie-ui";
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  memo,
+  createContext,
+  useContext,
+  type ReactNode,
+} from "react";
+import {
+  Box,
+  Card,
+  Flex,
+  Button,
+  Text,
+  Theme,
+  IconButton,
+  ScrollArea,
+} from "@kushagradhawan/kookie-ui";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Copy01Icon, Tick01Icon, ArrowDown01Icon } from "@hugeicons/core-free-icons";
+import {
+  Copy01Icon,
+  Tick01Icon,
+  ArrowDown01Icon,
+} from "@hugeicons/core-free-icons";
 import { codeToHtml, type BundledLanguage, type BundledTheme } from "shiki";
-import type { CodeBlockProps, ShikiConfig, PreviewBackgroundProps } from "./types";
+import type {
+  CodeBlockProps,
+  ShikiConfig,
+  PreviewBackgroundProps,
+} from "./types";
 import { extractTextFromChildren, extractLanguageFromChildren } from "./types";
 import { useCodeCard } from "./use-code-card";
 import { LanguageBadge } from "./language-badge";
@@ -20,8 +45,19 @@ interface PreviewSectionProps {
   backgroundProps?: PreviewBackgroundProps;
 }
 
-function PreviewSection({ children, background = "none", backgroundProps = {} }: PreviewSectionProps) {
-  const { dotSize = 24, color = "var(--gray-10)", backgroundColor = "var(--gray-2)", height, width = "100%", radius = "3" } = backgroundProps;
+function PreviewSection({
+  children,
+  background = "none",
+  backgroundProps = {},
+}: PreviewSectionProps) {
+  const {
+    dotSize = 24,
+    color = "var(--gray-10)",
+    backgroundColor = "var(--gray-2)",
+    height,
+    width = "100%",
+    radius = "3",
+  } = backgroundProps;
 
   const backgroundStyle = useMemo((): React.CSSProperties | undefined => {
     if (background === "none") return undefined;
@@ -97,14 +133,24 @@ const CodeCard = memo(function CodeCard({
   isLoading = false,
   children,
 }: CodeCardProps) {
-  const { isExpanded, shouldShowToggle, copied, contentRef, contentMaxHeight, handleToggle, handleCopy } = useCodeCard({
+  const {
+    isExpanded,
+    shouldShowToggle,
+    copied,
+    contentRef,
+    contentMaxHeight,
+    handleToggle,
+    handleCopy,
+  } = useCodeCard({
     code,
     collapsedHeight,
   });
 
   const showToggle = collapsible && shouldShowToggle;
   const chevronRotation = isExpanded ? "rotate(180deg)" : "rotate(0deg)";
-  const contentClassName = showLineNumbers ? "code-content" : "code-content hide-line-numbers";
+  const contentClassName = showLineNumbers
+    ? "code-content"
+    : "code-content hide-line-numbers";
 
   return (
     <Box position="relative">
@@ -130,7 +176,12 @@ const CodeCard = memo(function CodeCard({
                   tooltip={isExpanded ? "Collapse" : "Expand"}
                   aria-label={isExpanded ? "Collapse code" : "Expand code"}
                 >
-                  <HugeiconsIcon icon={ArrowDown01Icon} style={{ transform: chevronRotation }} className="code-chevron" strokeWidth={1.75} />
+                  <HugeiconsIcon
+                    icon={ArrowDown01Icon}
+                    style={{ transform: chevronRotation }}
+                    className="code-chevron"
+                    strokeWidth={1.75}
+                  />
                 </IconButton>
               )}
               {showCopy && (
@@ -142,19 +193,31 @@ const CodeCard = memo(function CodeCard({
                   tooltip={copied ? "Copied!" : "Copy"}
                   aria-label={copied ? "Copied!" : "Copy code"}
                 >
-                  <HugeiconsIcon icon={copied ? Tick01Icon : Copy01Icon} strokeWidth={1.75} /> Copy
+                  <HugeiconsIcon
+                    icon={copied ? Tick01Icon : Copy01Icon}
+                    strokeWidth={1.75}
+                  />{" "}
+                  Copy
                 </Button>
               )}
             </Flex>
           </Flex>
 
-          <Box ref={contentRef} style={{ maxHeight: collapsible ? `${contentMaxHeight}px` : undefined }} className={contentClassName}>
-            <ScrollArea type="auto" scrollbars="horizontal">
+          <ScrollArea
+            type="auto"
+            scrollbars="horizontal"
+            style={{
+              maxHeight: collapsible ? `${contentMaxHeight}px` : undefined,
+            }}
+          >
+            <Box ref={contentRef} className={contentClassName}>
               {isLoading ? <CodeSkeleton /> : children}
-            </ScrollArea>
-          </Box>
+            </Box>
+          </ScrollArea>
 
-          {showToggle && !isExpanded && <Box className="code-scroll-shadow visible" />}
+          {showToggle && !isExpanded && (
+            <Box className="code-scroll-shadow visible" />
+          )}
         </Flex>
       </Card>
     </Box>
@@ -202,7 +265,14 @@ const RuntimeCodeSection = memo(function RuntimeCodeSection({
       transformers: shikiConfig?.transformers,
       meta: shikiConfig?.meta ? { __raw: shikiConfig.meta } : undefined,
     };
-  }, [language, shikiConfig?.themes?.light, shikiConfig?.themes?.dark, shikiConfig?.langAlias, shikiConfig?.transformers, shikiConfig?.meta]);
+  }, [
+    language,
+    shikiConfig?.themes?.light,
+    shikiConfig?.themes?.dark,
+    shikiConfig?.langAlias,
+    shikiConfig?.transformers,
+    shikiConfig?.meta,
+  ]);
 
   useEffect(() => {
     let cancelled = false;
@@ -243,7 +313,9 @@ const RuntimeCodeSection = memo(function RuntimeCodeSection({
       file={file}
       isLoading={isInitialLoading}
     >
-      {highlighted ? <Box dangerouslySetInnerHTML={{ __html: highlighted }} /> : null}
+      {highlighted ? (
+        <Box className="shiki-wrapper" dangerouslySetInnerHTML={{ __html: highlighted }} />
+      ) : null}
     </CodeCard>
   );
 });
@@ -301,14 +373,18 @@ export function CodeBlock({
   collapsedHeight = DEFAULT_COLLAPSED_HEIGHT,
   file,
 }: CodeBlockProps) {
-  const displayLanguage = language || extractLanguageFromChildren(children) || "text";
+  const displayLanguage =
+    language || extractLanguageFromChildren(children) || "text";
 
   return (
     <CodeBlockContext.Provider value={true}>
       <Box className="docs-code-block" my="3">
         <Flex direction="column" gap="2">
           {preview && (
-            <PreviewSection background={background} backgroundProps={backgroundProps}>
+            <PreviewSection
+              background={background}
+              backgroundProps={backgroundProps}
+            >
               {preview}
             </PreviewSection>
           )}

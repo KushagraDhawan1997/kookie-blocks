@@ -1,6 +1,6 @@
 "use client";
 
-import { Theme } from "@kushagradhawan/kookie-ui";
+import { Theme, ThemePanel } from "@kushagradhawan/kookie-ui";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -12,6 +12,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       fontFamily="sans"
     >
       {children}
+      <ThemePanel defaultOpen={false} />
     </Theme>
   );
 }

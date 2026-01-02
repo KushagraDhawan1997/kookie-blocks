@@ -4,28 +4,26 @@
    Code Block Component Styles
    ============================================ */
 
-/* Main docs code block wrapper */
+/* Main docs code block wrapper - contain: inline-size prevents code from pushing container wider */
 .docs-code-block {
-  width: 100%;
+  contain: inline-size;
 }
 
-/* Code content area - handles expand/collapse */
+/* Code content area */
 .code-content {
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
   position: relative;
 }
 
-/* Pre elements inside code content */
+/* Pre elements - fit-content sizes to code, min-width ensures full width when code is short */
 .code-content pre {
   margin: 0;
-  width: 100%;
   box-sizing: border-box;
   font-family: var(--font-mono);
   font-size: var(--font-size-2);
   line-height: 1.75;
   padding: var(--space-3);
-  overflow-x: auto;
+  width: fit-content;
+  min-width: 100%;
 }
 
 /* Rehype-pretty-code theme support */
