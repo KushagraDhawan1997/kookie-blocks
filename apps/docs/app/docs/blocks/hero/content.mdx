@@ -1,12 +1,12 @@
 ---
 title: Hero
-description: A flexible hero section block for landing pages and marketing content.
+description: A composable hero section component for landing pages and marketing content.
 source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/hero
 ---
 
-A flexible container for creating impactful hero sections. Use it to create attention-grabbing headers for landing pages, product launches, and marketing content with consistent spacing and typography.
+Compose flexible hero sections with consistent spacing and layout patterns. Perfect for landing pages, product launches, and marketing content where first impressions matter.
 
-Built on Kookie UI's Flex and Heading components for maximum composability.
+Built with compound components for maximum flexibility—mix and match Meta, Title, Description, Actions, and Media to create any hero layout.
 
 ## Installation
 
@@ -18,11 +18,21 @@ npm install @kushagradhawan/kookie-blocks
 
 ```tsx
 import { Hero } from '@kushagradhawan/kookie-blocks';
+import { Avatar, Button } from '@kushagradhawan/kookie-ui';
 
 export function MyHero() {
   return (
     <Hero.Root>
+      <Hero.Meta>
+        <Avatar fallback="K" size="2" />
+      </Hero.Meta>
       <Hero.Title>Welcome to My App</Hero.Title>
+      <Hero.Description>
+        Start building amazing products today.
+      </Hero.Description>
+      <Hero.Actions>
+        <Button>Get Started</Button>
+      </Hero.Actions>
     </Hero.Root>
   );
 }
@@ -30,59 +40,206 @@ export function MyHero() {
 
 ## Anatomy
 
-Hero is a compound component with the following parts:
+Hero is a compound component with these parts:
 
 ```tsx
-<Hero.Root>
-  <Hero.Title>{/* Heading text */}</Hero.Title>
-  {/* Additional content */}
+<Hero.Root layout="stacked" align="center" gap="6">
+  <Hero.Meta>{/* Logo, badge, or meta info */}</Hero.Meta>
+  <Hero.Title>{/* Main heading */}</Hero.Title>
+  <Hero.Description>{/* Supporting text */}</Hero.Description>
+  <Hero.Actions>{/* Buttons and CTAs */}</Hero.Actions>
+  <Hero.Media position="below">{/* Images or media */}</Hero.Media>
 </Hero.Root>
 ```
 
-## Root Props
+## Props
 
-The Root component is a specialized Flex container with vertical layout and spacing optimized for hero sections. Accepts all Flex props from Kookie UI.
+### Hero.Root
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| `direction` | `'row' \| 'column' \| 'row-reverse' \| 'column-reverse'` | Flex direction. Defaults to `'column'` |
-| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | Spacing between children. Defaults to `'6'` |
-| `p` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | Padding. Defaults to `'6'` |
-| `align` | `'start' \| 'center' \| 'end' \| 'baseline' \| 'stretch'` | Align items along the cross axis |
-| `justify` | `'start' \| 'center' \| 'end' \| 'between'` | Justify content along the main axis |
-| `asChild` | `boolean` | Merge props with child element using Radix Slot pattern |
+Layout container for hero content. Extends Kookie UI's Flex component.
 
-All other Flex props from Kookie UI are also supported (width, height, display, position, etc.).
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `layout` | `'stacked' \| 'split' \| ResponsiveLayout` | `'stacked'` | Layout mode: vertical stacking or horizontal split. Supports responsive values for adaptive layouts. |
+| `align` | `'start' \| 'center' \| 'end'` | `'center'` | Content alignment |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'6'` | Spacing between children |
 
-## Title Props
+**Responsive Layout Type:**
+```tsx
+type ResponsiveLayout = {
+  initial?: 'stacked' | 'split';
+  xs?: 'stacked' | 'split';
+  sm?: 'stacked' | 'split';
+  md?: 'stacked' | 'split';
+  lg?: 'stacked' | 'split';
+  xl?: 'stacked' | 'split';
+}
+```
 
-The Title component is a Heading optimized for hero sections. Accepts all Heading props from Kookie UI.
+All other Flex props from Kookie UI are supported.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | Heading size scale |
-| `weight` | `'light' \| 'regular' \| 'medium' \| 'bold'` | Font weight |
-| `align` | `'left' \| 'center' \| 'right'` | Text alignment |
-| `as` | `'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'` | HTML heading element. Defaults to `'h1'` |
-| `asChild` | `boolean` | Merge props with child element using Radix Slot pattern |
+### Hero.Meta
 
-All other Heading props from Kookie UI are also supported (color, highContrast, trim, etc.).
+Container for logos, badges, and metadata above the title.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'2'` | Spacing between children |
+| `align` | `'start' \| 'center' \| 'end'` | `'center'` | Alignment of children |
+
+All other Flex props from Kookie UI are supported.
+
+### Hero.Title
+
+Main heading. Extends Kookie UI's Heading component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'9'` | Heading size |
+| `weight` | `'light' \| 'regular' \| 'medium' \| 'bold'` | `'medium'` | Font weight |
+| `align` | `'left' \| 'center' \| 'right'` | `'center'` | Text alignment |
+
+All other Heading props from Kookie UI are supported.
+
+### Hero.Description
+
+Supporting text. Extends Kookie UI's Text component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'4'` | Text size |
+| `align` | `'left' \| 'center' \| 'right'` | `'center'` | Text alignment |
+
+All other Text props from Kookie UI are supported.
+
+### Hero.Actions
+
+Container for buttons and CTAs.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'2'` | Spacing between buttons |
+| `direction` | `'row' \| 'column'` | `'row'` | Layout direction |
+| `align` | `'start' \| 'center' \| 'end'` | `'center'` | Alignment of children |
+
+All other Flex props from Kookie UI are supported.
+
+### Hero.Media
+
+Container for images and media content.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `position` | `'left' \| 'right' \| 'below' \| 'background'` | `'below'` | Media position relative to content |
+
+All other Flex props from Kookie UI are supported.
 
 ## Examples
 
-### Centered Hero
+### Basic Hero
 
-Center the hero content for maximum visual impact:
+Simple centered hero with title and description:
 
 ```tsx showLineNumbers
 import { Hero } from '@kushagradhawan/kookie-blocks';
-import { Text } from '@kushagradhawan/kookie-ui';
 
-export function CenteredHero() {
+export function BasicHero() {
   return (
-    <Hero.Root align="center">
+    <Hero.Root>
       <Hero.Title>Build Something Amazing</Hero.Title>
-      <Text size="5">The fastest way to ship your next project</Text>
+      <Hero.Description>
+        The fastest way to ship your next project.
+      </Hero.Description>
+    </Hero.Root>
+  );
+}
+```
+
+### Marketing Hero
+
+Full marketing hero with all components:
+
+```tsx showLineNumbers
+import { Hero } from '@kushagradhawan/kookie-blocks';
+import { Avatar, Button, Link } from '@kushagradhawan/kookie-ui';
+
+export function MarketingHero() {
+  return (
+    <Hero.Root>
+      <Hero.Meta>
+        <Avatar fallback="K" size="2" color="gray" src="/logo.png" />
+      </Hero.Meta>
+
+      <Hero.Title>
+        Pre-built blocks for rapid development.
+      </Hero.Title>
+
+      <Hero.Description>
+        An open-source collection of reusable blocks built on{" "}
+        <Link href="https://hellokookie.com">Kookie UI</Link>.
+        Ship faster with composable, accessible components.
+      </Hero.Description>
+
+      <Hero.Actions>
+        <Button variant="solid" size="2" highContrast>
+          Get Started
+        </Button>
+        <Button variant="soft" size="2">
+          Learn More
+        </Button>
+      </Hero.Actions>
+    </Hero.Root>
+  );
+}
+```
+
+### Left-Aligned Hero
+
+Align content to the start for editorial layouts:
+
+```tsx showLineNumbers
+import { Hero } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function LeftAlignedHero() {
+  return (
+    <Hero.Root align="start">
+      <Hero.Title align="left">
+        Transform Your Workflow
+      </Hero.Title>
+      <Hero.Description align="left">
+        Tools designed for modern teams.
+      </Hero.Description>
+      <Hero.Actions>
+        <Button size="3">Start Free Trial</Button>
+      </Hero.Actions>
+    </Hero.Root>
+  );
+}
+```
+
+### Split Layout Hero
+
+Horizontal layout with content and media side-by-side:
+
+```tsx showLineNumbers
+import { Hero } from '@kushagradhawan/kookie-blocks';
+import { Button, Image } from '@kushagradhawan/kookie-ui';
+
+export function SplitHero() {
+  return (
+    <Hero.Root layout="split">
+      <Hero.Title>Ship Faster</Hero.Title>
+      <Hero.Description>
+        Pre-built components that save hours of development time.
+      </Hero.Description>
+      <Hero.Actions>
+        <Button>Get Started</Button>
+      </Hero.Actions>
+
+      <Hero.Media position="right">
+        <Image src="/hero.png" alt="Product screenshot" />
+      </Hero.Media>
     </Hero.Root>
   );
 }
@@ -90,100 +247,169 @@ export function CenteredHero() {
 
 ### With Custom Spacing
 
-Adjust spacing and padding for different layouts:
+Fine-tune spacing for your design:
 
 ```tsx showLineNumbers
 import { Hero } from '@kushagradhawan/kookie-blocks';
-import { Text, Button } from '@kushagradhawan/kookie-ui';
+import { Button } from '@kushagradhawan/kookie-ui';
 
-export function SpacedHero() {
+export function CustomSpacingHero() {
   return (
-    <Hero.Root p="9" gap="8">
-      <Hero.Title size="9">Transform Your Workflow</Hero.Title>
-      <Text size="5">Tools designed for modern teams</Text>
-      <Button size="4">Get Started</Button>
+    <Hero.Root gap="8">
+      <Hero.Title size="9">
+        Premium Experience
+      </Hero.Title>
+      <Hero.Description size="5">
+        Enterprise-grade solutions.
+      </Hero.Description>
+      <Hero.Actions gap="3">
+        <Button size="3">Contact Sales</Button>
+        <Button size="3" variant="soft">View Demo</Button>
+      </Hero.Actions>
     </Hero.Root>
   );
 }
 ```
 
-### Full-Width Hero
+### With Badge Metadata
 
-Create edge-to-edge hero sections:
+Add badges or status indicators above the title:
 
 ```tsx showLineNumbers
 import { Hero } from '@kushagradhawan/kookie-blocks';
-import { Text, Container } from '@kushagradhawan/kookie-ui';
+import { Badge, Button } from '@kushagradhawan/kookie-ui';
 
-export function FullWidthHero() {
+export function BadgeHero() {
   return (
-    <Hero.Root p="0" width="100%">
-      <Container size="4" p="9">
-        <Hero.Title>Welcome</Hero.Title>
-        <Text>Your journey starts here</Text>
+    <Hero.Root>
+      <Hero.Meta>
+        <Badge size="2" color="blue">New Release</Badge>
+      </Hero.Meta>
+      <Hero.Title>Version 2.0 is Here</Hero.Title>
+      <Hero.Description>
+        Faster, more powerful, and easier to use.
+      </Hero.Description>
+      <Hero.Actions>
+        <Button>Upgrade Now</Button>
+      </Hero.Actions>
+    </Hero.Root>
+  );
+}
+```
+
+### In Section and Container
+
+Combine with Kookie UI layout components:
+
+```tsx showLineNumbers
+import { Hero } from '@kushagradhawan/kookie-blocks';
+import { Section, Container, Button } from '@kushagradhawan/kookie-ui';
+
+export function LayoutHero() {
+  return (
+    <Section size="4">
+      <Container size="2">
+        <Hero.Root>
+          <Hero.Title>Welcome</Hero.Title>
+          <Hero.Description>
+            Your journey starts here.
+          </Hero.Description>
+          <Hero.Actions>
+            <Button>Get Started</Button>
+          </Hero.Actions>
+        </Hero.Root>
       </Container>
+    </Section>
+  );
+}
+```
+
+### Responsive Layout
+
+Adapt layout based on screen size—stacked on mobile, split on desktop:
+
+```tsx showLineNumbers
+import { Hero } from '@kushagradhawan/kookie-blocks';
+import { Button, Image } from '@kushagradhawan/kookie-ui';
+
+export function ResponsiveLayoutHero() {
+  return (
+    <Hero.Root layout={{ initial: "stacked", md: "split" }}>
+      <Hero.Title align={{ initial: "center", md: "left" }}>
+        Adaptive Design
+      </Hero.Title>
+      <Hero.Description align={{ initial: "center", md: "left" }}>
+        Stacked on mobile, split on larger screens.
+      </Hero.Description>
+      <Hero.Actions>
+        <Button>Get Started</Button>
+      </Hero.Actions>
+
+      <Hero.Media position="right">
+        <Image src="/hero.png" alt="Product" />
+      </Hero.Media>
     </Hero.Root>
   );
 }
 ```
 
-### With Background
+## Layout Patterns
 
-Combine with Kookie UI's material system for depth:
+Hero supports two primary layout modes:
 
-```tsx showLineNumbers
-import { Hero } from '@kushagradhawan/kookie-blocks';
-import { Box, Text } from '@kushagradhawan/kookie-ui';
+### Stacked (Default)
 
-export function MaterialHero() {
-  return (
-    <Box material="translucent" style={{ background: 'var(--accent-3)' }}>
-      <Hero.Root>
-        <Hero.Title color="accent">Premium Features</Hero.Title>
-        <Text highContrast>Everything you need to succeed</Text>
-      </Hero.Root>
-    </Box>
-  );
-}
-```
+Vertical layout where all content flows top-to-bottom:
+- Meta
+- Title
+- Description
+- Actions
+- Media (if `position="below"`)
 
-### Variant Aliases
+Best for: Landing pages, centered marketing content, mobile-first designs
 
-Hero.Root has multiple aliases for convenience:
+### Split
 
-```tsx
-import { Hero } from '@kushagradhawan/kookie-blocks';
+Horizontal layout with content and media side-by-side:
+- Left: Title, Description, Actions
+- Right: Media (if `position="right"`)
 
-// All of these are equivalent
-<Hero.Root>...</Hero.Root>
-<Hero.Variant1>...</Hero.Variant1>
-<Hero.One>...</Hero.One>
-```
+Best for: Product pages, feature showcases, desktop-optimized layouts
 
 ## Accessibility
 
-Hero provides semantic HTML structure for screen readers and search engines:
+Hero provides semantic HTML structure for screen readers and SEO:
 
 ### Semantic HTML
 
-- Uses `<h1>` by default for Hero.Title (can be customized with `as` prop)
-- Proper heading hierarchy when combined with other content
+- `Hero.Title` uses `<h1>` by default (customizable with `as` prop)
+- Proper heading hierarchy preserved
 - Semantic Flex container structure
 
 ### Keyboard Navigation
 
-- No interactive elements by default
-- When containing buttons or links, standard keyboard navigation applies
+- All interactive children (buttons, links) are keyboard accessible
+- Standard tab navigation applies
 
 ### Screen Readers
 
-- Hero.Title announces as heading with appropriate level
-- Flex layout preserves logical reading order
+- Title announces as heading with appropriate level
+- Logical reading order maintained by flex layout
+- Description provides context for main heading
 
 ## Changelog
 
+### Changed
+
+- Complete rewrite with compound component architecture
+- Added `Hero.Meta`, `Hero.Description`, `Hero.Actions`, `Hero.Media` components
+- Added `layout` prop with `stacked` and `split` modes
+- Updated default styles for all sub-components
+- Removed variant aliases (Variant1, One) in favor of clear compound API
+
 ### Added
 
-- Initial Hero component with Root and Title slots
-- Support for all Kookie UI Flex and Heading props
-- Variant aliases (Root, Variant1, One)
+- Flexible composition patterns for any hero layout
+- Built-in sensible defaults while maintaining full customization
+- Support for left, center, right alignment
+- Media positioning system

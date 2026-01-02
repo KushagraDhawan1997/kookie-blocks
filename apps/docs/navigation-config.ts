@@ -13,7 +13,7 @@ import {
 export const docsNavigation: DocsNavigationConfig = {
   groups: [
     {
-      label: "Getting Started",
+      label: "Get Started",
       items: [
         {
           href: "/docs/installation",
@@ -23,9 +23,14 @@ export const docsNavigation: DocsNavigationConfig = {
       ],
     },
     {
-      label: "Blocks",
+      label: "Marketing",
       items: [
         { href: "/docs/blocks/hero", title: "Hero", icon: LayoutBottomIcon },
+      ],
+    },
+    {
+      label: "AI",
+      items: [
         {
           href: "/docs/blocks/streaming-markdown",
           title: "Streaming Markdown",
