@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useCallback } from 'react';
-import { Flex, Heading, Text, Link, Button } from '@kushagradhawan/kookie-ui';
+import { Flex, Heading, Text, Link, Button, Box } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Copy01Icon } from '@hugeicons/core-free-icons';
 import type { DocsPageMeta } from './types.js';
@@ -13,9 +13,11 @@ export interface DocsPageHeaderProps {
   actions?: React.ReactNode;
   /** Show copy page button */
   showCopyButton?: boolean;
+  /** Optional tabs element to render below header */
+  tabs?: React.ReactNode;
 }
 
-export function DocsPageHeader({ meta, actions, showCopyButton = true }: DocsPageHeaderProps) {
+export function DocsPageHeader({ meta, actions, showCopyButton = true, tabs }: DocsPageHeaderProps) {
   const handleCopyPage = useCallback(() => {
     const contentArea = document.querySelector('[data-content-area]');
     if (!contentArea) return;
@@ -87,6 +89,8 @@ export function DocsPageHeader({ meta, actions, showCopyButton = true }: DocsPag
           View source →
         </Link>
       )}
+
+      {tabs && <Box mt="4">{tabs}</Box>}
     </Flex>
   );
 }

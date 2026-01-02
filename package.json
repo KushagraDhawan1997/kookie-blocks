@@ -30,6 +30,6 @@
     }
   },
   "dependencies": {
-    "@kushagradhawan/kookie-ui": "^0.1.89"
+    "@kushagradhawan/kookie-ui": "^0.1.91"
   }
 }

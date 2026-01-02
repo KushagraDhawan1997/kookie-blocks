@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Hero } from "@kushagradhawan/kookie-blocks";
+import { Hero, PreviewBlock, CodeBlock } from "@kushagradhawan/kookie-blocks";
 import {
   Flex,
   Heading,
@@ -11,8 +11,8 @@ import {
   Section,
   Container,
   Separator,
-  Card,
   Text,
+  Image,
 } from "@kushagradhawan/kookie-ui";
 
 export default function Page() {
@@ -43,14 +43,25 @@ export default function Page() {
                 Default centered layout with title and description only
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Hero.Root>
                 <Hero.Title>Build Something Amazing</Hero.Title>
                 <Hero.Description color="gray">
                   The fastest way to ship your next project.
                 </Hero.Description>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Hero.Root>
+  <Hero.Title>Build Something Amazing</Hero.Title>
+  <Hero.Description color="gray">
+    The fastest way to ship your next project.
+  </Hero.Description>
+</Hero.Root>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -65,7 +76,7 @@ export default function Page() {
                 Complete hero with meta, title, description, and actions
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Section size="2">
                 <Container size="2">
                   <Hero.Root>
@@ -99,7 +110,45 @@ export default function Page() {
                   </Hero.Root>
                 </Container>
               </Section>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Section size="2">
+  <Container size="2">
+    <Hero.Root>
+      <Hero.Meta>
+        <Avatar
+          fallback="K"
+          size="2"
+          color="gray"
+          src="/kookie-logo.png"
+        />
+      </Hero.Meta>
+
+      <Hero.Title>
+        Pre-built blocks for rapid development.
+      </Hero.Title>
+
+      <Hero.Description color="gray">
+        An open-source collection of reusable blocks built on{" "}
+        <Link href="https://hellokookie.com">Kookie UI</Link>.
+        Ship faster with composable, accessible components.
+      </Hero.Description>
+
+      <Hero.Actions>
+        <Button variant="solid" size="2" highContrast>
+          Get Started
+        </Button>
+        <Button variant="soft" size="2">
+          Learn More
+        </Button>
+      </Hero.Actions>
+    </Hero.Root>
+  </Container>
+</Section>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -114,7 +163,7 @@ export default function Page() {
                 Content aligned to the start for editorial layouts
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Hero.Root align="start">
                 <Hero.Title align="left">Transform Your Workflow</Hero.Title>
                 <Hero.Description align="left" color="gray">
@@ -124,7 +173,21 @@ export default function Page() {
                   <Button size="3">Start Free Trial</Button>
                 </Hero.Actions>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Hero.Root align="start">
+  <Hero.Title align="left">Transform Your Workflow</Hero.Title>
+  <Hero.Description align="left" color="gray">
+    Tools designed for modern teams.
+  </Hero.Description>
+  <Hero.Actions>
+    <Button size="3">Start Free Trial</Button>
+  </Hero.Actions>
+</Hero.Root>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -139,7 +202,7 @@ export default function Page() {
                 Content aligned to the end with right-aligned text
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Hero.Root align="end">
                 <Hero.Title align="right">Ship Faster, Build Better</Hero.Title>
                 <Hero.Description align="right" color="gray">
@@ -151,7 +214,23 @@ export default function Page() {
                   </Button>
                 </Hero.Actions>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Hero.Root align="end">
+  <Hero.Title align="right">Ship Faster, Build Better</Hero.Title>
+  <Hero.Description align="right" color="gray">
+    Everything you need in one place.
+  </Hero.Description>
+  <Hero.Actions>
+    <Button size="2" variant="solid">
+      Get Started
+    </Button>
+  </Hero.Actions>
+</Hero.Root>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -166,7 +245,7 @@ export default function Page() {
                 Meta section with badge for announcements or status
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Hero.Root>
                 <Hero.Meta>
                   <Badge size="2" color="blue">
@@ -181,7 +260,26 @@ export default function Page() {
                   <Button>Upgrade Now</Button>
                 </Hero.Actions>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Hero.Root>
+  <Hero.Meta>
+    <Badge size="2" color="blue">
+      New Release
+    </Badge>
+  </Hero.Meta>
+  <Hero.Title>Version 2.0 is Here</Hero.Title>
+  <Hero.Description color="gray">
+    Faster, more powerful, and easier to use.
+  </Hero.Description>
+  <Hero.Actions>
+    <Button>Upgrade Now</Button>
+  </Hero.Actions>
+</Hero.Root>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -196,7 +294,7 @@ export default function Page() {
                 Generous spacing (gap=8) for premium feel
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Hero.Root gap="8">
                 <Hero.Title size="9">Premium Experience</Hero.Title>
                 <Hero.Description size="5" color="gray">
@@ -209,7 +307,24 @@ export default function Page() {
                   </Button>
                 </Hero.Actions>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Hero.Root gap="8">
+  <Hero.Title size="9">Premium Experience</Hero.Title>
+  <Hero.Description size="5" color="gray">
+    Enterprise-grade solutions.
+  </Hero.Description>
+  <Hero.Actions gap="3">
+    <Button size="3">Contact Sales</Button>
+    <Button size="3" variant="soft">
+      View Demo
+    </Button>
+  </Hero.Actions>
+</Hero.Root>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -224,7 +339,7 @@ export default function Page() {
                 Compact layout (gap=3) for smaller sections
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Hero.Root gap="3">
                 <Hero.Title size="7">Compact Layout</Hero.Title>
                 <Hero.Description size="3" color="gray">
@@ -234,7 +349,21 @@ export default function Page() {
                   <Button size="1">Small CTA</Button>
                 </Hero.Actions>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Hero.Root gap="3">
+  <Hero.Title size="7">Compact Layout</Hero.Title>
+  <Hero.Description size="3" color="gray">
+    Perfect for smaller sections.
+  </Hero.Description>
+  <Hero.Actions>
+    <Button size="1">Small CTA</Button>
+  </Hero.Actions>
+</Hero.Root>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -249,7 +378,7 @@ export default function Page() {
                 Horizontal layout with content and media side-by-side
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Hero.Root layout="split" gap="8" p="6">
                 <Flex direction="column" gap="4" style={{ flex: 1 }}>
                   <Hero.Title align="left" size="8">
@@ -280,7 +409,42 @@ export default function Page() {
                   </Flex>
                 </Hero.Media>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Hero.Root layout="split" gap="8" p="6">
+  <Flex direction="column" gap="4" style={{ flex: 1 }}>
+    <Hero.Title align="left" size="8">
+      Ship Faster
+    </Hero.Title>
+    <Hero.Description align="left" color="gray">
+      Pre-built components that save hours of development time.
+    </Hero.Description>
+    <Hero.Actions>
+      <Button>Get Started</Button>
+    </Hero.Actions>
+  </Flex>
+
+  <Hero.Media position="right" style={{ flex: 1 }}>
+    <Flex
+      width="100%"
+      height="300px"
+      align="center"
+      justify="center"
+      style={{
+        background: "var(--gray-3)",
+        borderRadius: "var(--radius-3)",
+      }}
+    >
+      <Heading size="4" color="gray">
+        Image Placeholder
+      </Heading>
+    </Flex>
+  </Hero.Media>
+</Hero.Root>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -295,7 +459,7 @@ export default function Page() {
                 Combining avatar and multiple badges in meta section
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Hero.Root>
                 <Hero.Meta gap="3">
                   <Avatar fallback="K" size="1" color="gray" />
@@ -311,7 +475,27 @@ export default function Page() {
                   Multiple badges and logos in the meta section.
                 </Hero.Description>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Hero.Root>
+  <Hero.Meta gap="3">
+    <Avatar fallback="K" size="1" color="gray" />
+    <Badge size="1" color="green">
+      Verified
+    </Badge>
+    <Badge size="1" color="blue">
+      New
+    </Badge>
+  </Hero.Meta>
+  <Hero.Title>Multi-Meta Hero</Hero.Title>
+  <Hero.Description color="gray">
+    Multiple badges and logos in the meta section.
+  </Hero.Description>
+</Hero.Root>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -326,7 +510,7 @@ export default function Page() {
                 Buttons stacked vertically for mobile-first layouts
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Hero.Root>
                 <Hero.Title>Vertical Buttons</Hero.Title>
                 <Hero.Description color="gray">
@@ -341,7 +525,26 @@ export default function Page() {
                   </Button>
                 </Hero.Actions>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Hero.Root>
+  <Hero.Title>Vertical Buttons</Hero.Title>
+  <Hero.Description color="gray">
+    Actions stacked vertically for mobile-first design.
+  </Hero.Description>
+  <Hero.Actions direction="column">
+    <Button size="2" style={{ width: "100%" }}>
+      Primary Action
+    </Button>
+    <Button size="2" variant="soft" style={{ width: "100%" }}>
+      Secondary Action
+    </Button>
+  </Hero.Actions>
+</Hero.Root>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -356,7 +559,7 @@ export default function Page() {
                 Spacing and text sizes adapt based on breakpoints
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Hero.Root
                 gap={{ initial: "4", sm: "6", md: "8" }}
                 p={{ initial: "4", sm: "6", md: "8" }}
@@ -379,7 +582,34 @@ export default function Page() {
                   </Button>
                 </Hero.Actions>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Hero.Root
+  gap={{ initial: "4", sm: "6", md: "8" }}
+  p={{ initial: "4", sm: "6", md: "8" }}
+>
+  <Hero.Meta>
+    <Avatar fallback="R" size="2" color="blue" />
+  </Hero.Meta>
+  <Hero.Title size={{ initial: "7", sm: "8", md: "9" }}>
+    Responsive Hero
+  </Hero.Title>
+  <Hero.Description
+    size={{ initial: "3", sm: "4", md: "5" }}
+    color="gray"
+  >
+    This hero adapts spacing and sizing based on screen size.
+  </Hero.Description>
+  <Hero.Actions gap={{ initial: "2", md: "3" }}>
+    <Button size={{ initial: "1", sm: "2", md: "3" }}>
+      Responsive Button
+    </Button>
+  </Hero.Actions>
+</Hero.Root>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -394,12 +624,12 @@ export default function Page() {
                 Hero on a subtle gradient background for visual depth
               </Text>
             </Flex>
-            <Card
-              size="3"
-              variant="outline"
-              style={{
+            <PreviewBlock
+              height="50rem"
+              background={{
                 background:
                   "linear-gradient(135deg, var(--blue-2) 0%, var(--violet-2) 100%)",
+                borderRadius: "var(--radius-3)",
               }}
             >
               <Hero.Root p="8">
@@ -421,7 +651,39 @@ export default function Page() {
                   </Button>
                 </Hero.Actions>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<PreviewBlock
+  background={{
+    background:
+      "linear-gradient(135deg, var(--blue-2) 0%, var(--violet-2) 100%)",
+    borderRadius: "var(--radius-3)",
+  }}
+>
+  <Hero.Root p="8">
+    <Hero.Meta>
+      <Badge size="2" color="violet">
+        Featured
+      </Badge>
+    </Hero.Meta>
+    <Hero.Title>Beautiful Gradient Hero</Hero.Title>
+    <Hero.Description color="gray">
+      Subtle gradients add depth without overwhelming your content.
+    </Hero.Description>
+    <Hero.Actions>
+      <Button size="2" variant="solid" highContrast>
+        Explore
+      </Button>
+      <Button size="2" variant="soft">
+        Learn More
+      </Button>
+    </Hero.Actions>
+  </Hero.Root>
+</PreviewBlock>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -436,10 +698,9 @@ export default function Page() {
                 Hero with dot pattern background for texture
               </Text>
             </Flex>
-            <Card
-              size="3"
-              variant="outline"
-              style={{
+            <PreviewBlock
+              height="50rem"
+              background={{
                 backgroundImage:
                   "radial-gradient(circle, var(--gray-5) 1px, transparent 1px)",
                 backgroundSize: "20px 20px",
@@ -457,7 +718,32 @@ export default function Page() {
                   </Button>
                 </Hero.Actions>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<PreviewBlock
+  background={{
+    backgroundImage:
+      "radial-gradient(circle, var(--gray-5) 1px, transparent 1px)",
+    backgroundSize: "20px 20px",
+    backgroundColor: "var(--gray-1)",
+  }}
+>
+  <Hero.Root p="8">
+    <Hero.Title>Textured Background</Hero.Title>
+    <Hero.Description color="gray">
+      Dot patterns provide subtle texture and visual interest.
+    </Hero.Description>
+    <Hero.Actions>
+      <Button size="2" highContrast>
+        Get Started
+      </Button>
+    </Hero.Actions>
+  </Hero.Root>
+</PreviewBlock>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
 
           <Separator size="4" />
@@ -474,7 +760,7 @@ export default function Page() {
                 change at 1024px.
               </Text>
             </Flex>
-            <Card size="3" variant="outline">
+            <PreviewBlock height="50rem">
               <Hero.Root
                 layout={{ initial: "stacked", md: "split" }}
                 gap={{ initial: "6", md: "8" }}
@@ -508,33 +794,57 @@ export default function Page() {
                 </Flex>
 
                 <Hero.Media position="right" style={{ flex: 1 }}>
-                  <Flex
-                    direction="column"
-                    width="100%"
-                    height={{ initial: "200px", md: "300px" }}
-                    align="center"
-                    justify="center"
-                    gap="3"
-                    style={{
-                      background: "var(--blue-3)",
-                      borderRadius: "var(--radius-3)",
-                    }}
-                  >
-                    <Heading size="5" color="blue">
-                      Responsive Media
-                    </Heading>
-                    <Flex direction="column" gap="1" align="center">
-                      <Badge size="1" color="blue" variant="soft">
-                        200px high on mobile
-                      </Badge>
-                      <Badge size="1" color="blue" variant="soft">
-                        300px high on desktop
-                      </Badge>
-                    </Flex>
-                  </Flex>
+                  <Image
+                    src="https://images.unsplash.com/photo-1578301996581-bf7caec556c0?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b2lsJTIwcGFpbnRpbmd8ZW58MHx8MHx8fDA%3D"
+                    alt="Abstract oil painting"
+                  />
                 </Hero.Media>
               </Hero.Root>
-            </Card>
+            </PreviewBlock>
+            <CodeBlock
+              code={`<Hero.Root
+  layout={{ initial: "stacked", md: "split" }}
+  gap={{ initial: "6", md: "8" }}
+  p="6"
+>
+  <Flex direction="column" gap="4" style={{ flex: 1 }}>
+    <Hero.Title
+      align={{ initial: "center", md: "left" }}
+      size="8"
+    >
+      Adaptive Layout Hero
+    </Hero.Title>
+    <Hero.Description
+      align={{ initial: "center", md: "left" }}
+      size="3"
+      color="gray"
+    >
+      This hero demonstrates responsive layout behavior. On mobile
+      (below 1024px), content is stacked vertically with centered
+      text. On desktop (1024px+), it splits into a two-column
+      layout with left-aligned text.
+    </Hero.Description>
+    <Hero.Actions justify={{ initial: "center", md: "start" }}>
+      <Button size="2" highContrast>
+        Get Started
+      </Button>
+      <Button size="2" variant="soft">
+        Learn More
+      </Button>
+    </Hero.Actions>
+  </Flex>
+
+  <Hero.Media position="right" style={{ flex: 1 }}>
+    <Image
+      src="https://images.unsplash.com/photo-1578301996581-bf7caec556c0?w=900&auto=format&fit=crop&q=60"
+      alt="Abstract oil painting"
+    />
+  </Hero.Media>
+</Hero.Root>`}
+              language="tsx"
+              showLineNumbers={true}
+              collapsible={false}
+            />
           </Flex>
         </Flex>
       </Container>

@@ -6,8 +6,14 @@ import type { ReactNode } from "react";
 
 export interface PreviewBlockProps {
   children: ReactNode;
-  /** Background style for the preview */
-  background?: "none" | "dots" | "grid";
+  /** Background style for the preview - can be a preset or custom CSS properties */
+  background?: "none" | "dots" | "grid" | React.CSSProperties;
+  /** Width of the preview block */
+  width?: string | number;
+  /** Height of the preview block */
+  height?: string | number;
+  /** Card variant - surface, classic, or soft */
+  variant?: "surface" | "classic" | "soft";
 }
 
 /**
@@ -18,7 +24,13 @@ export interface PreviewBlockProps {
  *
  * @example
  * ```tsx
+ * // With preset background
  * <PreviewBlock background="dots">
+ *   <Button>Example Button</Button>
+ * </PreviewBlock>
+ *
+ * // With custom background
+ * <PreviewBlock background={{ background: "linear-gradient(135deg, var(--blue-2) 0%, var(--violet-2) 100%)" }}>
  *   <Button>Example Button</Button>
  * </PreviewBlock>
  * ```
@@ -26,35 +38,46 @@ export interface PreviewBlockProps {
 export function PreviewBlock({
   children,
   background = "dots",
+  width,
+  height,
+  variant = "soft",
 }: PreviewBlockProps) {
   const backgroundStyle =
-    background === "dots"
-      ? {
-          backgroundImage:
-            "radial-gradient(circle, var(--gray-6) 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-          backgroundPosition: "center",
-          backgroundColor: "var(--gray-2)",
-        }
-      : background === "grid"
+    typeof background === "object"
+      ? background
+      : background === "dots"
         ? {
             backgroundImage:
-              "linear-gradient(var(--gray-6) 1px, transparent 1px), linear-gradient(90deg, var(--gray-6) 1px, transparent 1px)",
+              "radial-gradient(circle, var(--gray-6) 1px, transparent 1px)",
             backgroundSize: "24px 24px",
             backgroundPosition: "center",
             backgroundColor: "var(--gray-2)",
           }
-        : undefined;
+        : background === "grid"
+          ? {
+              backgroundImage:
+                "linear-gradient(var(--gray-6) 1px, transparent 1px), linear-gradient(90deg, var(--gray-6) 1px, transparent 1px)",
+              backgroundSize: "24px 24px",
+              backgroundPosition: "center",
+              backgroundColor: "var(--gray-2)",
+            }
+          : undefined;
+
+  const combinedStyle: React.CSSProperties = {
+    ...backgroundStyle,
+    ...(width && { width }),
+    ...(height && { height }),
+  };
 
   return (
     <Box my="3">
-      <Card size="1" variant="soft">
+      <Card size="1" variant={variant}>
         <Flex
           justify="center"
           align="center"
           py="4"
-          minHeight="240px"
-          style={backgroundStyle}
+          minHeight={height ? undefined : "240px"}
+          style={combinedStyle}
         >
           <Theme fontFamily="sans">{children}</Theme>
         </Flex>
