@@ -48,8 +48,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/kookie-blocks
       '@kushagradhawan/kookie-ui':
-        specifier: ^0.1.80
-        version: 0.1.89(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: ^0.1.91
+        version: 0.1.91(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@mdx-js/loader':
         specifier: ^3.1.1
         version: 3.1.1
@@ -774,20 +774,6 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
-
-  '@kushagradhawan/kookie-ui@0.1.89':
-    resolution: {integrity: sha512-8QkoRGZDy8cZwNEQblKNpSku8MzsykUNP1qxVZ/Y0xvf1z7N+9G31KsK/97XEUjYZV5DEwtMQmEFmssdJ7xGjw==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      '@types/react': 19.1.6
-      '@types/react-dom': 19.1.5
-      react: 16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
-      react-dom: 16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-dom':
-        optional: true
 
   '@kushagradhawan/kookie-ui@0.1.91':
     resolution: {integrity: sha512-/K+ytaJPKP9O4QMaEXxxcVq4VpCeqVg9X++LpRdnFa6w+TL0q0dDPsEnwk8oPTpFP046bMIBZB6AV7Bgb6MkBA==}
@@ -4246,28 +4232,6 @@ snapshots:
     optional: true
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
-
-  '@kushagradhawan/kookie-ui@0.1.89(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
-    dependencies:
-      '@radix-ui/colors': 3.0.0
-      '@radix-ui/react-accordion': 1.2.12(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      '@zag-js/react': 1.31.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      '@zag-js/splitter': 1.31.1
-      classnames: 2.5.1
-      cmdk: 1.1.1(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      geist: 1.5.1(next@15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
-      radix-ui: 1.4.3(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      react: 19.1.1
-      react-dom: 19.1.1(react@19.1.1)
-      react-dropzone: 14.3.8(react@19.1.1)
-      react-remove-scroll-bar: 2.3.8(@types/react@19.1.6)(react@19.1.1)
-      zod: 3.25.76
-      zod-to-json-schema: 3.25.1(zod@3.25.76)
-    optionalDependencies:
-      '@types/react': 19.1.6
-      '@types/react-dom': 19.1.5(@types/react@19.1.6)
-    transitivePeerDependencies:
-      - next
 
   '@kushagradhawan/kookie-ui@0.1.91(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
