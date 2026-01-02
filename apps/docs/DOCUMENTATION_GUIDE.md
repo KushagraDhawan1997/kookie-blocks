@@ -662,7 +662,7 @@ When documenting components that benefit from live visual previews, use the `Pre
 ### Basic Structure
 
 ```markdown
-import { PreviewBlock } from "../../../components/preview-block";
+import { PreviewBlock } from "@kushagradhawan/kookie-blocks";
 
 ## Example Name
 
@@ -677,7 +677,7 @@ import { PreviewBlock } from "../../../components/preview-block";
 
 ### Guidelines
 
-- Import `PreviewBlock` at the top of your MDX file with the correct relative path
+- Import `PreviewBlock` from the `@kushagradhawan/kookie-blocks` package at the top of your MDX file
 - Use `<PreviewBlock>` to wrap the live rendered component
 - Follow with a standard markdown code fence showing the source code
 - PreviewBlock and CodeBlock are completely separate - don't try to combine them
