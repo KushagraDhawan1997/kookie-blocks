@@ -14,3 +14,4 @@ export { DocsSidebar } from './docs-sidebar.js';
 export { DocsPageHeader } from './docs-page-header.js';
 export { DocsPage } from './docs-page.js';
 export { DocsShell } from './docs-shell.js';
+export { PreviewBlock } from './preview-block.js';

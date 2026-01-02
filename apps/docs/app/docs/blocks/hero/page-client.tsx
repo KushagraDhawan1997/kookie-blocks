@@ -1,6 +1,7 @@
 "use client";
 
-import { DocsPage, TableOfContents } from "@kushagradhawan/kookie-blocks";
+import { TableOfContents } from "@kushagradhawan/kookie-blocks";
+import { SiteDocsPage } from "@/components/site-docs-page";
 import ContentMDX from "./content.mdx";
 import type { DocMetadata } from "@/lib/frontmatter";
 
@@ -10,16 +11,13 @@ interface HeroPageClientProps {
 
 export default function HeroPageClient({ metadata }: HeroPageClientProps) {
   return (
-    <DocsPage
+    <SiteDocsPage
       meta={metadata}
       tableOfContents={
         <TableOfContents renderContainer={(content) => content || null} />
       }
-      showFooter
-      footerCopyright={{ name: "Kushagra Dhawan", url: "https://www.kushagradhawan.com" }}
-      githubUrl="https://github.com/KushagraDhawan1997/kookie-blocks"
     >
       <ContentMDX />
-    </DocsPage>
+    </SiteDocsPage>
   );
 }

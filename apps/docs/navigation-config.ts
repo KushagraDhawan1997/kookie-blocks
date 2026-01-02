@@ -26,7 +26,6 @@ export const docsNavigation: DocsNavigationConfig = {
       label: "Blocks",
       items: [
         { href: "/docs/blocks/hero", title: "Hero", icon: LayoutBottomIcon },
-        { href: "/docs/blocks/code-block", title: "Code Block", icon: CodeIcon },
         {
           href: "/docs/blocks/streaming-markdown",
           title: "Streaming Markdown",
@@ -37,6 +36,11 @@ export const docsNavigation: DocsNavigationConfig = {
     {
       label: "Documentation",
       items: [
+        {
+          href: "/docs/blocks/code-block",
+          title: "Code Block",
+          icon: CodeIcon,
+        },
         {
           href: "/docs/blocks/docs-shell",
           title: "Docs Shell",
@@ -56,6 +60,11 @@ export const docsNavigation: DocsNavigationConfig = {
           href: "/docs/blocks/table-of-contents",
           title: "Table Of Contents",
           icon: TextAlignLeftIcon,
+        },
+        {
+          href: "/docs/blocks/preview-block",
+          title: "Preview Block",
+          icon: LayoutBottomIcon,
         },
       ],
     },

@@ -1,14 +1,27 @@
+"use client";
+
+import React from "react";
 import { Box, Card, Flex, Theme } from "@kushagradhawan/kookie-ui";
 import type { ReactNode } from "react";
 
-interface PreviewBlockProps {
+export interface PreviewBlockProps {
   children: ReactNode;
-  background?: "none" | "dots";
+  /** Background style for the preview */
+  background?: "none" | "dots" | "grid";
 }
 
 /**
  * PreviewBlock - displays a live preview of a component
- * Shows only the rendered component, not the code
+ *
+ * Use this component to showcase live examples of components in documentation.
+ * Shows only the rendered component, not the code.
+ *
+ * @example
+ * ```tsx
+ * <PreviewBlock background="dots">
+ *   <Button>Example Button</Button>
+ * </PreviewBlock>
+ * ```
  */
 export function PreviewBlock({
   children,
@@ -23,7 +36,15 @@ export function PreviewBlock({
           backgroundPosition: "center",
           backgroundColor: "var(--gray-2)",
         }
-      : undefined;
+      : background === "grid"
+        ? {
+            backgroundImage:
+              "linear-gradient(var(--gray-6) 1px, transparent 1px), linear-gradient(90deg, var(--gray-6) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+            backgroundPosition: "center",
+            backgroundColor: "var(--gray-2)",
+          }
+        : undefined;
 
   return (
     <Box my="3">

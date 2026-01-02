@@ -5,13 +5,11 @@ import { SiteDocsPage } from "@/components/site-docs-page";
 import ContentMDX from "./content.mdx";
 import type { DocMetadata } from "@/lib/frontmatter";
 
-interface InstallationPageClientProps {
+interface PreviewBlockPageClientProps {
   metadata?: DocMetadata;
 }
 
-export default function InstallationPageClient({
-  metadata,
-}: InstallationPageClientProps) {
+export default function PreviewBlockPageClient({ metadata }: PreviewBlockPageClientProps) {
   return (
     <SiteDocsPage
       meta={metadata}

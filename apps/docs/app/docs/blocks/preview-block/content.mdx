@@ -1,0 +1,137 @@
+---
+title: Preview Block
+description: Live component preview container for documentation with customizable backgrounds.
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/docs
+---
+
+A container component that displays live previews of components in documentation. Shows component boundaries with optional background patterns, perfect for showcasing UI components.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { PreviewBlock } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function Example() {
+  return (
+    <PreviewBlock>
+      <Button>Click me</Button>
+    </PreviewBlock>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `children` | `ReactNode` | Component(s) to preview |
+| `background` | `'none' \| 'dots' \| 'grid'` | Background pattern style. Default: `'dots'` |
+
+## Background Variants
+
+### Dots
+
+Default background with subtle dot pattern. Use for most component previews.
+
+```tsx
+<PreviewBlock background="dots">
+  <Button>Example</Button>
+</PreviewBlock>
+```
+
+### Grid
+
+Grid pattern for layout demonstrations.
+
+```tsx
+<PreviewBlock background="grid">
+  <Button>Example</Button>
+</PreviewBlock>
+```
+
+### None
+
+No background. Use for components with their own backgrounds or full-width layouts.
+
+```tsx
+<PreviewBlock background="none">
+  <Button>Example</Button>
+</PreviewBlock>
+```
+
+## Examples
+
+### Single Component
+
+```tsx
+<PreviewBlock>
+  <Button variant="solid" size="2">
+    Click Me
+  </Button>
+</PreviewBlock>
+```
+
+### Multiple Components
+
+```tsx
+<PreviewBlock background="dots">
+  <Flex gap="3">
+    <Button variant="solid">Primary</Button>
+    <Button variant="outline">Secondary</Button>
+    <Button variant="ghost">Ghost</Button>
+  </Flex>
+</PreviewBlock>
+```
+
+### With Custom Layout
+
+```tsx
+<PreviewBlock background="grid">
+  <Grid columns="3" gap="4">
+    <Card>Card 1</Card>
+    <Card>Card 2</Card>
+    <Card>Card 3</Card>
+  </Grid>
+</PreviewBlock>
+```
+
+## Design Decisions
+
+- **Centered layout**: Components are centered both horizontally and vertically
+- **Min height**: 240px minimum height ensures adequate preview space
+- **Soft card**: Uses soft Card variant for subtle container
+- **Font family override**: Sets `fontFamily="sans"` via Theme to ensure consistent preview rendering
+- **Spacing**: Default vertical margin (`my="3"`) for separation from surrounding content
+
+## Accessibility
+
+Preview Block provides accessible component previews:
+
+### Structure
+
+- Wraps content in semantic Box and Card components
+- Maintains proper document outline
+- No special ARIA attributes needed (presentational container)
+
+### Visual
+
+- Background patterns use CSS variables that respect color mode
+- Sufficient contrast between background and components
+- Patterns are subtle and don't interfere with component visibility
+
+## Changelog
+
+### Added
+
+- Preview Block component for live component demos
+- Dots background pattern (default)
+- Grid background pattern
+- None background option
+- Centered layout with flexible spacing
