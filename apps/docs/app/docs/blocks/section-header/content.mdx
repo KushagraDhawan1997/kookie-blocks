@@ -1,0 +1,376 @@
+---
+title: Section Header
+description: Composable section headers with title, actions, and tabs.
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/section-header
+---
+
+Compose flexible section headers with title, description, and action buttons. Perfect for dashboard pages, settings panels, and content sections where you need consistent header patterns.
+
+Built with compound components for maximum flexibility—mix and match Content, Title, Description, Actions, and Tabs to create any section header layout.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { SectionHeader } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function MySection() {
+  return (
+    <SectionHeader.Root>
+      <SectionHeader.Content>
+        <SectionHeader.Title>Team Members</SectionHeader.Title>
+        <SectionHeader.Description>
+          Manage your team and their permissions
+        </SectionHeader.Description>
+      </SectionHeader.Content>
+      <SectionHeader.Actions>
+        <Button>Add Member</Button>
+      </SectionHeader.Actions>
+    </SectionHeader.Root>
+  );
+}
+```
+
+## Anatomy
+
+SectionHeader is a compound component with these parts:
+
+```tsx
+<SectionHeader.Root layout="inline" separator={false}>
+  <SectionHeader.Content>
+    <SectionHeader.Title>{/* Section heading */}</SectionHeader.Title>
+    <SectionHeader.Description>{/* Supporting text */}</SectionHeader.Description>
+  </SectionHeader.Content>
+  <SectionHeader.Actions>{/* Buttons and CTAs */}</SectionHeader.Actions>
+  <SectionHeader.Tabs>{/* Optional tabs */}</SectionHeader.Tabs>
+</SectionHeader.Root>
+```
+
+## Props
+
+### SectionHeader.Root
+
+Layout container for section header content. Extends Kookie UI's Flex component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `layout` | `'stacked' \| 'inline' \| ResponsiveLayout` | `'inline'` | Layout mode: vertical stacking or horizontal with actions on right. Supports responsive values. |
+| `separator` | `boolean` | `false` | Show separator at bottom. Use when no tabs are present (tabs have built-in separator). |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'4'` | Spacing between children |
+
+**Responsive Layout Type:**
+```tsx
+type ResponsiveLayout = {
+  initial?: 'stacked' | 'inline';
+  xs?: 'stacked' | 'inline';
+  sm?: 'stacked' | 'inline';
+  md?: 'stacked' | 'inline';
+  lg?: 'stacked' | 'inline';
+  xl?: 'stacked' | 'inline';
+}
+```
+
+All other Flex props from Kookie UI are supported.
+
+### SectionHeader.Content
+
+Container for title and description. Groups them on the left side in inline layout.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `direction` | `'row' \| 'column'` | `'column'` | Layout direction |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'1'` | Spacing between title and description |
+
+All other Flex props from Kookie UI are supported.
+
+### SectionHeader.Title
+
+Section heading. Extends Kookie UI's Heading component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `as` | `'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'` | `'h2'` | HTML heading element |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'6'` | Heading size |
+| `weight` | `'light' \| 'regular' \| 'medium' \| 'bold'` | `'medium'` | Font weight |
+
+All other Heading props from Kookie UI are supported.
+
+### SectionHeader.Description
+
+Supporting text. Extends Kookie UI's Text component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'3'` | Text size |
+| `color` | `string` | `'gray'` | Text color |
+
+All other Text props from Kookie UI are supported.
+
+### SectionHeader.Actions
+
+Container for action buttons. Positioned on the right in inline layout.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'2'` | Spacing between buttons |
+| `align` | `'start' \| 'center' \| 'end'` | `'center'` | Alignment of children |
+
+All other Flex props from Kookie UI are supported.
+
+### SectionHeader.Tabs
+
+Container for tabs. Renders below the header row. Note: When using tabs, don't set `separator={true}` as tabs have a built-in separator.
+
+All Flex props from Kookie UI are supported.
+
+## Examples
+
+### Basic Section Header
+
+Simple inline layout with title and actions:
+
+```tsx showLineNumbers
+import { SectionHeader } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function BasicSectionHeader() {
+  return (
+    <SectionHeader.Root>
+      <SectionHeader.Content>
+        <SectionHeader.Title>Projects</SectionHeader.Title>
+      </SectionHeader.Content>
+      <SectionHeader.Actions>
+        <Button>New Project</Button>
+      </SectionHeader.Actions>
+    </SectionHeader.Root>
+  );
+}
+```
+
+### With Description
+
+Add context with a description:
+
+```tsx showLineNumbers
+import { SectionHeader } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function DescriptionSectionHeader() {
+  return (
+    <SectionHeader.Root>
+      <SectionHeader.Content>
+        <SectionHeader.Title>Team Members</SectionHeader.Title>
+        <SectionHeader.Description>
+          Invite and manage team members across your organization
+        </SectionHeader.Description>
+      </SectionHeader.Content>
+      <SectionHeader.Actions>
+        <Button>Invite Member</Button>
+      </SectionHeader.Actions>
+    </SectionHeader.Root>
+  );
+}
+```
+
+### With Separator
+
+Add a separator when not using tabs:
+
+```tsx showLineNumbers
+import { SectionHeader } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function SeparatorSectionHeader() {
+  return (
+    <SectionHeader.Root separator>
+      <SectionHeader.Content>
+        <SectionHeader.Title>Settings</SectionHeader.Title>
+        <SectionHeader.Description>
+          Configure your workspace preferences
+        </SectionHeader.Description>
+      </SectionHeader.Content>
+      <SectionHeader.Actions>
+        <Button variant="soft">Reset</Button>
+        <Button>Save Changes</Button>
+      </SectionHeader.Actions>
+    </SectionHeader.Root>
+  );
+}
+```
+
+### With Tabs
+
+Add tabs for section navigation (no separator needed):
+
+```tsx showLineNumbers
+import { SectionHeader } from '@kushagradhawan/kookie-blocks';
+import { Button, Tabs } from '@kushagradhawan/kookie-ui';
+
+export function TabsSectionHeader() {
+  return (
+    <SectionHeader.Root>
+      <SectionHeader.Content>
+        <SectionHeader.Title>Analytics</SectionHeader.Title>
+        <SectionHeader.Description>
+          Track performance and engagement metrics
+        </SectionHeader.Description>
+      </SectionHeader.Content>
+      <SectionHeader.Actions>
+        <Button variant="soft">Export</Button>
+      </SectionHeader.Actions>
+      <SectionHeader.Tabs>
+        <Tabs.Root defaultValue="overview">
+          <Tabs.List>
+            <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
+            <Tabs.Trigger value="traffic">Traffic</Tabs.Trigger>
+            <Tabs.Trigger value="conversions">Conversions</Tabs.Trigger>
+          </Tabs.List>
+        </Tabs.Root>
+      </SectionHeader.Tabs>
+    </SectionHeader.Root>
+  );
+}
+```
+
+### Stacked Layout
+
+Vertical layout for mobile or narrow containers:
+
+```tsx showLineNumbers
+import { SectionHeader } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function StackedSectionHeader() {
+  return (
+    <SectionHeader.Root layout="stacked">
+      <SectionHeader.Content>
+        <SectionHeader.Title>Billing</SectionHeader.Title>
+        <SectionHeader.Description>
+          Manage your subscription and payment methods
+        </SectionHeader.Description>
+      </SectionHeader.Content>
+      <SectionHeader.Actions>
+        <Button>Upgrade Plan</Button>
+      </SectionHeader.Actions>
+    </SectionHeader.Root>
+  );
+}
+```
+
+### Responsive Layout
+
+Stacked on mobile, inline on desktop:
+
+```tsx showLineNumbers
+import { SectionHeader } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function ResponsiveSectionHeader() {
+  return (
+    <SectionHeader.Root layout={{ initial: "stacked", md: "inline" }}>
+      <SectionHeader.Content>
+        <SectionHeader.Title>Integrations</SectionHeader.Title>
+        <SectionHeader.Description>
+          Connect your favorite tools and services
+        </SectionHeader.Description>
+      </SectionHeader.Content>
+      <SectionHeader.Actions>
+        <Button>Browse Integrations</Button>
+      </SectionHeader.Actions>
+    </SectionHeader.Root>
+  );
+}
+```
+
+### Multiple Actions
+
+Multiple buttons in the actions slot:
+
+```tsx showLineNumbers
+import { SectionHeader } from '@kushagradhawan/kookie-blocks';
+import { Button, IconButton } from '@kushagradhawan/kookie-ui';
+
+export function MultiActionSectionHeader() {
+  return (
+    <SectionHeader.Root separator>
+      <SectionHeader.Content>
+        <SectionHeader.Title>Documents</SectionHeader.Title>
+        <SectionHeader.Description>
+          Manage and organize your files
+        </SectionHeader.Description>
+      </SectionHeader.Content>
+      <SectionHeader.Actions>
+        <Button variant="soft">Import</Button>
+        <Button>Upload</Button>
+      </SectionHeader.Actions>
+    </SectionHeader.Root>
+  );
+}
+```
+
+## Layout Patterns
+
+SectionHeader supports two primary layout modes:
+
+### Inline (Default)
+
+Horizontal layout with content on left, actions on right:
+- Content (Title + Description) aligned left
+- Actions aligned right
+- Best for: Dashboard sections, settings pages, list headers
+
+### Stacked
+
+Vertical layout where content flows top-to-bottom:
+- Content above
+- Actions below
+- Best for: Mobile layouts, narrow containers, modal headers
+
+## Separator vs Tabs
+
+Use the `separator` prop when you need a visual divider but don't have tabs:
+
+```tsx
+// With separator (no tabs)
+<SectionHeader.Root separator>
+  ...
+</SectionHeader.Root>
+
+// With tabs (no separator needed - tabs have built-in border)
+<SectionHeader.Root>
+  ...
+  <SectionHeader.Tabs>
+    <Tabs.Root>...</Tabs.Root>
+  </SectionHeader.Tabs>
+</SectionHeader.Root>
+```
+
+## Accessibility
+
+SectionHeader provides semantic HTML structure:
+
+### Semantic HTML
+
+- `SectionHeader.Title` uses `<h2>` by default (customizable with `as` prop)
+- Maintain proper heading hierarchy in your page
+
+### Keyboard Navigation
+
+- All interactive children (buttons, tabs) are keyboard accessible
+- Standard tab navigation applies
+
+## Changelog
+
+### Added
+
+- Initial release with compound component architecture
+- `SectionHeader.Root`, `SectionHeader.Content`, `SectionHeader.Title`, `SectionHeader.Description`, `SectionHeader.Actions`, `SectionHeader.Tabs` components
+- `layout` prop with `stacked` and `inline` modes
+- `separator` prop for built-in divider support
+- Responsive layout support

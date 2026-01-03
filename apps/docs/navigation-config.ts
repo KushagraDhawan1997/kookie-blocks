@@ -9,6 +9,7 @@ import {
   LayoutTopIcon,
   SidebarLeftIcon,
   TextAlignLeftIcon,
+  Heading01Icon,
 } from "@hugeicons/core-free-icons";
 
 export const docsNavigation: DocsNavigationConfig = {
@@ -27,6 +28,7 @@ export const docsNavigation: DocsNavigationConfig = {
       label: "Marketing",
       items: [
         { href: "/docs/blocks/hero", title: "Hero", icon: LayoutBottomIcon },
+        { href: "/docs/blocks/section-header", title: "Section Header", icon: Heading01Icon },
         { href: "/docs/blocks/footer", title: "Footer", icon: LayoutTopIcon },
       ],
     },

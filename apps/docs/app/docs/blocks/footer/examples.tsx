@@ -1,10 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { Footer, PreviewBlock, CodeBlock } from "@kushagradhawan/kookie-blocks";
+import { Footer, PreviewBlock, CodeBlock, SectionHeader } from "@kushagradhawan/kookie-blocks";
 import {
   Flex,
-  Heading,
   Separator,
   Text,
   Avatar,
@@ -21,14 +20,14 @@ export function FooterExamples() {
     <Flex direction="column" gap="9">
       {/* Example 1: Simple with Social Links */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Simple with Social Links
-          </Heading>
-          <Text size="2" color="gray">
-            Minimal footer with copyright text and social icons
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Social Links</SectionHeader.Title>
+            <SectionHeader.Description>
+              Minimal footer with copyright text and social icons
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none">
           <Footer p="6" style={{ width: "100%" }}>
             <Footer.Bottom>
@@ -112,14 +111,14 @@ export function FooterExamples() {
 
       {/* Example 2: Simple Centered */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Simple Centered
-          </Heading>
-          <Text size="2" color="gray">
-            Centered layout with inline navigation links
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Centered</SectionHeader.Title>
+            <SectionHeader.Description>
+              Centered layout with inline navigation links
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none">
           <Footer align="center" p="8" gap="6" style={{ width: "100%" }}>
             <Footer.Nav>
@@ -203,14 +202,14 @@ export function FooterExamples() {
 
       {/* Example 3: 4-Column Simple */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            4-Column Simple
-          </Heading>
-          <Text size="2" color="gray">
-            Logo with four link columns
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>4-Column</SectionHeader.Title>
+            <SectionHeader.Description>
+              Logo with four link columns
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none">
           <Footer p="8" style={{ width: "100%" }}>
             <Footer.Main>
@@ -293,15 +292,15 @@ export function FooterExamples() {
 
       {/* Example 4: 4-Column with Company Mission */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            4-Column with Company Mission
-          </Heading>
-          <Text size="2" color="gray">
-            Full footer with brand, tagline, social links, link columns, and
-            legal text
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Company Mission</SectionHeader.Title>
+            <SectionHeader.Description>
+              Full footer with brand, tagline, social links, link columns, and
+              legal text
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none">
           <Footer p="8" gap="8" style={{ width: "100%" }}>
             <Footer.Main>

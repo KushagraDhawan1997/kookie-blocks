@@ -1,18 +1,14 @@
 "use client";
 
 import * as React from "react";
-import { Hero, PreviewBlock, CodeBlock } from "@kushagradhawan/kookie-blocks";
+import { Hero, PreviewBlock, CodeBlock, SectionHeader } from "@kushagradhawan/kookie-blocks";
 import {
   Flex,
-  Heading,
   Button,
   Avatar,
   Badge,
   Link,
-  Section,
-  Container,
   Separator,
-  Text,
   Image,
 } from "@kushagradhawan/kookie-ui";
 import { HugeiconsIcon } from "@hugeicons/react";
@@ -36,14 +32,14 @@ export function HeroExamples() {
     <Flex direction="column" gap="9">
       {/* Test 1: Basic Hero */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Basic Hero
-          </Heading>
-          <Text size="2" color="gray">
-            Default centered layout with title and description only
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Basic</SectionHeader.Title>
+            <SectionHeader.Description>
+              Default centered layout with title and description only
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root p="4">
             <Hero.Title>Build better software</Hero.Title>
@@ -71,14 +67,14 @@ export function HeroExamples() {
 
       {/* Test 2: Full Marketing Hero */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Marketing Hero
-          </Heading>
-          <Text size="2" color="gray">
-            Complete hero with meta, title, description, and actions
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Marketing</SectionHeader.Title>
+            <SectionHeader.Description>
+              Complete hero with meta, title, description, and actions
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root p="4">
             <Hero.Meta>
@@ -154,14 +150,14 @@ export function HeroExamples() {
 
       {/* Test 3: Left-Aligned Hero */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Left-Aligned Hero
-          </Heading>
-          <Text size="2" color="gray">
-            Content aligned to the start for editorial layouts
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Left-Aligned</SectionHeader.Title>
+            <SectionHeader.Description>
+              Content aligned to the start for editorial layouts
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root align="start" p="4">
             <Hero.Title align="left" size="9">
@@ -205,14 +201,14 @@ export function HeroExamples() {
 
       {/* Test 4: Right-Aligned Hero */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Right-Aligned Hero
-          </Heading>
-          <Text size="2" color="gray">
-            Content aligned to the end with right-aligned text
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Right-Aligned</SectionHeader.Title>
+            <SectionHeader.Description>
+              Content aligned to the end with right-aligned text
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root align="end" p="4">
             <Hero.Title align="right" size="9">
@@ -264,14 +260,14 @@ export function HeroExamples() {
 
       {/* Test 5: With Badge Meta */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Hero with Badge
-          </Heading>
-          <Text size="2" color="gray">
-            Meta section with badge for announcements or status
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Badge</SectionHeader.Title>
+            <SectionHeader.Description>
+              Meta section with badge for announcements or status
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root p="4">
             <Hero.Meta>
@@ -333,14 +329,14 @@ export function HeroExamples() {
 
       {/* Test 6: Custom Spacing (Large Gap) */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Large Spacing
-          </Heading>
-          <Text size="2" color="gray">
-            Generous spacing (gap=8) for premium feel
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Large Spacing</SectionHeader.Title>
+            <SectionHeader.Description>
+              Generous spacing (gap=8) for premium feel
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root gap="8" p="4">
             <Hero.Title size="9">
@@ -392,14 +388,14 @@ export function HeroExamples() {
 
       {/* Test 7: Custom Spacing (Small Gap) */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Tight Spacing
-          </Heading>
-          <Text size="2" color="gray">
-            Compact layout (gap=3) for smaller sections
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Tight Spacing</SectionHeader.Title>
+            <SectionHeader.Description>
+              Compact layout (gap=3) for smaller sections
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root gap="3" p="4">
             <Hero.Title size="8">Your code snippets, organized</Hero.Title>
@@ -439,14 +435,14 @@ export function HeroExamples() {
 
       {/* Test 8: Split Layout */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Split Layout
-          </Heading>
-          <Text size="2" color="gray">
-            Horizontal layout with content and media side-by-side
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Split Layout</SectionHeader.Title>
+            <SectionHeader.Description>
+              Horizontal layout with content and media side-by-side
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root layout="split" gap="8" p="6">
             <Flex direction="column" gap="6" style={{ flex: 1 }}>
@@ -510,14 +506,14 @@ export function HeroExamples() {
 
       {/* Test 9: Multiple Meta Items */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Multiple Meta Items
-          </Heading>
-          <Text size="2" color="gray">
-            Combining avatar and multiple badges in meta section
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Multiple Meta</SectionHeader.Title>
+            <SectionHeader.Description>
+              Combining avatar and multiple badges in meta section
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root p="4">
             <Hero.Meta>
@@ -577,14 +573,14 @@ export function HeroExamples() {
 
       {/* Test 10: Vertical Action Buttons */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Vertical Actions
-          </Heading>
-          <Text size="2" color="gray">
-            Buttons stacked vertically for mobile-first layouts
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Vertical Actions</SectionHeader.Title>
+            <SectionHeader.Description>
+              Buttons stacked vertically for mobile-first layouts
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root p="4">
             <Hero.Title>Analytics that fit in your pocket</Hero.Title>
@@ -632,14 +628,14 @@ export function HeroExamples() {
 
       {/* Test 11: Responsive Test */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Responsive Sizing
-          </Heading>
-          <Text size="2" color="gray">
-            Spacing and text sizes adapt based on breakpoints
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Responsive Sizing</SectionHeader.Title>
+            <SectionHeader.Description>
+              Spacing and text sizes adapt based on breakpoints
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root
             gap={{ initial: "4", sm: "6", md: "8" }}
@@ -711,14 +707,14 @@ export function HeroExamples() {
 
       {/* Test 12: With Gradient Background */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Gradient Background
-          </Heading>
-          <Text size="2" color="gray">
-            Hero on a subtle gradient background for visual depth
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Gradient Background</SectionHeader.Title>
+            <SectionHeader.Description>
+              Hero on a subtle gradient background for visual depth
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock
           height="40rem"
           appearance="dark"
@@ -800,14 +796,14 @@ export function HeroExamples() {
 
       {/* Test 13: With Background Pattern */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Background Pattern
-          </Heading>
-          <Text size="2" color="gray">
-            Hero with dot pattern background for texture
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Background Pattern</SectionHeader.Title>
+            <SectionHeader.Description>
+              Hero with dot pattern background for texture
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock height="40rem" background="dots">
           <Hero.Root p="8">
             <Hero.Title>Documentation that developers actually read</Hero.Title>
@@ -845,16 +841,15 @@ export function HeroExamples() {
 
       {/* Test 14: Responsive Layout (Stacked to Split) */}
       <Flex direction="column" gap="4">
-        <Flex direction="column" gap="2">
-          <Heading as="h2" size="6" weight="medium">
-            Responsive Layout
-          </Heading>
-          <Text size="2" color="gray">
-            Automatically switches from stacked (mobile) to split (desktop) at
-            md breakpoint. Resize your browser window to see the layout change
-            at 1024px.
-          </Text>
-        </Flex>
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Responsive Layout</SectionHeader.Title>
+            <SectionHeader.Description>
+              Automatically switches from stacked (mobile) to split (desktop) at
+              md breakpoint. Resize to see the change at 1024px.
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
         <PreviewBlock background="none" height="40rem">
           <Hero.Root
             layout={{ initial: "stacked", md: "split" }}
