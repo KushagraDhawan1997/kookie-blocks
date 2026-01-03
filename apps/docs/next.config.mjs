@@ -3,6 +3,7 @@ import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
+import packageJson from "../../packages/kookie-blocks/package.json" with { type: "json" };
 
 /** @type {import('rehype-pretty-code').Options} */
 const rehypePrettyCodeOptions = {
@@ -28,6 +29,9 @@ const withMDX = nextMDX({
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  env: {
+    KOOKIE_BLOCKS_VERSION: packageJson.version,
+  },
 };
 
 export default withMDX(nextConfig);
