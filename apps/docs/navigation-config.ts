@@ -2,12 +2,12 @@ import type { DocsNavigationConfig } from "@kushagradhawan/kookie-blocks";
 import {
   Download01Icon,
   LayoutIcon,
-  CodeIcon,
-  TextIcon,
-  Layers01Icon,
+  CodeSquareIcon,
+  AiProgrammingIcon,
+  File02Icon,
   LayoutBottomIcon,
   LayoutTopIcon,
-  Menu01Icon,
+  SidebarLeftIcon,
   TextAlignLeftIcon,
 } from "@hugeicons/core-free-icons";
 
@@ -36,7 +36,7 @@ export const docsNavigation: DocsNavigationConfig = {
         {
           href: "/docs/blocks/streaming-markdown",
           title: "Streaming Markdown",
-          icon: TextIcon,
+          icon: AiProgrammingIcon,
         },
       ],
     },
@@ -46,7 +46,7 @@ export const docsNavigation: DocsNavigationConfig = {
         {
           href: "/docs/blocks/code-block",
           title: "Code Block",
-          icon: CodeIcon,
+          icon: CodeSquareIcon,
         },
         {
           href: "/docs/blocks/docs-shell",
@@ -56,12 +56,12 @@ export const docsNavigation: DocsNavigationConfig = {
         {
           href: "/docs/blocks/docs-sidebar",
           title: "Docs Sidebar",
-          icon: Menu01Icon,
+          icon: SidebarLeftIcon,
         },
         {
           href: "/docs/blocks/docs-page",
           title: "Docs Page",
-          icon: Layers01Icon,
+          icon: File02Icon,
         },
         {
           href: "/docs/blocks/table-of-contents",

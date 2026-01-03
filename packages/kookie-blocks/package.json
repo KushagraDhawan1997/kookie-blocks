@@ -93,8 +93,8 @@
     "prepublishOnly": "pnpm lint"
   },
   "dependencies": {
-    "@hugeicons/core-free-icons": "^2.0.0",
-    "@hugeicons/react": "^1.1.1",
+    "@hugeicons/core-free-icons": "^3.1.1",
+    "@hugeicons/react": "^1.1.4",
     "harden-react-markdown": "^1.1.0",
     "react-markdown": "^9.0.1",
     "rehype-raw": "^7.0.0",
