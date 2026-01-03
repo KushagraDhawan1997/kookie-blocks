@@ -722,6 +722,7 @@ export function HeroExamples() {
         <PreviewBlock
           height="40rem"
           appearance="dark"
+          showThemeToggle={false}
           variant="ghost"
           background={{
             backgroundColor: "hsla(244.85294117647055, 100%, 50%, 1)",

@@ -1,0 +1,320 @@
+---
+title: Footer
+description: A composable footer component for website footers with support for branding, navigation links, and social media.
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/footer
+---
+
+Compose flexible footer sections with consistent spacing and layout patterns. Perfect for landing pages, documentation sites, and marketing pages.
+
+Built with compound components for maximum flexibility—mix and match Brand, Links, Nav, Legal, and Social to create any footer layout.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { Footer } from '@kushagradhawan/kookie-blocks';
+
+export function MyFooter() {
+  return (
+    <Footer>
+      <Footer.Bottom>
+        <Footer.Legal>
+          © 2024 Your Company, Inc. All rights reserved.
+        </Footer.Legal>
+      </Footer.Bottom>
+    </Footer>
+  );
+}
+```
+
+## Anatomy
+
+Footer is a compound component with these parts:
+
+```tsx
+<Footer align="left">
+  <Footer.Main>
+    <Footer.Brand>
+      <Footer.BrandName>{/* Company name */}</Footer.BrandName>
+      <Footer.Tagline>{/* Short description */}</Footer.Tagline>
+    </Footer.Brand>
+    <Footer.Links>
+      <Footer.LinkGroup title="Product">
+        <Footer.Link href="/features">Features</Footer.Link>
+      </Footer.LinkGroup>
+    </Footer.Links>
+  </Footer.Main>
+  <Footer.Bottom>
+    <Footer.Legal>{/* Copyright text */}</Footer.Legal>
+    <Footer.Social>
+      <Footer.SocialLink href="..." icon={GitHubIcon} label="GitHub" />
+    </Footer.Social>
+  </Footer.Bottom>
+</Footer>
+```
+
+For simpler layouts, use `Footer.Nav` for flat inline links:
+
+```tsx
+<Footer align="center">
+  <Footer.Nav>
+    <Footer.Link href="/about">About</Footer.Link>
+    <Footer.Link href="/blog">Blog</Footer.Link>
+  </Footer.Nav>
+  <Footer.Social>{/* Social icons */}</Footer.Social>
+  <Footer.Legal>{/* Copyright */}</Footer.Legal>
+</Footer>
+```
+
+## Props
+
+### Footer / Footer.Root
+
+Main container for footer content. Renders as a `<footer>` element.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `align` | `'left' \| 'center'` | `'left'` | Content alignment. Use `'center'` for simple centered layouts. |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'6'` | Spacing between children |
+
+All other Flex props from Kookie UI are supported.
+
+### Footer.Main
+
+Top section container for brand and link groups.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'8'` | Spacing between brand and links |
+| `justify` | `'start' \| 'center' \| 'end' \| 'between'` | `'between'` | Horizontal distribution |
+
+All other Flex props from Kookie UI are supported.
+
+### Footer.Bottom
+
+Bottom bar for legal text and social links.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'4'` | Spacing between children |
+| `justify` | `'start' \| 'center' \| 'end' \| 'between'` | `'between'` | Horizontal distribution |
+
+All other Flex props from Kookie UI are supported.
+
+### Footer.Brand
+
+Container for logo, brand name, and tagline.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `direction` | `'row' \| 'column'` | `'column'` | Layout direction |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'3'` | Spacing between children |
+
+All other Flex props from Kookie UI are supported.
+
+### Footer.BrandName
+
+Company or product name. Extends Kookie UI's Text component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'4'` | Text size |
+| `weight` | `'light' \| 'regular' \| 'medium' \| 'bold'` | `'bold'` | Font weight |
+
+All other Text props from Kookie UI are supported.
+
+### Footer.Tagline
+
+Short description under the brand name. Extends Kookie UI's Text component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'2'` | Text size |
+| `color` | `'gray' \| ...` | `'gray'` | Text color |
+
+All other Text props from Kookie UI are supported.
+
+### Footer.Links
+
+Container for link group columns.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'8'` | Spacing between link groups |
+| `wrap` | `'wrap' \| 'nowrap'` | `'wrap'` | Whether to wrap on small screens |
+
+All other Flex props from Kookie UI are supported.
+
+### Footer.LinkGroup
+
+Single column of links with a heading.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `title` | `string` | — | **Required.** Heading text for the group |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'3'` | Spacing between heading and links |
+
+All other Flex props from Kookie UI are supported.
+
+### Footer.Nav
+
+Flat inline links for simple layouts (no column grouping).
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'6'` | Spacing between links |
+
+Renders as a `<nav>` element. All other Flex props from Kookie UI are supported.
+
+### Footer.Link
+
+Individual navigation link. Extends Kookie UI's Link component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `href` | `string` | — | Link destination |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'2'` | Text size |
+| `color` | `'gray' \| ...` | `'gray'` | Link color |
+
+All other Link props from Kookie UI are supported.
+
+### Footer.Legal
+
+Container for copyright text and legal links.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'4'` | Spacing between children |
+
+All other Flex props from Kookie UI are supported.
+
+### Footer.Social
+
+Container for social media icons.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'4'` | Spacing between icons |
+
+All other Flex props from Kookie UI are supported.
+
+### Footer.SocialLink
+
+Social media icon link.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `href` | `string` | — | **Required.** Link destination |
+| `icon` | `React.ComponentType` | — | **Required.** Icon component to render |
+| `label` | `string` | — | **Required.** Accessible label for screen readers |
+| `variant` | `'ghost' \| 'soft' \| 'solid'` | `'ghost'` | Button variant |
+| `color` | `'gray' \| ...` | `'gray'` | Icon color |
+
+All other IconButton props from Kookie UI are supported.
+
+## Layout Patterns
+
+### Simple Footer
+
+Single row with legal text and social icons:
+
+```tsx
+<Footer>
+  <Footer.Bottom>
+    <Footer.Legal>© 2024 Company</Footer.Legal>
+    <Footer.Social>
+      <Footer.SocialLink href="..." icon={GitHubIcon} label="GitHub" />
+    </Footer.Social>
+  </Footer.Bottom>
+</Footer>
+```
+
+### Centered Footer
+
+Vertically stacked, centered content:
+
+```tsx
+<Footer align="center">
+  <Footer.Nav>
+    <Footer.Link href="/about">About</Footer.Link>
+    <Footer.Link href="/blog">Blog</Footer.Link>
+    <Footer.Link href="/careers">Careers</Footer.Link>
+  </Footer.Nav>
+  <Footer.Social>
+    <Footer.SocialLink href="..." icon={TwitterIcon} label="Twitter" />
+  </Footer.Social>
+  <Footer.Legal>© 2024 Company</Footer.Legal>
+</Footer>
+```
+
+### Multi-Column Footer
+
+Brand on left, link columns on right, bottom bar with legal and social:
+
+```tsx
+<Footer>
+  <Footer.Main>
+    <Footer.Brand>
+      <Logo />
+      <Footer.Tagline>Build faster</Footer.Tagline>
+    </Footer.Brand>
+    <Footer.Links>
+      <Footer.LinkGroup title="Product">
+        <Footer.Link href="/features">Features</Footer.Link>
+        <Footer.Link href="/pricing">Pricing</Footer.Link>
+      </Footer.LinkGroup>
+      <Footer.LinkGroup title="Company">
+        <Footer.Link href="/about">About</Footer.Link>
+        <Footer.Link href="/careers">Careers</Footer.Link>
+      </Footer.LinkGroup>
+    </Footer.Links>
+  </Footer.Main>
+  <Footer.Bottom>
+    <Footer.Legal>© 2024 Company</Footer.Legal>
+    <Footer.Social>
+      <Footer.SocialLink href="..." icon={GitHubIcon} label="GitHub" />
+    </Footer.Social>
+  </Footer.Bottom>
+</Footer>
+```
+
+## Accessibility
+
+Footer provides semantic HTML structure for screen readers and SEO:
+
+### Semantic HTML
+
+- `Footer.Root` renders as `<footer>` for landmark navigation
+- `Footer.Nav` renders as `<nav>` for navigation links
+- `Footer.LinkGroup` uses `<h3>` for group headings
+- `Footer.SocialLink` requires `label` prop for screen reader accessibility
+
+### Keyboard Navigation
+
+- All links and social icons are keyboard accessible
+- Standard tab navigation applies
+- Focus indicators visible on all interactive elements
+
+### Screen Readers
+
+- Footer landmark announced for page structure
+- Social links have descriptive labels via `aria-label`
+- Link groups organized with proper heading hierarchy
+
+## Changelog
+
+### Added
+
+- Initial release with compound component architecture
+- `Footer.Main` and `Footer.Bottom` for explicit section control
+- `Footer.Brand`, `Footer.BrandName`, `Footer.Tagline` for branding
+- `Footer.Links`, `Footer.LinkGroup`, `Footer.Link` for navigation
+- `Footer.Nav` for simple inline link layouts
+- `Footer.Legal` for copyright and legal content
+- `Footer.Social`, `Footer.SocialLink` for social media icons
+- `align` prop for centered layouts

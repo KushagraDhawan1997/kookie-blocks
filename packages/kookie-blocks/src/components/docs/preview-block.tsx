@@ -1,7 +1,15 @@
 "use client";
 
-import React from "react";
-import { Box, Card, Flex, Theme } from "@kushagradhawan/kookie-ui";
+import React, { useState } from "react";
+import {
+  Box,
+  Card,
+  Flex,
+  SegmentedControl,
+  Theme,
+} from "@kushagradhawan/kookie-ui";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Sun01Icon, Moon02Icon } from "@hugeicons/core-free-icons";
 import type { ReactNode } from "react";
 
 export interface PreviewBlockProps {
@@ -16,6 +24,8 @@ export interface PreviewBlockProps {
   variant?: "surface" | "classic" | "soft" | "ghost";
   /** Theme appearance - light or dark */
   appearance?: "light" | "dark" | "inherit";
+  /** Show theme toggle control */
+  showThemeToggle?: boolean;
 }
 
 /**
@@ -44,7 +54,12 @@ export function PreviewBlock({
   height,
   variant = "soft",
   appearance,
+  showThemeToggle = true,
 }: PreviewBlockProps) {
+  const [currentAppearance, setCurrentAppearance] = useState<
+    "light" | "dark" | "inherit"
+  >(appearance ?? "inherit");
+
   const backgroundStyle =
     typeof background === "object"
       ? background
@@ -72,10 +87,41 @@ export function PreviewBlock({
     ...(height && { height }),
   };
 
+  const effectiveAppearance = showThemeToggle ? currentAppearance : appearance;
+
   return (
-    <Theme hasBackground={false} fontFamily="sans" appearance={appearance}>
+    <Theme
+      hasBackground={false}
+      fontFamily="sans"
+      appearance={effectiveAppearance}
+    >
       <Box my="3">
-        <Card size="1" variant={variant}>
+        <Card size="1" variant={variant} style={{ position: "relative" }}>
+          {showThemeToggle && (
+            <Box
+              style={{
+                position: "absolute",
+                top: "var(--space-2)",
+                right: "var(--space-2)",
+                zIndex: 1,
+              }}
+            >
+              <SegmentedControl.Root
+                size="2"
+                value={currentAppearance === "inherit" ? "light" : currentAppearance}
+                onValueChange={(value) =>
+                  setCurrentAppearance(value as "light" | "dark")
+                }
+              >
+                <SegmentedControl.Item value="light" iconOnly>
+                  <HugeiconsIcon icon={Sun01Icon} />
+                </SegmentedControl.Item>
+                <SegmentedControl.Item value="dark" iconOnly>
+                  <HugeiconsIcon icon={Moon02Icon} />
+                </SegmentedControl.Item>
+              </SegmentedControl.Root>
+            </Box>
+          )}
           <Flex
             justify="center"
             align="center"

@@ -6,6 +6,7 @@ import {
   TextIcon,
   Layers01Icon,
   LayoutBottomIcon,
+  LayoutTopIcon,
   Menu01Icon,
   TextAlignLeftIcon,
 } from "@hugeicons/core-free-icons";
@@ -26,6 +27,7 @@ export const docsNavigation: DocsNavigationConfig = {
       label: "Marketing",
       items: [
         { href: "/docs/blocks/hero", title: "Hero", icon: LayoutBottomIcon },
+        { href: "/docs/blocks/footer", title: "Footer", icon: LayoutTopIcon },
       ],
     },
     {
