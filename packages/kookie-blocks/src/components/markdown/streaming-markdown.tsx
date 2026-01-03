@@ -6,9 +6,9 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import hardenReactMarkdownModule from "harden-react-markdown";
 import { Box, Flex } from "@kushagradhawan/kookie-ui";
-import { createMarkdownComponents } from "./create-markdown-components";
-import { completeUnterminatedMarkdown, parseMarkdownIntoBlocks } from "./utils/markdown-streaming";
-import type { MarkdownComponentOptions } from "./types";
+import { createMarkdownComponents } from "./create-markdown-components.js";
+import { completeUnterminatedMarkdown, parseMarkdownIntoBlocks } from "./utils/markdown-streaming.js";
+import type { MarkdownComponentOptions } from "./types.js";
 
 // Handle different export formats
 const hardenReactMarkdown =

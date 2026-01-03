@@ -1,7 +1,7 @@
-export { StreamingMarkdown } from "./streaming-markdown";
-export type { StreamingMarkdownOptions } from "./streaming-markdown";
+export { StreamingMarkdown } from "./streaming-markdown.js";
+export type { StreamingMarkdownOptions } from "./streaming-markdown.js";
 
-export { createMarkdownComponents } from "./create-markdown-components";
-export type { MarkdownComponentOptions, MarkdownChildrenProps } from "./types";
+export { createMarkdownComponents } from "./create-markdown-components.js";
+export type { MarkdownComponentOptions, MarkdownChildrenProps } from "./types.js";
 
-export { completeUnterminatedMarkdown, parseMarkdownIntoBlocks } from "./utils/markdown-streaming";
+export { completeUnterminatedMarkdown, parseMarkdownIntoBlocks } from "./utils/markdown-streaming.js";

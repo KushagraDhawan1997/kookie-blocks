@@ -1,6 +1,6 @@
 // Public API
-export { CodeBlock, useCodeBlockContext } from "./code-block";
-export { useCodeCard } from "./use-code-card";
-export { LanguageBadge, formatLanguageForDisplay } from "./language-badge";
-export type { CodeBlockProps, ShikiConfig, PreviewBackgroundProps } from "./types";
-export { extractTextFromChildren, extractLanguageFromChildren, isReactElement } from "./types";
+export { CodeBlock, useCodeBlockContext } from "./code-block.js";
+export { useCodeCard } from "./use-code-card.js";
+export { LanguageBadge, formatLanguageForDisplay } from "./language-badge.js";
+export type { CodeBlockProps, ShikiConfig, PreviewBackgroundProps } from "./types.js";
+export { extractTextFromChildren, extractLanguageFromChildren, isReactElement } from "./types.js";

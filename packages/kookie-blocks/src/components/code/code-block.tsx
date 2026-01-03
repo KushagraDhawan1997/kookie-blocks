@@ -28,10 +28,10 @@ import type {
   CodeBlockProps,
   ShikiConfig,
   PreviewBackgroundProps,
-} from "./types";
-import { extractTextFromChildren, extractLanguageFromChildren } from "./types";
-import { useCodeCard } from "./use-code-card";
-import { LanguageBadge } from "./language-badge";
+} from "./types.js";
+import { extractTextFromChildren, extractLanguageFromChildren } from "./types.js";
+import { useCodeCard } from "./use-code-card.js";
+import { LanguageBadge } from "./language-badge.js";
 
 const CodeBlockContext = createContext<boolean>(false);
 
