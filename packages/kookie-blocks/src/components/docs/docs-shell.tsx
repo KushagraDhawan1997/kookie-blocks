@@ -44,14 +44,6 @@ export function DocsShell({
 }: DocsShellProps) {
   const [sidebarPresentation, setSidebarPresentation] = useState<'thin' | 'expanded'>('expanded');
 
-  // Combine headerActions with sidebarFooter
-  const footerContent = sidebarFooter || headerActions ? (
-    <Flex gap="2" align="center">
-      {headerActions}
-      {sidebarFooter}
-    </Flex>
-  ) : undefined;
-
   return (
     <Shell.Root height={height}>
       <Shell.Sidebar
@@ -66,7 +58,8 @@ export function DocsShell({
           navigation={navigation}
           logo={logo}
           presentation={sidebarPresentation}
-          footer={footerContent}
+          headerActions={headerActions}
+          footer={sidebarFooter}
           pathname={pathname}
           linkComponent={linkComponent}
         />

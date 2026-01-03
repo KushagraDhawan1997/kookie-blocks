@@ -43,6 +43,8 @@ export interface DocsSidebarProps {
   logo?: DocsLogoConfig;
   /** Presentation mode from parent Shell */
   presentation?: 'thin' | 'expanded';
+  /** Header actions (dark mode toggle, github link, etc.) - displayed next to logo */
+  headerActions?: React.ReactNode;
   /** Footer content */
   footer?: React.ReactNode;
   /** Sidebar size */
@@ -63,6 +65,7 @@ export function DocsSidebar({
   navigation,
   logo,
   presentation = 'expanded',
+  headerActions,
   footer,
   size = '2',
   variant = 'soft',
@@ -100,14 +103,21 @@ export function DocsSidebar({
       menuVariant={menuVariant}
       presentation={presentation}
     >
-      {logo && (
+      {(logo || headerActions) && (
         <Sidebar.Header>
           <Flex justify="between" align="center" width="100%">
-            <LinkComponent href={logo.href || '/'} aria-label={logo.alt || 'Home'}>
-              <Flex align="center" gap="2">
-                <Avatar fallback={logo.alt?.[0] || 'K'} size="2" src={logo.src} />
+            {logo && (
+              <LinkComponent href={logo.href || '/'} aria-label={logo.alt || 'Home'}>
+                <Flex align="center" gap="2">
+                  <Avatar fallback={logo.alt?.[0] || 'K'} size="2" src={logo.src} />
+                </Flex>
+              </LinkComponent>
+            )}
+            {headerActions && (
+              <Flex align="center" gap="0">
+                {headerActions}
               </Flex>
-            </LinkComponent>
+            )}
           </Flex>
         </Sidebar.Header>
       )}
