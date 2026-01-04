@@ -7,14 +7,14 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { BookOpen01Icon, EyeIcon } from "@hugeicons/core-free-icons";
 import { SiteDocsPage } from "@/components/site-docs-page";
 import ContentMDX from "./content.mdx";
-import { HeroExamples } from "./examples";
+import { PageHeaderExamples } from "./examples";
 import type { DocMetadata } from "@/lib/frontmatter";
 
-interface HeroPageClientProps {
+interface PageHeaderPageClientProps {
   metadata?: DocMetadata;
 }
 
-export default function HeroPageClient({ metadata }: HeroPageClientProps) {
+export default function PageHeaderPageClient({ metadata }: PageHeaderPageClientProps) {
   const [activeTab, setActiveTab] = useState<"docs" | "examples">("docs");
 
   return (
@@ -41,7 +41,7 @@ export default function HeroPageClient({ metadata }: HeroPageClientProps) {
         <TableOfContents renderContainer={(content) => content || null} />
       }
     >
-      {activeTab === "docs" ? <ContentMDX /> : <HeroExamples />}
+      {activeTab === "docs" ? <ContentMDX /> : <PageHeaderExamples />}
     </SiteDocsPage>
   );
 }

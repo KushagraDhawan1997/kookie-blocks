@@ -1,0 +1,440 @@
+---
+title: Page Header
+description: Composable page-level headers with banner, media, and actions.
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/page-header
+---
+
+Compose flexible page headers with banner images, logos, avatars, titles, and action buttons. Perfect for profile pages, blog posts, documentation pages, and any page that needs a prominent header.
+
+Built with compound components for maximum flexibility—mix and match Banner, Media, Content, Meta, Title, Description, Actions, and Tabs to create any page header layout.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { PageHeader } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function MyPage() {
+  return (
+    <PageHeader.Root>
+      <PageHeader.Main>
+        <PageHeader.Content>
+          <PageHeader.Title>Dashboard</PageHeader.Title>
+          <PageHeader.Description>
+            Welcome back to your workspace
+          </PageHeader.Description>
+        </PageHeader.Content>
+        <PageHeader.Actions>
+          <Button>New Project</Button>
+        </PageHeader.Actions>
+      </PageHeader.Main>
+    </PageHeader.Root>
+  );
+}
+```
+
+## Anatomy
+
+PageHeader is a compound component with these parts:
+
+```tsx
+<PageHeader.Root>
+  <PageHeader.Banner src="..." alt="..." />
+  <PageHeader.Main>
+    <PageHeader.Media src="..." type="avatar" />
+    <PageHeader.Content>
+      <PageHeader.Meta>{/* Category, date, etc. */}</PageHeader.Meta>
+      <PageHeader.Title>{/* Page heading */}</PageHeader.Title>
+      <PageHeader.Description>{/* Supporting text */}</PageHeader.Description>
+    </PageHeader.Content>
+    <PageHeader.Actions>{/* Buttons and CTAs */}</PageHeader.Actions>
+  </PageHeader.Main>
+  <PageHeader.Tabs>{/* Optional tabs */}</PageHeader.Tabs>
+</PageHeader.Root>
+```
+
+## Props
+
+### PageHeader.Root
+
+Layout container for page header content. Extends Kookie UI's Flex component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `direction` | `'row' \| 'column'` | `'column'` | Layout direction |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'4'` | Spacing between children |
+| `separator` | `boolean` | `false` | Show a separator at the bottom of the header. A dev warning is shown if used with Tabs. |
+
+All other Flex props from Kookie UI are supported.
+
+### PageHeader.Banner
+
+Full-width banner image at the top of the header.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `src` | `string` | Required | Image source URL |
+| `alt` | `string` | `''` | Alt text for accessibility |
+| `height` | `string` | `'200px'` | Banner height |
+
+All other Box props from Kookie UI are supported.
+
+### PageHeader.Main
+
+Inline row containing media, content, and actions. Groups the main header elements.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `layout` | `'inline' \| 'stacked'` | `'inline'` | Layout mode. Supports responsive values like `{{ initial: 'stacked', md: 'inline' }}` |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'4'` | Spacing between children |
+| `align` | `'start' \| 'center' \| 'end' \| 'baseline' \| 'stretch'` | `'center'` | Vertical alignment |
+| `justify` | `'start' \| 'center' \| 'end' \| 'between'` | `'between'` | Horizontal alignment |
+
+All other Flex props from Kookie UI are supported.
+
+### PageHeader.Media
+
+Logo or avatar image. Uses Kookie UI's Avatar component internally.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `type` | `'logo' \| 'avatar'` | `'avatar'` | Media type: logo (square) or avatar (circular) |
+| `overlap` | `boolean` | `false` | Overlap the banner image (only works with avatar type when banner is present) |
+| `src` | `string` | - | Image source URL |
+| `fallback` | `string` | - | Fallback text when image fails to load |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'6'` | Media size |
+
+All other Avatar props from Kookie UI are supported (except `radius`, which is controlled by `type`).
+
+### PageHeader.Content
+
+Container for meta, title, and description. Groups them on the left side.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `direction` | `'row' \| 'column'` | `'column'` | Layout direction |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'2'` | Spacing between title and description |
+
+All other Flex props from Kookie UI are supported.
+
+### PageHeader.Meta
+
+Container for meta information like category, date, author, etc. Position is controlled by render order—place before or after Title.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'2'` | Spacing between meta items |
+| `align` | `'start' \| 'center' \| 'end' \| 'baseline' \| 'stretch'` | `'center'` | Alignment of children |
+
+All other Flex props from Kookie UI are supported.
+
+### PageHeader.Title
+
+Page heading. Extends Kookie UI's Heading component with page-level defaults.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `as` | `'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'` | `'h1'` | HTML heading element |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'9'` | Heading size |
+| `weight` | `'light' \| 'regular' \| 'medium' \| 'bold'` | `'medium'` | Font weight |
+
+All other Heading props from Kookie UI are supported.
+
+### PageHeader.Description
+
+Supporting text. Extends Kookie UI's Text component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'4'` | Text size |
+| `color` | `string` | `'gray'` | Text color |
+
+All other Text props from Kookie UI are supported.
+
+### PageHeader.Actions
+
+Container for action buttons. Positioned on the right in the Main row.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'2'` | Spacing between buttons |
+| `align` | `'start' \| 'center' \| 'end'` | `'center'` | Alignment of children |
+
+All other Flex props from Kookie UI are supported.
+
+### PageHeader.Tabs
+
+Container for tabs. Renders below the Main row.
+
+All Flex props from Kookie UI are supported.
+
+## Examples
+
+### Basic Page Header
+
+Simple header with title, description, and actions:
+
+```tsx showLineNumbers
+import { PageHeader } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function BasicPageHeader() {
+  return (
+    <PageHeader.Root>
+      <PageHeader.Main>
+        <PageHeader.Content>
+          <PageHeader.Title>Projects</PageHeader.Title>
+          <PageHeader.Description>
+            Manage and organize your projects
+          </PageHeader.Description>
+        </PageHeader.Content>
+        <PageHeader.Actions>
+          <Button>New Project</Button>
+        </PageHeader.Actions>
+      </PageHeader.Main>
+    </PageHeader.Root>
+  );
+}
+```
+
+### With Logo
+
+Header with company logo:
+
+```tsx showLineNumbers
+import { PageHeader } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function LogoPageHeader() {
+  return (
+    <PageHeader.Root>
+      <PageHeader.Main>
+        <PageHeader.Media type="logo" src="/logo.png" fallback="A" />
+        <PageHeader.Content>
+          <PageHeader.Meta>
+            <Text size="2" color="gray">Invoice #00011</Text>
+          </PageHeader.Meta>
+          <PageHeader.Title size="6">Acme Inc</PageHeader.Title>
+        </PageHeader.Content>
+        <PageHeader.Actions>
+          <Button variant="soft">Copy URL</Button>
+          <Button>Send</Button>
+        </PageHeader.Actions>
+      </PageHeader.Main>
+    </PageHeader.Root>
+  );
+}
+```
+
+### With Avatar
+
+Header with user avatar:
+
+```tsx showLineNumbers
+import { PageHeader } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function AvatarPageHeader() {
+  return (
+    <PageHeader.Root>
+      <PageHeader.Main>
+        <PageHeader.Media type="avatar" src="/avatar.jpg" fallback="RC" />
+        <PageHeader.Content>
+          <PageHeader.Title size="6">Ricardo Cooper</PageHeader.Title>
+          <PageHeader.Description>
+            Applied for Front End Developer on August 25, 2020
+          </PageHeader.Description>
+        </PageHeader.Content>
+        <PageHeader.Actions>
+          <Button variant="outline">Disqualify</Button>
+          <Button>Advance to offer</Button>
+        </PageHeader.Actions>
+      </PageHeader.Main>
+    </PageHeader.Root>
+  );
+}
+```
+
+### With Banner and Avatar
+
+Profile-style header with banner and overlapping avatar:
+
+```tsx showLineNumbers
+import { PageHeader } from '@kushagradhawan/kookie-blocks';
+import { Button } from '@kushagradhawan/kookie-ui';
+
+export function ProfilePageHeader() {
+  return (
+    <PageHeader.Root>
+      <PageHeader.Banner src="/cover.jpg" alt="Cover photo" />
+      <PageHeader.Main>
+        <PageHeader.Media
+          variant="avatar"
+          src="/avatar.jpg"
+          fallback="RC"
+          size="8"
+          overlap
+        />
+        <PageHeader.Content>
+          <PageHeader.Title size="6">Ricardo Cooper</PageHeader.Title>
+        </PageHeader.Content>
+        <PageHeader.Actions>
+          <Button variant="outline">Message</Button>
+          <Button variant="outline">Call</Button>
+        </PageHeader.Actions>
+      </PageHeader.Main>
+    </PageHeader.Root>
+  );
+}
+```
+
+### With Meta Below Title
+
+Job posting style with meta information below the title:
+
+```tsx showLineNumbers
+import { PageHeader } from '@kushagradhawan/kookie-blocks';
+import { Button, Text } from '@kushagradhawan/kookie-ui';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Briefcase01Icon, Location01Icon, Money01Icon, Calendar01Icon } from '@hugeicons/core-free-icons';
+
+export function JobPostingPageHeader() {
+  return (
+    <PageHeader.Root>
+      <PageHeader.Main>
+        <PageHeader.Content>
+          <PageHeader.Title size="7">Back End Developer</PageHeader.Title>
+          <PageHeader.Meta>
+            <Text size="2" color="gray">
+              <HugeiconsIcon icon={Briefcase01Icon} /> Full-time
+            </Text>
+            <Text size="2" color="gray">
+              <HugeiconsIcon icon={Location01Icon} /> Remote
+            </Text>
+            <Text size="2" color="gray">
+              <HugeiconsIcon icon={Money01Icon} /> $120k – $140k
+            </Text>
+            <Text size="2" color="gray">
+              <HugeiconsIcon icon={Calendar01Icon} /> Closing on January 9, 2020
+            </Text>
+          </PageHeader.Meta>
+        </PageHeader.Content>
+        <PageHeader.Actions>
+          <Button variant="outline">Edit</Button>
+          <Button variant="outline">View</Button>
+          <Button>Publish</Button>
+        </PageHeader.Actions>
+      </PageHeader.Main>
+    </PageHeader.Root>
+  );
+}
+```
+
+### Documentation Page
+
+Header for documentation pages with category and tabs:
+
+```tsx showLineNumbers
+import { PageHeader } from '@kushagradhawan/kookie-blocks';
+import { Button, Tabs, Text } from '@kushagradhawan/kookie-ui';
+
+export function DocsPageHeader() {
+  return (
+    <PageHeader.Root>
+      <PageHeader.Main>
+        <PageHeader.Content>
+          <PageHeader.Meta>
+            <Text size="2" weight="medium">Components</Text>
+          </PageHeader.Meta>
+          <PageHeader.Title>Button</PageHeader.Title>
+          <PageHeader.Description>
+            A clickable button element for user interactions
+          </PageHeader.Description>
+        </PageHeader.Content>
+        <PageHeader.Actions>
+          <Button variant="ghost">Copy page</Button>
+          <Button variant="ghost">View source</Button>
+        </PageHeader.Actions>
+      </PageHeader.Main>
+      <PageHeader.Tabs>
+        <Tabs.Root defaultValue="docs">
+          <Tabs.List>
+            <Tabs.Trigger value="docs">Documentation</Tabs.Trigger>
+            <Tabs.Trigger value="examples">Examples</Tabs.Trigger>
+            <Tabs.Trigger value="api">API</Tabs.Trigger>
+          </Tabs.List>
+        </Tabs.Root>
+      </PageHeader.Tabs>
+    </PageHeader.Root>
+  );
+}
+```
+
+## Meta Position
+
+The position of `PageHeader.Meta` is controlled by render order. Place it before or after `PageHeader.Title` based on your design:
+
+```tsx
+// Meta above title (category style)
+<PageHeader.Content>
+  <PageHeader.Meta>Category</PageHeader.Meta>
+  <PageHeader.Title>Title</PageHeader.Title>
+  <PageHeader.Description>Description</PageHeader.Description>
+</PageHeader.Content>
+
+// Meta below title (job posting style)
+<PageHeader.Content>
+  <PageHeader.Title>Title</PageHeader.Title>
+  <PageHeader.Meta>Full-time • Remote • $120k</PageHeader.Meta>
+</PageHeader.Content>
+```
+
+## Avatar Overlap
+
+The `overlap` prop on `PageHeader.Media` creates a profile-style layout where the avatar overlaps the banner:
+
+```tsx
+<PageHeader.Root>
+  <PageHeader.Banner src="/cover.jpg" />
+  <PageHeader.Main>
+    <PageHeader.Media type="avatar" src="/avatar.jpg" overlap />
+    {/* ... */}
+  </PageHeader.Main>
+</PageHeader.Root>
+```
+
+**Notes:**
+- Only works when `type="avatar"` (not `"logo"`)
+- Requires a `PageHeader.Banner` to be present
+- A dev warning is shown if used incorrectly
+
+## Accessibility
+
+PageHeader provides semantic HTML structure:
+
+### Semantic HTML
+
+- `PageHeader.Title` uses `<h1>` by default (customizable with `as` prop)
+- `PageHeader.Banner` uses `role="img"` with `aria-label` for background images
+- Maintain proper heading hierarchy in your page
+
+### Keyboard Navigation
+
+- All interactive children (buttons, tabs) are keyboard accessible
+- Standard tab navigation applies
+
+## Changelog
+
+### Added
+
+- Initial release with compound component architecture
+- `PageHeader.Root`, `PageHeader.Banner`, `PageHeader.Main`, `PageHeader.Media`, `PageHeader.Content`, `PageHeader.Meta`, `PageHeader.Title`, `PageHeader.Description`, `PageHeader.Actions`, `PageHeader.Tabs` components
+- `type` prop on Media for logo/avatar styles
+- `overlap` prop on Media for profile-style layouts
+- Dev warnings for incorrect overlap usage
