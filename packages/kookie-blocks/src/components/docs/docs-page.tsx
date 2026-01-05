@@ -80,16 +80,16 @@ export function DocsPage({
         direction="column"
         gap="6"
         p={contentPadding}
-        flexGrow="1"
-        style={{ minWidth: 0 }}
+        width="100%"
+        style={{ minWidth: 0, flex: 1 }}
       >
         <Container
           size={containerSize}
           style={{ minWidth: 0 }}
           data-content-area
         >
-          <Box p={padding} width="100%" style={{ maxWidth }}>
-            <Flex direction="column" gap={contentGap} width="100%">
+          <Box p={padding} style={{ maxWidth, minWidth: 0 }}>
+            <Flex direction="column" gap={contentGap} style={{ minWidth: 0 }}>
               {/* Page Header */}
               {header
                 ? header
@@ -103,7 +103,7 @@ export function DocsPage({
 
               {/* {showHeader && <Separator size="4" />} */}
 
-              <Flex direction="column" gap="0" width="100%">
+              <Flex direction="column" gap="0" style={{ minWidth: 0 }}>
                 {children}
               </Flex>
             </Flex>

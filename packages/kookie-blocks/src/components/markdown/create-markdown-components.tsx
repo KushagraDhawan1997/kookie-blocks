@@ -181,7 +181,7 @@ export function createMarkdownComponents(options: MarkdownComponentOptions = {})
 
     // Tables using KookieUI
     table: ({ children }: MarkdownChildrenProps) => (
-      <Box my="2" style={{ overflowX: "auto" }}>
+      <Box my="2">
         <Table.Root size="2" variant="ghost">
           {children}
         </Table.Root>
