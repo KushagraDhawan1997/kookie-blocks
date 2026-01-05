@@ -41,6 +41,8 @@ export function Example() {
 | `appearance` | `'light' \| 'dark' \| 'inherit'` | Theme appearance |
 | `showThemeToggle` | `boolean` | Show theme toggle control. Default: `true` |
 | `fontFamily` | `'sans' \| 'mono' \| 'serif'` | Font family for the preview. Default: `'sans'` |
+| `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl` | `Responsive<string>` | Padding props for inner content. Default: `py="4"` |
+| `m`, `mx`, `my`, `mt`, `mr`, `mb`, `ml` | `Responsive<string>` | Margin props for outer container. Default: `my="3"` |
 
 ## Background Variants
 
@@ -148,6 +150,31 @@ Customize the pattern size and color to match your design needs.
 </PreviewBlock>
 ```
 
+### Full-Bleed Background
+
+Use `p="0"` for images or gradients that should extend to the edges.
+
+```tsx
+<PreviewBlock
+  p="0"
+  background={{
+    background: "linear-gradient(135deg, var(--blue-9) 0%, var(--violet-9) 100%)",
+  }}
+>
+  <Text color="white">Full-bleed gradient</Text>
+</PreviewBlock>
+```
+
+### Custom Spacing
+
+Adjust padding and margin to fit your layout needs.
+
+```tsx
+<PreviewBlock px="6" py="8" my="6">
+  <Button>More Spacious</Button>
+</PreviewBlock>
+```
+
 ## Design Decisions
 
 - **Centered layout**: Components are centered both horizontally and vertically
@@ -187,3 +214,5 @@ Preview Block provides accessible component previews:
 - `variant` prop for card styling
 - `appearance` prop for theme control
 - `showThemeToggle` prop for interactive theme switching
+- Padding props (`p`, `px`, `py`, `pt`, `pr`, `pb`, `pl`) for inner content spacing
+- Margin props (`m`, `mx`, `my`, `mt`, `mr`, `mb`, `ml`) for outer container spacing
