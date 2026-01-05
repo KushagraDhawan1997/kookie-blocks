@@ -81,6 +81,8 @@ export function PreviewBlock({
             }
           : undefined;
 
+  const isCustomBackground = typeof background === "object";
+
   const combinedStyle: React.CSSProperties = {
     ...backgroundStyle,
     ...(width && { width }),
@@ -96,7 +98,14 @@ export function PreviewBlock({
       appearance={effectiveAppearance}
     >
       <Box my="3">
-        <Card size="1" variant={variant} style={{ position: "relative" }}>
+        <Card
+          size="1"
+          variant={variant}
+          style={{
+            position: "relative",
+            ...(isCustomBackground && { padding: 0 }),
+          }}
+        >
           {showThemeToggle && (
             <Box
               style={{
@@ -125,7 +134,7 @@ export function PreviewBlock({
           <Flex
             justify="center"
             align="center"
-            py="4"
+            py={isCustomBackground ? undefined : "4"}
             minHeight={height ? undefined : "240px"}
             style={combinedStyle}
           >
