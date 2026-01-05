@@ -5,6 +5,7 @@ import {
   PreviewBlock,
   CodeBlock,
   SectionHeader,
+  Hero,
 } from "@kushagradhawan/kookie-blocks";
 import {
   Flex,
@@ -14,12 +15,16 @@ import {
   Separator,
   Callout,
   Badge,
-  Avatar,
+  IconButton,
+  Chatbar,
 } from "@kushagradhawan/kookie-ui";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   InformationCircleIcon,
   CheckmarkCircle02Icon,
+  SparklesIcon,
+  Attachment01Icon,
+  AiBrain01Icon,
 } from "@hugeicons/core-free-icons";
 
 export function PreviewBlockExamples() {
@@ -70,17 +75,17 @@ export function PreviewBlockExamples() {
           <Flex gap="5">
             <Card
               variant="classic"
-              size="2"
+              size="1"
               style={{ width: 120, height: 120 }}
             />
             <Card
               variant="classic"
-              size="2"
+              size="1"
               style={{ width: 120, height: 120 }}
             />
             <Card
               variant="classic"
-              size="2"
+              size="1"
               style={{ width: 120, height: 120 }}
             />
           </Flex>
@@ -90,17 +95,17 @@ export function PreviewBlockExamples() {
   <Flex gap="5">
     <Card
       variant="classic"
-      size="2"
+      size="1"
       style={{ width: 120, height: 120 }}
     />
     <Card
       variant="classic"
-      size="2"
+      size="1"
       style={{ width: 120, height: 120 }}
     />
     <Card
       variant="classic"
-      size="2"
+      size="1"
       style={{ width: 120, height: 120 }}
     />
   </Flex>
@@ -242,34 +247,142 @@ export function PreviewBlockExamples() {
           <SectionHeader.Content>
             <SectionHeader.Title>Precise Spacing</SectionHeader.Title>
             <SectionHeader.Description>
-              A tighter 16px grid helps visualize precise alignment for compact
-              components like icon buttons and badges.
+              A tighter 12px grid helps visualize precise alignment for complex
+              layouts like this chat interface.
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="grid" height="30rem" patternSize={16}>
-          <Flex gap="2" align="center">
-            <Badge size="1" color="blue">
-              Small
-            </Badge>
-            <Badge size="2" color="green">
-              Medium
-            </Badge>
-            <Badge size="3" color="violet">
-              Large
-            </Badge>
-          </Flex>
+        <PreviewBlock
+          background="grid"
+          height="40rem"
+          patternSize={12}
+          patternColor="var(--gray-a2)"
+        >
+          <Hero.Root style={{ width: "100%", maxWidth: 500 }}>
+            <Hero.Meta>
+              <HugeiconsIcon icon={SparklesIcon} strokeWidth={1.75} />
+            </Hero.Meta>
+            <Flex direction="column" gap="4">
+              <Hero.Title>How can I help you today?</Hero.Title>
+              <Hero.Description color="gray">
+                Ask me anything about your projects, code, or ideas.
+              </Hero.Description>
+            </Flex>
+            <Chatbar.Root
+              open
+              variant="classic"
+              size="2"
+              color="blue"
+              sendMode="always"
+              minLines={3}
+              maxLines={16}
+              style={{ width: "100%" }}
+            >
+              <Chatbar.Textarea
+                aria-label="Ask anything"
+                placeholder="Ask me anything..."
+                submitOnEnter
+              />
+              <Chatbar.Row>
+                <Chatbar.RowStart>
+                  <Chatbar.AttachTrigger asChild>
+                    <IconButton
+                      variant="ghost"
+                      size="2"
+                      color="gray"
+                      highContrast
+                      aria-label="Attach file"
+                      tooltip="Attach file"
+                    >
+                      <HugeiconsIcon
+                        icon={Attachment01Icon}
+                        strokeWidth={1.75}
+                      />
+                    </IconButton>
+                  </Chatbar.AttachTrigger>
+                  <IconButton
+                    variant="ghost"
+                    size="2"
+                    color="gray"
+                    highContrast
+                    aria-label="Select model"
+                    tooltip="Select model"
+                  >
+                    <HugeiconsIcon icon={AiBrain01Icon} strokeWidth={1.75} />
+                  </IconButton>
+                </Chatbar.RowStart>
+                <Chatbar.RowEnd>
+                  <Chatbar.Send highContrast />
+                </Chatbar.RowEnd>
+              </Chatbar.Row>
+            </Chatbar.Root>
+          </Hero.Root>
         </PreviewBlock>
         <CodeBlock
           code={`<PreviewBlock
   background="grid"
-  patternSize={16}
+  patternSize={12}
+  patternColor="var(--gray-a2)"
 >
-  <Flex gap="2" align="center">
-    <Badge size="1" color="blue">Small</Badge>
-    <Badge size="2" color="green">Medium</Badge>
-    <Badge size="3" color="violet">Large</Badge>
-  </Flex>
+  <Hero.Root style={{ width: "100%", maxWidth: 500 }}>
+    <Hero.Meta>
+      <HugeiconsIcon icon={SparklesIcon} strokeWidth={1.75} />
+    </Hero.Meta>
+    <Flex direction="column" gap="4">
+      <Hero.Title>How can I help you today?</Hero.Title>
+      <Hero.Description color="gray">
+        Ask me anything about your projects, code, or ideas.
+      </Hero.Description>
+    </Flex>
+    <Chatbar.Root
+      open
+      variant="classic"
+      size="2"
+      color="blue"
+      sendMode="always"
+      minLines={3}
+      maxLines={16}
+      style={{ width: "100%" }}
+    >
+      <Chatbar.Textarea
+        aria-label="Ask anything"
+        placeholder="Ask me anything..."
+        submitOnEnter
+      />
+      <Chatbar.Row>
+        <Chatbar.RowStart>
+          <Chatbar.AttachTrigger asChild>
+            <IconButton
+              variant="ghost"
+              size="2"
+              color="gray"
+              highContrast
+              aria-label="Attach file"
+              tooltip="Attach file"
+            >
+              <HugeiconsIcon
+                icon={Attachment01Icon}
+                strokeWidth={1.75}
+              />
+            </IconButton>
+          </Chatbar.AttachTrigger>
+          <IconButton
+            variant="ghost"
+            size="2"
+            color="gray"
+            highContrast
+            aria-label="Select model"
+            tooltip="Select model"
+          >
+            <HugeiconsIcon icon={AiBrain01Icon} strokeWidth={1.75} />
+          </IconButton>
+        </Chatbar.RowStart>
+        <Chatbar.RowEnd>
+          <Chatbar.Send highContrast />
+        </Chatbar.RowEnd>
+      </Chatbar.Row>
+    </Chatbar.Root>
+  </Hero.Root>
 </PreviewBlock>`}
           language="tsx"
           showLineNumbers={true}
@@ -366,95 +479,6 @@ export function PreviewBlockExamples() {
   >
     Image background
   </Text>
-</PreviewBlock>`}
-          language="tsx"
-          showLineNumbers={true}
-          collapsible={false}
-        />
-      </Flex>
-
-      <Separator size="4" />
-
-      {/* Example 8: Custom Height */}
-      <Flex direction="column" gap="4">
-        <SectionHeader.Root>
-          <SectionHeader.Content>
-            <SectionHeader.Title>Custom Height</SectionHeader.Title>
-            <SectionHeader.Description>
-              Adjust the preview height to match your content. Taller previews
-              work well for vertical layouts and full-page components.
-            </SectionHeader.Description>
-          </SectionHeader.Content>
-        </SectionHeader.Root>
-        <PreviewBlock background="none" height="30rem">
-          <Card variant="classic" size="3" style={{ width: 280 }}>
-            <Flex direction="column" gap="4" p="2">
-              <Flex direction="column" gap="2" align="center">
-                <Avatar fallback="JD" size="5" />
-                <Flex direction="column" gap="1" align="center">
-                  <Text size="3" weight="medium">
-                    Jane Doe
-                  </Text>
-                  <Text size="2" color="gray">
-                    Product Designer
-                  </Text>
-                </Flex>
-              </Flex>
-              <Separator size="4" />
-              <Flex direction="column" gap="2">
-                <Flex justify="between">
-                  <Text size="2" color="gray">
-                    Projects
-                  </Text>
-                  <Text size="2" weight="medium">
-                    24
-                  </Text>
-                </Flex>
-                <Flex justify="between">
-                  <Text size="2" color="gray">
-                    Followers
-                  </Text>
-                  <Text size="2" weight="medium">
-                    1.2k
-                  </Text>
-                </Flex>
-              </Flex>
-              <Button variant="soft" size="2" highContrast>
-                View Profile
-              </Button>
-            </Flex>
-          </Card>
-        </PreviewBlock>
-        <CodeBlock
-          code={`<PreviewBlock
-  background="none"
-  height="30rem"
->
-  <Card variant="classic" size="3" style={{ width: 280 }}>
-    <Flex direction="column" gap="4" p="2">
-      <Flex direction="column" gap="2" align="center">
-        <Avatar fallback="JD" size="5" />
-        <Flex direction="column" gap="1" align="center">
-          <Text size="3" weight="medium">Jane Doe</Text>
-          <Text size="2" color="gray">Product Designer</Text>
-        </Flex>
-      </Flex>
-      <Separator size="4" />
-      <Flex direction="column" gap="2">
-        <Flex justify="between">
-          <Text size="2" color="gray">Projects</Text>
-          <Text size="2" weight="medium">24</Text>
-        </Flex>
-        <Flex justify="between">
-          <Text size="2" color="gray">Followers</Text>
-          <Text size="2" weight="medium">1.2k</Text>
-        </Flex>
-      </Flex>
-      <Button variant="soft" size="2" highContrast>
-        View Profile
-      </Button>
-    </Flex>
-  </Card>
 </PreviewBlock>`}
           language="tsx"
           showLineNumbers={true}
