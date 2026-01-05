@@ -16,6 +16,10 @@ export interface PreviewBlockProps {
   children: ReactNode;
   /** Background style for the preview - can be a preset or custom CSS properties */
   background?: "none" | "dots" | "grid" | React.CSSProperties;
+  /** Size of the pattern (dots or grid spacing) - default 24 */
+  patternSize?: number;
+  /** Color of the pattern (dots or grid lines) - default "var(--gray-a4)" */
+  patternColor?: string;
   /** Width of the preview block */
   width?: string | number;
   /** Height of the preview block */
@@ -50,6 +54,8 @@ export interface PreviewBlockProps {
 export function PreviewBlock({
   children,
   background = "dots",
+  patternSize = 24,
+  patternColor = "var(--gray-a4)",
   width,
   height,
   variant = "soft",
@@ -60,24 +66,22 @@ export function PreviewBlock({
     "light" | "dark" | "inherit"
   >(appearance ?? "inherit");
 
+  const sizeValue = `${patternSize}px`;
+
   const backgroundStyle =
     typeof background === "object"
       ? background
       : background === "dots"
         ? {
-            backgroundImage:
-              "radial-gradient(circle, var(--gray-6) 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
+            backgroundImage: `radial-gradient(circle, ${patternColor} 1px, transparent 1px)`,
+            backgroundSize: `${sizeValue} ${sizeValue}`,
             backgroundPosition: "center",
-            backgroundColor: "var(--gray-2)",
           }
         : background === "grid"
           ? {
-              backgroundImage:
-                "linear-gradient(var(--gray-6) 1px, transparent 1px), linear-gradient(90deg, var(--gray-6) 1px, transparent 1px)",
-              backgroundSize: "24px 24px",
+              backgroundImage: `linear-gradient(${patternColor} 1px, transparent 1px), linear-gradient(90deg, ${patternColor} 1px, transparent 1px)`,
+              backgroundSize: `${sizeValue} ${sizeValue}`,
               backgroundPosition: "center",
-              backgroundColor: "var(--gray-2)",
             }
           : undefined;
 
