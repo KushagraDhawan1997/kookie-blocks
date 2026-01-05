@@ -32,7 +32,15 @@ export function Example() {
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
 | `children` | `ReactNode` | Component(s) to preview |
-| `background` | `'none' \| 'dots' \| 'grid'` | Background pattern style. Default: `'dots'` |
+| `background` | `'none' \| 'dots' \| 'grid' \| CSSProperties` | Background pattern style or custom CSS. Default: `'dots'` |
+| `patternSize` | `number` | Size of the pattern (dot/grid spacing in pixels). Default: `24` |
+| `patternColor` | `string` | Color of the pattern. Default: `'var(--gray-a6)'` for dots, `'var(--gray-a3)'` for grid |
+| `width` | `string \| number` | Width of the preview block |
+| `height` | `string \| number` | Height of the preview block |
+| `variant` | `'surface' \| 'classic' \| 'soft' \| 'ghost'` | Card variant. Default: `'soft'` |
+| `appearance` | `'light' \| 'dark' \| 'inherit'` | Theme appearance |
+| `showThemeToggle` | `boolean` | Show theme toggle control. Default: `true` |
+| `fontFamily` | `'sans' \| 'mono' \| 'serif'` | Font family for the preview. Default: `'sans'` |
 
 ## Background Variants
 
@@ -63,6 +71,44 @@ No background. Use for components with their own backgrounds or full-width layou
 ```tsx
 <PreviewBlock background="none">
   <Button>Example</Button>
+</PreviewBlock>
+```
+
+## Pattern Customization
+
+Customize the pattern size and color to match your design needs.
+
+### Custom Size
+
+```tsx
+<PreviewBlock
+  background="grid"
+  patternSize={16}
+>
+  <Button>Tighter Grid</Button>
+</PreviewBlock>
+```
+
+### Custom Color
+
+```tsx
+<PreviewBlock
+  background="dots"
+  patternColor="var(--blue-a3)"
+>
+  <Button>Blue Dots</Button>
+</PreviewBlock>
+```
+
+### Combined
+
+```tsx
+<PreviewBlock
+  background="grid"
+  patternSize={32}
+  patternColor="var(--gray-a6)"
+>
+  <Button>Larger, Darker Grid</Button>
 </PreviewBlock>
 ```
 
@@ -135,3 +181,9 @@ Preview Block provides accessible component previews:
 - Grid background pattern
 - None background option
 - Centered layout with flexible spacing
+- `patternSize` prop for customizing pattern spacing
+- `patternColor` prop for customizing pattern color
+- `width` and `height` props for sizing
+- `variant` prop for card styling
+- `appearance` prop for theme control
+- `showThemeToggle` prop for interactive theme switching

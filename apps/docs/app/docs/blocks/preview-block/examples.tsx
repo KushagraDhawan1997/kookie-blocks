@@ -67,54 +67,18 @@ export function PreviewBlockExamples() {
           </SectionHeader.Content>
         </SectionHeader.Root>
         <PreviewBlock background="grid">
-          <Flex gap="4">
-            <Card variant="classic" size="2" style={{ width: 120 }}>
-              <Flex direction="column" gap="2" align="center" p="2">
-                <Avatar fallback="A" size="3" />
-                <Text size="2" weight="medium">
-                  Card 1
-                </Text>
-              </Flex>
-            </Card>
-            <Card variant="classic" size="2" style={{ width: 120 }}>
-              <Flex direction="column" gap="2" align="center" p="2">
-                <Avatar fallback="B" size="3" />
-                <Text size="2" weight="medium">
-                  Card 2
-                </Text>
-              </Flex>
-            </Card>
-            <Card variant="classic" size="2" style={{ width: 120 }}>
-              <Flex direction="column" gap="2" align="center" p="2">
-                <Avatar fallback="C" size="3" />
-                <Text size="2" weight="medium">
-                  Card 3
-                </Text>
-              </Flex>
-            </Card>
+          <Flex gap="5">
+            <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
+            <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
+            <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
           </Flex>
         </PreviewBlock>
         <CodeBlock
           code={`<PreviewBlock background="grid">
-  <Flex gap="4">
-    <Card variant="classic" size="2" style={{ width: 120 }}>
-      <Flex direction="column" gap="2" align="center" p="2">
-        <Avatar fallback="A" size="3" />
-        <Text size="2" weight="medium">Card 1</Text>
-      </Flex>
-    </Card>
-    <Card variant="classic" size="2" style={{ width: 120 }}>
-      <Flex direction="column" gap="2" align="center" p="2">
-        <Avatar fallback="B" size="3" />
-        <Text size="2" weight="medium">Card 2</Text>
-      </Flex>
-    </Card>
-    <Card variant="classic" size="2" style={{ width: 120 }}>
-      <Flex direction="column" gap="2" align="center" p="2">
-        <Avatar fallback="C" size="3" />
-        <Text size="2" weight="medium">Card 3</Text>
-      </Flex>
-    </Card>
+  <Flex gap="5">
+    <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
+    <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
+    <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
   </Flex>
 </PreviewBlock>`}
           language="tsx"
@@ -131,16 +95,23 @@ export function PreviewBlockExamples() {
           <SectionHeader.Content>
             <SectionHeader.Title>Full-Width Components</SectionHeader.Title>
             <SectionHeader.Description>
-              Use background="none" for components that need clean backgrounds or
-              have their own visual styling like callouts and alerts.
+              Use background="none" for components that need clean backgrounds
+              or have their own visual styling like callouts and alerts.
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
         <PreviewBlock background="none">
-          <Flex direction="column" gap="3" style={{ width: "100%", maxWidth: 400 }}>
+          <Flex
+            direction="column"
+            gap="3"
+            style={{ width: "100%", maxWidth: 400 }}
+          >
             <Callout.Root color="green">
               <Callout.Icon>
-                <HugeiconsIcon icon={CheckmarkCircle02Icon} strokeWidth={1.75} />
+                <HugeiconsIcon
+                  icon={CheckmarkCircle02Icon}
+                  strokeWidth={1.75}
+                />
               </Callout.Icon>
               <Callout.Text>
                 Your changes have been saved successfully.
@@ -148,7 +119,10 @@ export function PreviewBlockExamples() {
             </Callout.Root>
             <Callout.Root color="blue">
               <Callout.Icon>
-                <HugeiconsIcon icon={InformationCircleIcon} strokeWidth={1.75} />
+                <HugeiconsIcon
+                  icon={InformationCircleIcon}
+                  strokeWidth={1.75}
+                />
               </Callout.Icon>
               <Callout.Text>
                 This feature requires a Pro subscription.
@@ -210,7 +184,10 @@ export function PreviewBlockExamples() {
           </Flex>
         </PreviewBlock>
         <CodeBlock
-          code={`<PreviewBlock background="dots" showThemeToggle={true}>
+          code={`<PreviewBlock
+  background="dots"
+  showThemeToggle={true}
+>
   <Flex gap="2" align="center">
     <Badge color="green" highContrast>Active</Badge>
     <Badge color="amber" highContrast>Pending</Badge>
@@ -225,71 +202,40 @@ export function PreviewBlockExamples() {
 
       <Separator size="4" />
 
-      {/* Example 5: Translucent Components */}
+      {/* Example 5: Precise Spacing */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>
-            <SectionHeader.Title>Translucent Components</SectionHeader.Title>
+            <SectionHeader.Title>Precise Spacing</SectionHeader.Title>
             <SectionHeader.Description>
-              Custom CSS backgrounds showcase translucent materials over dynamic
-              imagery. Use appearance="dark" with showThemeToggle={false} for
-              fixed dark contexts.
+              A tighter 16px grid helps visualize precise alignment for compact
+              components like icon buttons and badges.
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock
-          showThemeToggle={false}
-          appearance="dark"
-          variant="ghost"
-          height="20rem"
-          background={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1765572446249-a583906255f0?q=80&w=1341&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <Callout.Root
-            color="blue"
-            material="translucent"
-            highContrast
-            style={{ maxWidth: 400 }}
-          >
-            <Callout.Icon>
-              <HugeiconsIcon icon={InformationCircleIcon} strokeWidth={1.75} />
-            </Callout.Icon>
-            <Callout.Text>
-              Translucent materials blend with backgrounds while maintaining
-              readability.
-            </Callout.Text>
-          </Callout.Root>
+        <PreviewBlock background="grid" patternSize={16}>
+          <Flex gap="2" align="center">
+            <Badge size="1" color="blue">
+              Small
+            </Badge>
+            <Badge size="2" color="green">
+              Medium
+            </Badge>
+            <Badge size="3" color="violet">
+              Large
+            </Badge>
+          </Flex>
         </PreviewBlock>
         <CodeBlock
           code={`<PreviewBlock
-  showThemeToggle={false}
-  appearance="dark"
-  variant="ghost"
-  height="20rem"
-  background={{
-    backgroundImage: "url(https://images.unsplash.com/...)",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
+  background="grid"
+  patternSize={16}
 >
-  <Callout.Root
-    color="blue"
-    material="translucent"
-    highContrast
-    style={{ maxWidth: 400 }}
-  >
-    <Callout.Icon>
-      <HugeiconsIcon icon={InformationCircleIcon} strokeWidth={1.75} />
-    </Callout.Icon>
-    <Callout.Text>
-      Translucent materials blend with backgrounds while maintaining
-      readability.
-    </Callout.Text>
-  </Callout.Root>
+  <Flex gap="2" align="center">
+    <Badge size="1" color="blue">Small</Badge>
+    <Badge size="2" color="green">Medium</Badge>
+    <Badge size="3" color="violet">Large</Badge>
+  </Flex>
 </PreviewBlock>`}
           language="tsx"
           showLineNumbers={true}
@@ -350,7 +296,10 @@ export function PreviewBlockExamples() {
           </Card>
         </PreviewBlock>
         <CodeBlock
-          code={`<PreviewBlock background="none" height="30rem">
+          code={`<PreviewBlock
+  background="none"
+  height="30rem"
+>
   <Card variant="classic" size="3" style={{ width: 280 }}>
     <Flex direction="column" gap="4" p="2">
       <Flex direction="column" gap="2" align="center">

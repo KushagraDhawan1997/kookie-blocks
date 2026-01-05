@@ -18,7 +18,7 @@ export interface PreviewBlockProps {
   background?: "none" | "dots" | "grid" | React.CSSProperties;
   /** Size of the pattern (dots or grid spacing) - default 24 */
   patternSize?: number;
-  /** Color of the pattern (dots or grid lines) - default "var(--gray-a4)" */
+  /** Color of the pattern - default "var(--gray-a6)" for dots, "var(--gray-a3)" for grid */
   patternColor?: string;
   /** Width of the preview block */
   width?: string | number;
@@ -30,6 +30,8 @@ export interface PreviewBlockProps {
   appearance?: "light" | "dark" | "inherit";
   /** Show theme toggle control */
   showThemeToggle?: boolean;
+  /** Font family for the preview - default "sans" */
+  fontFamily?: "sans" | "mono" | "serif";
 }
 
 /**
@@ -55,12 +57,13 @@ export function PreviewBlock({
   children,
   background = "dots",
   patternSize = 24,
-  patternColor = "var(--gray-a4)",
+  patternColor,
   width,
   height,
   variant = "soft",
   appearance,
   showThemeToggle = true,
+  fontFamily = "sans",
 }: PreviewBlockProps) {
   const [currentAppearance, setCurrentAppearance] = useState<
     "light" | "dark" | "inherit"
@@ -68,18 +71,23 @@ export function PreviewBlock({
 
   const sizeValue = `${patternSize}px`;
 
+  // Default colors: dots = a6 (more visible), grid = a3 (subtler)
+  const effectiveColor =
+    patternColor ??
+    (background === "dots" ? "var(--gray-a6)" : "var(--gray-a3)");
+
   const backgroundStyle =
     typeof background === "object"
       ? background
       : background === "dots"
         ? {
-            backgroundImage: `radial-gradient(circle, ${patternColor} 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(circle, ${effectiveColor} 1px, transparent 1px)`,
             backgroundSize: `${sizeValue} ${sizeValue}`,
             backgroundPosition: "center",
           }
         : background === "grid"
           ? {
-              backgroundImage: `linear-gradient(${patternColor} 1px, transparent 1px), linear-gradient(90deg, ${patternColor} 1px, transparent 1px)`,
+              backgroundImage: `linear-gradient(${effectiveColor} 1px, transparent 1px), linear-gradient(90deg, ${effectiveColor} 1px, transparent 1px)`,
               backgroundSize: `${sizeValue} ${sizeValue}`,
               backgroundPosition: "center",
             }
@@ -98,7 +106,7 @@ export function PreviewBlock({
   return (
     <Theme
       hasBackground={false}
-      fontFamily="sans"
+      fontFamily={fontFamily}
       appearance={effectiveAppearance}
     >
       <Box my="3">
@@ -121,7 +129,9 @@ export function PreviewBlock({
             >
               <SegmentedControl.Root
                 size="2"
-                value={currentAppearance === "inherit" ? "light" : currentAppearance}
+                value={
+                  currentAppearance === "inherit" ? "light" : currentAppearance
+                }
                 onValueChange={(value) =>
                   setCurrentAppearance(value as "light" | "dark")
                 }
