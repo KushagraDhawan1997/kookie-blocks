@@ -73,9 +73,9 @@ export function PreviewBlock({
   showThemeToggle = true,
   fontFamily = "sans",
   // Padding props (applied to inner content)
-  p,
+  p = "2",
   px,
-  py = "4",
+  py,
   pt,
   pr,
   pb,
@@ -168,8 +168,7 @@ export function PreviewBlock({
             </Box>
           )}
           <Flex
-            justify="center"
-            align="center"
+            direction="column"
             p={p}
             px={px}
             py={py}
@@ -178,9 +177,15 @@ export function PreviewBlock({
             pb={pb}
             pl={pl}
             minHeight={height ? undefined : "240px"}
-            style={combinedStyle}
           >
-            {children}
+            <Flex
+              flexGrow="1"
+              justify="center"
+              align="center"
+              style={combinedStyle}
+            >
+              {children}
+            </Flex>
           </Flex>
         </Card>
       </Box>

@@ -36,7 +36,7 @@ export function PreviewBlockExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock>
+        <PreviewBlock height="30rem">
           <Button variant="solid" size="2" highContrast>
             Get Started
           </Button>
@@ -66,19 +66,43 @@ export function PreviewBlockExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="grid">
+        <PreviewBlock background="grid" height="30rem">
           <Flex gap="5">
-            <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
-            <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
-            <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
+            <Card
+              variant="classic"
+              size="2"
+              style={{ width: 120, height: 120 }}
+            />
+            <Card
+              variant="classic"
+              size="2"
+              style={{ width: 120, height: 120 }}
+            />
+            <Card
+              variant="classic"
+              size="2"
+              style={{ width: 120, height: 120 }}
+            />
           </Flex>
         </PreviewBlock>
         <CodeBlock
           code={`<PreviewBlock background="grid">
   <Flex gap="5">
-    <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
-    <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
-    <Card variant="classic" size="2" style={{ width: 120, height: 120 }} />
+    <Card
+      variant="classic"
+      size="2"
+      style={{ width: 120, height: 120 }}
+    />
+    <Card
+      variant="classic"
+      size="2"
+      style={{ width: 120, height: 120 }}
+    />
+    <Card
+      variant="classic"
+      size="2"
+      style={{ width: 120, height: 120 }}
+    />
   </Flex>
 </PreviewBlock>`}
           language="tsx"
@@ -100,7 +124,7 @@ export function PreviewBlockExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none">
+        <PreviewBlock background="none" height="30rem">
           <Flex
             direction="column"
             gap="3"
@@ -132,10 +156,17 @@ export function PreviewBlockExamples() {
         </PreviewBlock>
         <CodeBlock
           code={`<PreviewBlock background="none">
-  <Flex direction="column" gap="3" style={{ width: "100%", maxWidth: 400 }}>
+  <Flex
+    direction="column"
+    gap="3"
+    style={{ width: "100%", maxWidth: 400 }}
+  >
     <Callout.Root color="green">
       <Callout.Icon>
-        <HugeiconsIcon icon={CheckmarkCircle02Icon} strokeWidth={1.75} />
+        <HugeiconsIcon
+          icon={CheckmarkCircle02Icon}
+          strokeWidth={1.75}
+        />
       </Callout.Icon>
       <Callout.Text>
         Your changes have been saved successfully.
@@ -143,7 +174,10 @@ export function PreviewBlockExamples() {
     </Callout.Root>
     <Callout.Root color="blue">
       <Callout.Icon>
-        <HugeiconsIcon icon={InformationCircleIcon} strokeWidth={1.75} />
+        <HugeiconsIcon
+          icon={InformationCircleIcon}
+          strokeWidth={1.75}
+        />
       </Callout.Icon>
       <Callout.Text>
         This feature requires a Pro subscription.
@@ -170,7 +204,7 @@ export function PreviewBlockExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="dots" showThemeToggle={true}>
+        <PreviewBlock background="dots" height="30rem" showThemeToggle={true}>
           <Flex gap="2" align="center">
             <Badge color="green" highContrast>
               Active
@@ -213,7 +247,7 @@ export function PreviewBlockExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="grid" patternSize={16}>
+        <PreviewBlock background="grid" height="30rem" patternSize={16}>
           <Flex gap="2" align="center">
             <Badge size="1" color="blue">
               Small
@@ -258,17 +292,11 @@ export function PreviewBlockExamples() {
         </SectionHeader.Root>
         <PreviewBlock
           p="0"
+          height="30rem"
           background={{
-            backgroundColor: "#99c0ff",
-            backgroundImage: `
-              radial-gradient(at 4% 54%, hsla(194,94%,63%,1) 0px, transparent 50%),
-              radial-gradient(at 50% 27%, hsla(178,70%,60%,1) 0px, transparent 50%),
-              radial-gradient(at 58% 82%, hsla(239,75%,61%,1) 0px, transparent 50%),
-              radial-gradient(at 92% 43%, hsla(152,89%,62%,1) 0px, transparent 50%),
-              radial-gradient(at 51% 70%, hsla(267,90%,70%,1) 0px, transparent 50%),
-              radial-gradient(at 62% 36%, hsla(3,77%,76%,1) 0px, transparent 50%),
-              radial-gradient(at 91% 41%, hsla(236,76%,72%,1) 0px, transparent 50%)
-            `,
+            backgroundColor: "hsla(259, 100%, 58%, 1)",
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 1517 1517' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"), radial-gradient(circle at 100% 64%, hsla(45, 55%, 56%, 1) 1%, transparent 68%), radial-gradient(circle at 74% 91%, hsla(336, 54%, 73%, 1) 4%, transparent 77%)`,
+            backgroundBlendMode: "overlay, normal, normal",
           }}
         >
           <Text style={{ color: "white" }} size="3" weight="medium">
@@ -279,21 +307,12 @@ export function PreviewBlockExamples() {
           code={`<PreviewBlock
   p="0"
   background={{
-    backgroundColor: "#99c0ff",
-    backgroundImage: \`
-      radial-gradient(at 4% 54%, hsla(194,94%,63%,1) 0px, transparent 50%),
-      radial-gradient(at 50% 27%, hsla(178,70%,60%,1) 0px, transparent 50%),
-      radial-gradient(at 58% 82%, hsla(239,75%,61%,1) 0px, transparent 50%),
-      radial-gradient(at 92% 43%, hsla(152,89%,62%,1) 0px, transparent 50%),
-      radial-gradient(at 51% 70%, hsla(267,90%,70%,1) 0px, transparent 50%),
-      radial-gradient(at 62% 36%, hsla(3,77%,76%,1) 0px, transparent 50%),
-      radial-gradient(at 91% 41%, hsla(236,76%,72%,1) 0px, transparent 50%)
-    \`,
+    backgroundColor: "hsla(259, 100%, 58%, 1)",
+    backgroundImage: \`url("data:image/svg+xml,..."), radial-gradient(...)\`,
+    backgroundBlendMode: "overlay, normal, normal",
   }}
 >
-  <Text style={{ color: "white" }} size="3" weight="medium">
-    Full-bleed gradient
-  </Text>
+  <Text style={{ color: "white" }}>Full-bleed gradient</Text>
 </PreviewBlock>`}
           language="tsx"
           showLineNumbers={true}
@@ -316,10 +335,11 @@ export function PreviewBlockExamples() {
         </SectionHeader.Root>
         <PreviewBlock
           p="0"
+          height="30rem"
           background={{
             backgroundColor: "hsl(220, 20%, 10%)",
             backgroundImage:
-              "url(https://images.unsplash.com/photo-1765808925935-e4fab8f2f6c5?q=80&w=2671&auto=format&fit=crop)",
+              "url(https://images.unsplash.com/photo-1764244666530-2b64b410a6c7?q=80&w=2670&auto=format&fit=crop)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -333,12 +353,17 @@ export function PreviewBlockExamples() {
   p="0"
   background={{
     backgroundColor: "hsl(220, 20%, 10%)",
-    backgroundImage: "url(https://images.unsplash.com/photo-1765808925935-e4fab8f2f6c5?q=80&w=2671&auto=format&fit=crop)",
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-...)",
     backgroundSize: "cover",
     backgroundPosition: "center",
   }}
 >
-  <Text style={{ color: "white" }} size="3" weight="medium">
+  <Text
+    style={{ color: "white" }}
+    size="3"
+    weight="medium"
+  >
     Image background
   </Text>
 </PreviewBlock>`}
