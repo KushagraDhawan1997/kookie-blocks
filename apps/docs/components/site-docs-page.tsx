@@ -9,7 +9,7 @@ interface SiteDocsPageProps {
   meta?: DocsPageMeta;
   tableOfContents?: ReactNode;
   maxWidth?: string | number;
-  padding?: '3' | '4' | '5' | '6' | '7' | '8' | '9';
+  padding?: "3" | "4" | "5" | "6" | "7" | "8" | "9";
   headerActions?: ReactNode;
   headerTabs?: ReactNode;
   header?: ReactNode;
@@ -23,10 +23,11 @@ export function SiteDocsPage(props: SiteDocsPageProps) {
   return (
     <DocsPage
       {...props}
+      containerSize="2"
       showFooter
       footerCopyright={{
         name: "Kushagra Dhawan",
-        url: "https://www.kushagradhawan.com"
+        url: "https://www.kushagradhawan.com",
       }}
       githubUrl="https://github.com/KushagraDhawan1997/kookie-blocks"
     />

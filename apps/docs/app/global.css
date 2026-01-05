@@ -4,5 +4,5 @@
 
 * {
   /* outline: dashed 0.1px var(--gray-a6); */
-  --font-sans: "system-ui", sans-serif;
+  --font-sans: "system-ui";
 }
