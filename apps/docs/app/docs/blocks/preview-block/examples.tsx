@@ -259,8 +259,16 @@ export function PreviewBlockExamples() {
         <PreviewBlock
           p="0"
           background={{
-            background:
-              "linear-gradient(135deg, var(--blue-9) 0%, var(--violet-9) 100%)",
+            backgroundColor: "#99c0ff",
+            backgroundImage: `
+              radial-gradient(at 4% 54%, hsla(194,94%,63%,1) 0px, transparent 50%),
+              radial-gradient(at 50% 27%, hsla(178,70%,60%,1) 0px, transparent 50%),
+              radial-gradient(at 58% 82%, hsla(239,75%,61%,1) 0px, transparent 50%),
+              radial-gradient(at 92% 43%, hsla(152,89%,62%,1) 0px, transparent 50%),
+              radial-gradient(at 51% 70%, hsla(267,90%,70%,1) 0px, transparent 50%),
+              radial-gradient(at 62% 36%, hsla(3,77%,76%,1) 0px, transparent 50%),
+              radial-gradient(at 91% 41%, hsla(236,76%,72%,1) 0px, transparent 50%)
+            `,
           }}
         >
           <Text style={{ color: "white" }} size="3" weight="medium">
@@ -271,7 +279,16 @@ export function PreviewBlockExamples() {
           code={`<PreviewBlock
   p="0"
   background={{
-    background: "linear-gradient(135deg, var(--blue-9) 0%, var(--violet-9) 100%)",
+    backgroundColor: "#99c0ff",
+    backgroundImage: \`
+      radial-gradient(at 4% 54%, hsla(194,94%,63%,1) 0px, transparent 50%),
+      radial-gradient(at 50% 27%, hsla(178,70%,60%,1) 0px, transparent 50%),
+      radial-gradient(at 58% 82%, hsla(239,75%,61%,1) 0px, transparent 50%),
+      radial-gradient(at 92% 43%, hsla(152,89%,62%,1) 0px, transparent 50%),
+      radial-gradient(at 51% 70%, hsla(267,90%,70%,1) 0px, transparent 50%),
+      radial-gradient(at 62% 36%, hsla(3,77%,76%,1) 0px, transparent 50%),
+      radial-gradient(at 91% 41%, hsla(236,76%,72%,1) 0px, transparent 50%)
+    \`,
   }}
 >
   <Text style={{ color: "white" }} size="3" weight="medium">
