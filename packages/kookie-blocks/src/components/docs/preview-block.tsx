@@ -8,11 +8,19 @@ import {
   SegmentedControl,
   Theme,
 } from "@kushagradhawan/kookie-ui";
+import type { FlexProps } from "@kushagradhawan/kookie-ui/components/flex";
+import type { BoxProps } from "@kushagradhawan/kookie-ui/components/box";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Sun01Icon, Moon02Icon } from "@hugeicons/core-free-icons";
 import type { ReactNode } from "react";
 
-export interface PreviewBlockProps {
+// Pick padding props from FlexProps
+type PaddingProps = Pick<FlexProps, "p" | "px" | "py" | "pt" | "pr" | "pb" | "pl">;
+
+// Pick margin props from BoxProps
+type MarginProps = Pick<BoxProps, "m" | "mx" | "my" | "mt" | "mr" | "mb" | "ml">;
+
+export interface PreviewBlockProps extends PaddingProps, MarginProps {
   children: ReactNode;
   /** Background style for the preview - can be a preset or custom CSS properties */
   background?: "none" | "dots" | "grid" | React.CSSProperties;
@@ -64,6 +72,22 @@ export function PreviewBlock({
   appearance,
   showThemeToggle = true,
   fontFamily = "sans",
+  // Padding props (applied to inner content)
+  p,
+  px,
+  py = "4",
+  pt,
+  pr,
+  pb,
+  pl,
+  // Margin props (applied to outer container)
+  m,
+  mx,
+  my = "3",
+  mt,
+  mr,
+  mb,
+  ml,
 }: PreviewBlockProps) {
   const [currentAppearance, setCurrentAppearance] = useState<
     "light" | "dark" | "inherit"
@@ -93,8 +117,6 @@ export function PreviewBlock({
             }
           : undefined;
 
-  const isCustomBackground = typeof background === "object";
-
   const combinedStyle: React.CSSProperties = {
     ...backgroundStyle,
     ...(width && { width }),
@@ -109,13 +131,13 @@ export function PreviewBlock({
       fontFamily={fontFamily}
       appearance={effectiveAppearance}
     >
-      <Box my="3">
+      <Box m={m} mx={mx} my={my} mt={mt} mr={mr} mb={mb} ml={ml}>
         <Card
           size="1"
           variant={variant}
           style={{
             position: "relative",
-            ...(isCustomBackground && { padding: 0 }),
+            padding: 0,
           }}
         >
           {showThemeToggle && (
@@ -148,7 +170,13 @@ export function PreviewBlock({
           <Flex
             justify="center"
             align="center"
-            py={isCustomBackground ? undefined : "4"}
+            p={p}
+            px={px}
+            py={py}
+            pt={pt}
+            pr={pr}
+            pb={pb}
+            pl={pl}
             minHeight={height ? undefined : "240px"}
             style={combinedStyle}
           >
