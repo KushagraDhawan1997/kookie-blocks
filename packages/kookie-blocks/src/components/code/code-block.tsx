@@ -204,7 +204,7 @@ const CodeCard = memo(function CodeCard({
           </Flex>
 
           <ScrollArea
-            type="auto"
+            type="hover"
             scrollbars="horizontal"
             style={{
               maxHeight: collapsible ? `${contentMaxHeight}px` : undefined,
