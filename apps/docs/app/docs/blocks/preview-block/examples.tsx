@@ -245,7 +245,95 @@ export function PreviewBlockExamples() {
 
       <Separator size="4" />
 
-      {/* Example 6: Custom Height */}
+      {/* Example 6: Full-Bleed Gradient */}
+      <Flex direction="column" gap="4">
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Full-Bleed Gradient</SectionHeader.Title>
+            <SectionHeader.Description>
+              Use p="0" for gradients that should extend to the edges of the
+              preview container.
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
+        <PreviewBlock
+          p="0"
+          background={{
+            background:
+              "linear-gradient(135deg, var(--blue-9) 0%, var(--violet-9) 100%)",
+          }}
+        >
+          <Text style={{ color: "white" }} size="3" weight="medium">
+            Full-bleed gradient
+          </Text>
+        </PreviewBlock>
+        <CodeBlock
+          code={`<PreviewBlock
+  p="0"
+  background={{
+    background: "linear-gradient(135deg, var(--blue-9) 0%, var(--violet-9) 100%)",
+  }}
+>
+  <Text style={{ color: "white" }} size="3" weight="medium">
+    Full-bleed gradient
+  </Text>
+</PreviewBlock>`}
+          language="tsx"
+          showLineNumbers={true}
+          collapsible={false}
+        />
+      </Flex>
+
+      <Separator size="4" />
+
+      {/* Example 7: Image Background */}
+      <Flex direction="column" gap="4">
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Image Background</SectionHeader.Title>
+            <SectionHeader.Description>
+              Use p="0" with a background image for full-bleed photo backgrounds
+              that extend to the container edges.
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
+        <PreviewBlock
+          p="0"
+          background={{
+            backgroundColor: "hsl(220, 20%, 10%)",
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1765808925935-e4fab8f2f6c5?q=80&w=2671&auto=format&fit=crop)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <Text style={{ color: "white" }} size="3" weight="medium">
+            Image background
+          </Text>
+        </PreviewBlock>
+        <CodeBlock
+          code={`<PreviewBlock
+  p="0"
+  background={{
+    backgroundColor: "hsl(220, 20%, 10%)",
+    backgroundImage: "url(https://images.unsplash.com/photo-1765808925935-e4fab8f2f6c5?q=80&w=2671&auto=format&fit=crop)",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  <Text style={{ color: "white" }} size="3" weight="medium">
+    Image background
+  </Text>
+</PreviewBlock>`}
+          language="tsx"
+          showLineNumbers={true}
+          collapsible={false}
+        />
+      </Flex>
+
+      <Separator size="4" />
+
+      {/* Example 8: Custom Height */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>
