@@ -150,9 +150,9 @@ Customize the pattern size and color to match your design needs.
 </PreviewBlock>
 ```
 
-### Full-Bleed Background
+### Full-Bleed Gradient
 
-Use `p="0"` for images or gradients that should extend to the edges.
+Use `p="0"` for gradients that should extend to the edges.
 
 ```tsx
 <PreviewBlock
@@ -162,6 +162,24 @@ Use `p="0"` for images or gradients that should extend to the edges.
   }}
 >
   <Text color="white">Full-bleed gradient</Text>
+</PreviewBlock>
+```
+
+### Image Background
+
+Use `p="0"` with a background image for full-bleed photo backgrounds.
+
+```tsx
+<PreviewBlock
+  p="0"
+  background={{
+    backgroundColor: "hsl(220, 20%, 10%)",
+    backgroundImage: "url(https://images.unsplash.com/photo-1765808925935-e4fab8f2f6c5?q=80&w=2671&auto=format&fit=crop)",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  <Text color="white">Image background</Text>
 </PreviewBlock>
 ```
 
