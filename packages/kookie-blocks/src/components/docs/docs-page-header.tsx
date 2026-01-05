@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React, { useCallback } from 'react';
-import { Text, Link, Button } from '@kushagradhawan/kookie-ui';
-import { HugeiconsIcon } from '@hugeicons/react';
-import { Copy01Icon } from '@hugeicons/core-free-icons';
-import { PageHeader } from '../page-header/page-header.js';
-import type { DocsPageMeta } from './types.js';
+import React, { useCallback } from "react";
+import { Text, Link, Button } from "@kushagradhawan/kookie-ui";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Copy01Icon } from "@hugeicons/core-free-icons";
+import { PageHeader } from "../page-header/page-header.js";
+import type { DocsPageMeta } from "./types.js";
 
 export interface DocsPageHeaderProps {
   /** Page metadata */
@@ -18,9 +18,14 @@ export interface DocsPageHeaderProps {
   tabs?: React.ReactNode;
 }
 
-export function DocsPageHeader({ meta, actions, showCopyButton = true, tabs }: DocsPageHeaderProps) {
+export function DocsPageHeader({
+  meta,
+  actions,
+  showCopyButton = true,
+  tabs,
+}: DocsPageHeaderProps) {
   const handleCopyPage = useCallback(() => {
-    const contentArea = document.querySelector('[data-content-area]');
+    const contentArea = document.querySelector("[data-content-area]");
     if (!contentArea) return;
 
     let markdown = `# ${meta.title}\n\n`;
@@ -35,7 +40,7 @@ export function DocsPageHeader({ meta, actions, showCopyButton = true, tabs }: D
 
     markdown += `---\n\n`;
 
-    const textContent = contentArea.textContent || '';
+    const textContent = contentArea.textContent || "";
     markdown += textContent.trim();
 
     navigator.clipboard.writeText(markdown);
@@ -43,7 +48,10 @@ export function DocsPageHeader({ meta, actions, showCopyButton = true, tabs }: D
 
   return (
     <PageHeader.Root gap="4">
-      <PageHeader.Main>
+      <PageHeader.Main
+        layout={{ initial: "stacked", md: "inline" }}
+        align={{ initial: "start", md: "center" }}
+      >
         <PageHeader.Content gap="4">
           {meta.category && (
             <PageHeader.Meta>
@@ -54,7 +62,9 @@ export function DocsPageHeader({ meta, actions, showCopyButton = true, tabs }: D
           )}
           <PageHeader.Title>{meta.title}</PageHeader.Title>
           {meta.description && (
-            <PageHeader.Description size="3">{meta.description}</PageHeader.Description>
+            <PageHeader.Description size="3">
+              {meta.description}
+            </PageHeader.Description>
           )}
           {meta.source && (
             <Link
