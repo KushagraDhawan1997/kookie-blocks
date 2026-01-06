@@ -1,9 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./global.css";
 import "@kushagradhawan/kookie-ui/styles.css";
 import "@kushagradhawan/kookie-blocks/styles.css";
 import { Providers } from "../components/providers";
 import { DocsLayout } from "../components/docs-layout";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kookieblocks.com"),

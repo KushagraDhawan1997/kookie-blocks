@@ -44,8 +44,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/kookie-blocks
       '@kushagradhawan/kookie-ui':
-        specifier: ^0.1.105
-        version: 0.1.105(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: ^0.1.107
+        version: 0.1.107(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@mdx-js/loader':
         specifier: ^3.1.1
         version: 3.1.1
@@ -108,8 +108,8 @@ importers:
         specifier: ^1.1.4
         version: 1.1.4(react@19.1.1)
       '@kushagradhawan/kookie-ui':
-        specifier: '>=0.1.0'
-        version: 0.1.105(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: '>=0.1.107'
+        version: 0.1.107(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       harden-react-markdown:
         specifier: ^1.1.0
         version: 1.1.7(react-markdown@9.1.0(@types/react@19.1.6)(react@19.1.1))(react@19.1.1)
@@ -771,8 +771,8 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
-  '@kushagradhawan/kookie-ui@0.1.105':
-    resolution: {integrity: sha512-CHhZUBTGNosJNQeA7n2j9NPyaIZ2WxXDyp/gkf8yBcKWnh834huJokqtJ0K7eS1ONw6aa1pWn47OYkNmoM9fFQ==}
+  '@kushagradhawan/kookie-ui@0.1.107':
+    resolution: {integrity: sha512-hQL4WTeZF/4bmrv81svZH1HzJx4wria9se5CDM+4e7PIdDAVeoegtcdTOERU319mrGBc5wHUYmWhAP/3SmH9fA==}
     engines: {node: '>=16'}
     peerDependencies:
       '@types/react': 19.1.6
@@ -4226,7 +4226,7 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
-  '@kushagradhawan/kookie-ui@0.1.105(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@kushagradhawan/kookie-ui@0.1.107(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@radix-ui/colors': 3.0.0
       '@radix-ui/react-accordion': 1.2.12(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)

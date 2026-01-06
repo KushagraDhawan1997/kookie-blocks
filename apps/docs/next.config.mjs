@@ -32,6 +32,8 @@ const nextConfig = {
   env: {
     KOOKIE_BLOCKS_VERSION: packageJson.version,
   },
+  // Allow dev server access from local network (e.g., iPhone testing)
+  allowedDevOrigins: ["http://10.72.1.113:3002"],
 };
 
 export default withMDX(nextConfig);
