@@ -18,8 +18,12 @@ export interface DocsPageProps {
   tableOfContents?: React.ReactNode;
   /** Content max width */
   maxWidth?: string | number;
-  /** Page padding */
-  padding?: "3" | "4" | "5" | "6" | "7" | "8" | "9";
+  /** Page padding (all sides) */
+  padding?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+  /** Page horizontal padding (overrides padding for left/right) */
+  paddingX?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+  /** Page vertical padding (overrides padding for top/bottom) */
+  paddingY?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
   /** Optional header actions */
   headerActions?: React.ReactNode;
   /** Optional tabs element to render below header */
@@ -53,7 +57,9 @@ export function DocsPage({
   meta,
   tableOfContents,
   maxWidth = "48rem",
-  padding = "6",
+  padding,
+  paddingX,
+  paddingY,
   headerActions,
   headerTabs,
   header,
@@ -88,7 +94,7 @@ export function DocsPage({
           style={{ minWidth: 0 }}
           data-content-area
         >
-          <Box p={padding} style={{ maxWidth, minWidth: 0 }}>
+          <Box p={padding} px={paddingX} py={paddingY} style={{ maxWidth, minWidth: 0 }}>
             <Flex direction="column" gap={contentGap} style={{ minWidth: 0 }}>
               {/* Page Header */}
               {header
