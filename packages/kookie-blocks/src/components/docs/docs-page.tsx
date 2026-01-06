@@ -57,9 +57,9 @@ export function DocsPage({
   meta,
   tableOfContents,
   maxWidth = "48rem",
-  padding,
+  padding = "4",
   paddingX,
-  paddingY,
+  paddingY = "6",
   headerActions,
   headerTabs,
   header,
@@ -94,7 +94,12 @@ export function DocsPage({
           style={{ minWidth: 0 }}
           data-content-area
         >
-          <Box p={padding} px={paddingX} py={paddingY} style={{ maxWidth, minWidth: 0 }}>
+          <Box
+            p={padding}
+            px={paddingX}
+            py={paddingY}
+            style={{ maxWidth, minWidth: 0 }}
+          >
             <Flex direction="column" gap={contentGap} style={{ minWidth: 0 }}>
               {/* Page Header */}
               {header
