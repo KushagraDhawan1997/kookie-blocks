@@ -44,8 +44,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/kookie-blocks
       '@kushagradhawan/kookie-ui':
-        specifier: ^0.1.104
-        version: 0.1.104(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: ^0.1.105
+        version: 0.1.105(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@mdx-js/loader':
         specifier: ^3.1.1
         version: 3.1.1
@@ -771,8 +771,8 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
-  '@kushagradhawan/kookie-ui@0.1.104':
-    resolution: {integrity: sha512-HzhNT52Ak6iaweW5l1DTItrzW0Ie3uU2fYohC4AwMpwPDkI51Nlsuk9sHciCZ7LzCrrvy4xsHqcTWk12mVyVXQ==}
+  '@kushagradhawan/kookie-ui@0.1.105':
+    resolution: {integrity: sha512-CHhZUBTGNosJNQeA7n2j9NPyaIZ2WxXDyp/gkf8yBcKWnh834huJokqtJ0K7eS1ONw6aa1pWn47OYkNmoM9fFQ==}
     engines: {node: '>=16'}
     peerDependencies:
       '@types/react': 19.1.6
@@ -4275,7 +4275,7 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
-  '@kushagradhawan/kookie-ui@0.1.104(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@kushagradhawan/kookie-ui@0.1.105(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(next@15.5.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@radix-ui/colors': 3.0.0
       '@radix-ui/react-accordion': 1.2.12(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
