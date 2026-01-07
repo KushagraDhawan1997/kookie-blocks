@@ -24,7 +24,10 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
       headerActions={
         <Flex gap="2" align="center">
           <IconButton asChild variant="ghost" highContrast>
-            <Link href="https://github.com/KushagraDhawan1997/kookie-blocks" target="_blank">
+            <Link
+              href="https://github.com/KushagraDhawan1997/kookie-blocks"
+              target="_blank"
+            >
               <HugeiconsIcon icon={GithubIcon} strokeWidth={1.75} />
             </Link>
           </IconButton>

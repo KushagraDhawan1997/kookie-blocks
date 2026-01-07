@@ -142,19 +142,35 @@ MarkdownBlock.displayName = "MarkdownBlock";
  * ```
  */
 export function StreamingMarkdown({ content, id, options = {} }: StreamingMarkdownProps) {
-  const { defaultOrigin: customOrigin, enableBlockMemoization = true, blockParser, components: customComponents = {}, ...componentOptions } = options;
+  const {
+    defaultOrigin: customOrigin,
+    enableBlockMemoization = true,
+    blockParser,
+    components: customComponents,
+    // Extract individual options as primitives for stable useMemo deps
+    codeBlockCollapsible = false,
+    imageComponent,
+    inlineCodeHighContrast = true,
+    spacing = "spacious",
+  } = options;
 
   // Resolve security origin
   const defaultOrigin = useMemo(() => resolveDefaultOrigin(customOrigin), [customOrigin]);
 
   // Create component mappings with custom overrides
+  // Uses primitive deps to avoid recreating on every render
   const markdownComponents = useMemo(() => {
-    const baseComponents = createMarkdownComponents(componentOptions);
+    const baseComponents = createMarkdownComponents({
+      codeBlockCollapsible,
+      imageComponent,
+      inlineCodeHighContrast,
+      spacing,
+    });
     return {
       ...baseComponents,
       ...customComponents,
     };
-  }, [componentOptions, customComponents]);
+  }, [codeBlockCollapsible, imageComponent, inlineCodeHighContrast, spacing, customComponents]);
 
   // Parse content into blocks for memoization (if enabled and parser provided)
   const blocks = useMemo(() => {
