@@ -61,7 +61,7 @@ export const docsNavigation: DocsNavigationConfig = {
       items: [
         {
           href: "/docs/blocks/create-markdown-components",
-          title: "createMarkdownComponents",
+          title: "Markdown Components",
           icon: AiGenerativeIcon,
           badge: alphaBadge,
         },
