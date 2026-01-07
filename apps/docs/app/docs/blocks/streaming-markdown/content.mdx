@@ -83,11 +83,14 @@ export function StreamingResponse() {
 
 ### With Block Memoization
 
-For optimal performance with streaming content, enable block-level memoization using `marked.lexer`:
+For optimal performance with streaming content, enable block-level memoization using `marked.lexer`. Define the parser outside the component for stable references:
 
 ```tsx
 import { StreamingMarkdown } from '@kushagradhawan/kookie-blocks';
 import { marked } from 'marked';
+
+// Define outside component for stable reference
+const parseBlocks = (content: string) => marked.lexer(content, { gfm: true });
 
 export function ChatMessage({ message }) {
   return (
@@ -95,7 +98,7 @@ export function ChatMessage({ message }) {
       content={message.content}
       id={message.id}
       options={{
-        blockParser: (content) => marked.lexer(content, { gfm: true }),
+        blockParser: parseBlocks,
         enableBlockMemoization: true,
       }}
     />
