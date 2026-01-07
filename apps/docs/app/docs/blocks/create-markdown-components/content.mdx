@@ -1,0 +1,172 @@
+---
+title: createMarkdownComponents
+description: Component mappings for react-markdown and MDX
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/markdown
+---
+
+import { Callout, Box } from '@kushagradhawan/kookie-ui';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Alert02Icon } from '@hugeicons/core-free-icons';
+
+<Box mb="6">
+<Callout.Root color="gray" variant="outline" highContrast>
+<Callout.Icon><HugeiconsIcon icon={Alert02Icon} strokeWidth={1.75} /></Callout.Icon>
+<Callout.Text>This component's API and documentation are under review and may change. Use with caution in production.</Callout.Text>
+</Callout.Root>
+</Box>
+
+Creates component mappings for react-markdown and MDX using Kookie UI components for consistent styling. Provides styled headings, paragraphs, code blocks, lists, tables, and more.
+
+Use this utility to render markdown content with Kookie design system typography and spacing. Works with both dynamic markdown (react-markdown) and static MDX files.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+### With MDX
+
+Create an `mdx-components.tsx` file at your project root:
+
+```tsx
+import type { MDXComponents } from "mdx/types";
+import { createMarkdownComponents } from "@kushagradhawan/kookie-blocks";
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...createMarkdownComponents(),
+    ...components,
+  };
+}
+```
+
+Wrap your MDX content with the `kb-markdown` class:
+
+```tsx
+export function ArticlePage() {
+  return (
+    <div className="kb-markdown">
+      <MDXContent />
+    </div>
+  );
+}
+```
+
+### With react-markdown
+
+```tsx
+import ReactMarkdown from "react-markdown";
+import { createMarkdownComponents } from "@kushagradhawan/kookie-blocks";
+
+export function MarkdownRenderer({ content }: { content: string }) {
+  return (
+    <div className="kb-markdown">
+      <ReactMarkdown components={createMarkdownComponents()}>
+        {content}
+      </ReactMarkdown>
+    </div>
+  );
+}
+```
+
+## Options
+
+| Option | Type | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| `spacing` | `'compact' \| 'spacious'` | `'spacious'` | Spacing density. Use `compact` for chat UIs, `spacious` for articles. |
+| `codeBlockCollapsible` | `boolean` | `false` | Whether code blocks can be collapsed. |
+| `inlineCodeHighContrast` | `boolean` | `true` | High contrast styling for inline code. |
+| `imageComponent` | `function` | - | Custom image component for Next.js Image or similar. |
+
+## Spacing
+
+Use the `spacing` option to control density.
+
+### Spacious (Default)
+
+Best for documentation, articles, and long-form content where readability is key.
+
+```tsx
+createMarkdownComponents({ spacing: "spacious" })
+```
+
+### Compact
+
+Best for chat interfaces, streaming responses, and dense UI where space is limited.
+
+```tsx
+createMarkdownComponents({ spacing: "compact" })
+```
+
+## Code Blocks
+
+Code blocks use the `CodeBlock` component with syntax highlighting via Shiki.
+
+```tsx
+createMarkdownComponents({
+  codeBlockCollapsible: true, // Allow collapsing long code blocks
+  inlineCodeHighContrast: true, // High contrast inline code
+})
+```
+
+## Custom Images
+
+Pass a custom image component for Next.js Image optimization:
+
+```tsx
+import NextImage from "next/image";
+
+createMarkdownComponents({
+  imageComponent: ({ src, alt, width, height }) => (
+    <NextImage
+      src={src}
+      alt={alt}
+      width={width ? Number(width) : 800}
+      height={height ? Number(height) : 400}
+    />
+  ),
+})
+```
+
+## Container Requirement
+
+The components use margins for spacing between elements. To prevent margin collapse, wrap your markdown content with the `kb-markdown` class:
+
+```tsx
+<div className="kb-markdown">
+  {/* MDX or ReactMarkdown content */}
+</div>
+```
+
+This class applies `display: flex; flex-direction: column;` which prevents margin collapse. Required for both MDX and react-markdown usage.
+
+## Supported Elements
+
+| Element | Kookie Component | Notes |
+| ------- | ---------------- | ----- |
+| `h1`-`h6` | `Heading` | Consistent size hierarchy (9-7-5-4-3-2) |
+| `p` | `Text` | Body text with proper line height |
+| `code` | `Code` / `CodeBlock` | Inline code or syntax-highlighted blocks |
+| `ul`, `ol`, `li` | Native elements | Styled list markers |
+| `blockquote` | `Blockquote` | Styled quotes |
+| `a` | Native anchor | Accent-colored links |
+| `strong`, `em` | `Text` | Bold and italic text |
+| `hr` | `Separator` | Horizontal rule |
+| `table` | `Table` | Full table support |
+| `img` | Native or custom | Optional custom component |
+| `details`, `summary` | Native elements | Expandable sections |
+
+## With StreamingMarkdown
+
+For AI streaming responses, use `StreamingMarkdown` which handles the flex container internally:
+
+```tsx
+import { StreamingMarkdown } from "@kushagradhawan/kookie-blocks";
+
+<StreamingMarkdown content={streamingContent} />
+```
+
+See the [Streaming Markdown](/docs/blocks/streaming-markdown) documentation for details.

@@ -179,3 +179,17 @@ pre[data-theme] code span {
   width: var(--empty-state-icon-size);
   height: var(--empty-state-icon-size);
 }
+
+/* ============================================
+   Markdown Content Wrapper
+   ============================================ */
+
+/*
+ * Wrapper class for markdown content rendered with createMarkdownComponents.
+ * Prevents margin collapse by establishing a flex formatting context.
+ * Use this instead of <Flex direction="column" gap="0">.
+ */
+.kb-markdown {
+  display: flex;
+  flex-direction: column;
+}

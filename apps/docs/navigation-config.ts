@@ -60,6 +60,12 @@ export const docsNavigation: DocsNavigationConfig = {
       label: "AI",
       items: [
         {
+          href: "/docs/blocks/create-markdown-components",
+          title: "createMarkdownComponents",
+          icon: AiGenerativeIcon,
+          badge: alphaBadge,
+        },
+        {
           href: "/docs/blocks/streaming-markdown",
           title: "Streaming Markdown",
           icon: AiGenerativeIcon,
