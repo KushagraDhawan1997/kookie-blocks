@@ -160,3 +160,22 @@ pre[data-theme] code span {
   font-weight: var(--shiki-dark-font-weight);
   text-decoration: var(--shiki-dark-text-decoration);
 }
+
+/* ============================================
+   Empty State Component Styles
+   ============================================ */
+
+/*
+ * EmptyState.Icon default sizing
+ * Sets a consistent default size for icons/illustrations in empty states
+ * Can be overridden via inline styles or custom CSS
+ */
+.kb-empty-state-icon {
+  --empty-state-icon-size: var(--space-6);
+  color: var(--gray-a9);
+}
+
+.kb-empty-state-icon :where(svg) {
+  width: var(--empty-state-icon-size);
+  height: var(--empty-state-icon-size);
+}

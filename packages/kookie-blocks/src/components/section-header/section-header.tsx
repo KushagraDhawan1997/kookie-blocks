@@ -84,6 +84,8 @@ function convertLayoutToAlign(
 type SectionHeaderRootProps = Omit<FlexProps, 'direction'> & {
   /** Layout mode: stacked (vertical) or inline (horizontal with actions on right) */
   layout?: Responsive<"stacked" | "inline">;
+  /** Content alignment. Overrides the default alignment derived from layout. */
+  align?: Responsive<"start" | "center">;
   /** Show separator at bottom. Use when no tabs are present. */
   separator?: boolean;
   /** Allow explicit direction override if needed */
@@ -91,11 +93,11 @@ type SectionHeaderRootProps = Omit<FlexProps, 'direction'> & {
 };
 
 const SectionHeaderRoot = React.forwardRef<HTMLDivElement, SectionHeaderRootProps>(
-  ({ layout = "inline", separator = false, gap = "4", direction, children, ...props }, ref) => {
-    // Convert layout to direction/justify/align, but allow explicit direction override
+  ({ layout = "inline", align, separator = false, gap = "4", direction, children, ...props }, ref) => {
+    // Convert layout to direction/justify/align, but allow explicit overrides
     const computedDirection = direction || convertLayoutToDirection(layout) || "row";
     const computedJustify = convertLayoutToJustify(layout) || "between";
-    const computedAlign = convertLayoutToAlign(layout) || "center";
+    const computedAlign = align ?? convertLayoutToAlign(layout) ?? "center";
 
     return (
       <Flex ref={ref} direction="column" gap={gap} {...props}>

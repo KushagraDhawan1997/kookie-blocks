@@ -312,7 +312,73 @@ export function SectionHeaderExamples() {
 
       <Separator size="4" />
 
-      {/* Example 6: Responsive Layout */}
+      {/* Example 6: Center Aligned */}
+      <Flex direction="column" gap="4">
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Center Aligned</SectionHeader.Title>
+            <SectionHeader.Description>
+              Center content for hero-like section headers
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
+        <PreviewBlock background="none">
+          <SectionHeader.Root
+            width="100%"
+            p="4"
+            layout="stacked"
+            align="center"
+            separator
+          >
+            <SectionHeader.Content align="center">
+              <SectionHeader.Title align="center">
+                Welcome to Your Dashboard
+              </SectionHeader.Title>
+              <SectionHeader.Description align="center">
+                Get started by creating your first project or exploring the
+                documentation
+              </SectionHeader.Description>
+            </SectionHeader.Content>
+            <SectionHeader.Actions>
+              <Button size="2" variant="soft" highContrast>
+                View Docs
+              </Button>
+              <Button size="2" highContrast>
+                <HugeiconsIcon icon={Add01Icon} strokeWidth={1.75} />
+                Create Project
+              </Button>
+            </SectionHeader.Actions>
+          </SectionHeader.Root>
+        </PreviewBlock>
+        <CodeBlock
+          code={`<SectionHeader.Root layout="stacked" align="center" separator>
+  <SectionHeader.Content align="center">
+    <SectionHeader.Title align="center">
+      Welcome to Your Dashboard
+    </SectionHeader.Title>
+    <SectionHeader.Description align="center">
+      Get started by creating your first project or exploring the documentation
+    </SectionHeader.Description>
+  </SectionHeader.Content>
+  <SectionHeader.Actions>
+    <Button size="2" variant="soft" highContrast>
+      View Docs
+    </Button>
+    <Button size="2" highContrast>
+      <HugeiconsIcon icon={Add01Icon} strokeWidth={1.75} />
+      Create Project
+    </Button>
+  </SectionHeader.Actions>
+</SectionHeader.Root>`}
+          language="tsx"
+          showLineNumbers={true}
+          collapsible={false}
+        />
+      </Flex>
+
+      <Separator size="4" />
+
+      {/* Example 7: Responsive Layout */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>
@@ -365,7 +431,7 @@ export function SectionHeaderExamples() {
 
       <Separator size="4" />
 
-      {/* Example 7: Multiple Actions */}
+      {/* Example 8: Multiple Actions */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>
@@ -428,7 +494,7 @@ export function SectionHeaderExamples() {
 
       <Separator size="4" />
 
-      {/* Example 8: Title Only */}
+      {/* Example 9: Title Only */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>
@@ -459,7 +525,7 @@ export function SectionHeaderExamples() {
 
       <Separator size="4" />
 
-      {/* Example 9: Custom Sizes */}
+      {/* Example 10: Custom Sizes */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>
@@ -519,7 +585,7 @@ export function SectionHeaderExamples() {
 
       <Separator size="4" />
 
-      {/* Example 10: Actions with Dropdown */}
+      {/* Example 11: Actions with Dropdown */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>

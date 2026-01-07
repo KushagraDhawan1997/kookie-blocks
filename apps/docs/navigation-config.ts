@@ -9,6 +9,7 @@ import {
   TextAlignLeftIcon,
   Heading01Icon,
   Asterisk02Icon,
+  DashboardSquare01Icon,
 } from "@hugeicons/core-free-icons";
 
 const alphaBadge = { content: "Alpha", size: "1", highContrast: true } as const;
@@ -29,6 +30,12 @@ export const docsNavigation: DocsNavigationConfig = {
       label: "Marketing",
       items: [
         { href: "/docs/blocks/hero", title: "Hero", icon: Asterisk02Icon, badge: alphaBadge },
+        { href: "/docs/blocks/footer", title: "Footer", icon: Asterisk02Icon, badge: alphaBadge },
+      ],
+    },
+    {
+      label: "Application",
+      items: [
         {
           href: "/docs/blocks/page-header",
           title: "Page Header",
@@ -41,7 +48,12 @@ export const docsNavigation: DocsNavigationConfig = {
           icon: Heading01Icon,
           badge: alphaBadge,
         },
-        { href: "/docs/blocks/footer", title: "Footer", icon: Asterisk02Icon, badge: alphaBadge },
+        {
+          href: "/docs/blocks/empty-state",
+          title: "Empty State",
+          icon: DashboardSquare01Icon,
+          badge: alphaBadge,
+        },
       ],
     },
     {

@@ -1,0 +1,191 @@
+---
+title: Empty State
+description: Placeholder for empty content with guidance
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/empty-state
+---
+
+Guide users when content is missing with an icon, title, description, and call-to-action. Perfect for empty lists, search results with no matches, and onboarding flows where users need to create their first item.
+
+Built with compound components for flexible composition—use only what you need, from a simple title to a full empty state with icon and multiple actions.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { EmptyState } from "@kushagradhawan/kookie-blocks";
+import { Button } from "@kushagradhawan/kookie-ui";
+
+export function MyComponent() {
+  return (
+    <EmptyState.Root>
+      <EmptyState.Content>
+        <EmptyState.Title>No projects yet</EmptyState.Title>
+        <EmptyState.Description>Create your first project to get started</EmptyState.Description>
+      </EmptyState.Content>
+      <EmptyState.Actions>
+        <Button size="2" highContrast>Create Project</Button>
+      </EmptyState.Actions>
+    </EmptyState.Root>
+  );
+}
+```
+
+## Anatomy
+
+EmptyState is a compound component with the following parts:
+
+```tsx
+<EmptyState.Root>
+  <EmptyState.Icon>{/* Icon or illustration */}</EmptyState.Icon>
+  <EmptyState.Content>
+    <EmptyState.Title>{/* Main heading */}</EmptyState.Title>
+    <EmptyState.Description>{/* Supporting text */}</EmptyState.Description>
+  </EmptyState.Content>
+  <EmptyState.Actions>{/* CTA buttons */}</EmptyState.Actions>
+</EmptyState.Root>
+```
+
+## Root Props
+
+The Root component manages layout and alignment for the empty state.
+
+| Prop    | Type                   | Description                                      |
+| ------- | ---------------------- | ------------------------------------------------ |
+| `align` | `'start' \| 'center'`  | Content alignment. Defaults to `center`.         |
+| `gap`   | `Responsive<Space>`    | Gap between child elements. Defaults to `4`.     |
+
+All other props are passed through to the underlying `Flex` component.
+
+## Icon Props
+
+Container for the icon or illustration. Passes through to `Box`.
+
+| Prop       | Type   | Description                        |
+| ---------- | ------ | ---------------------------------- |
+| `children` | `node` | Icon element to display            |
+
+## Content Props
+
+Groups title and description with tighter spacing. Passes through to `Flex`.
+
+| Prop        | Type                | Description                                    |
+| ----------- | ------------------- | ---------------------------------------------- |
+| `direction` | `FlexDirection`     | Flex direction. Defaults to `column`.          |
+| `gap`       | `Responsive<Space>` | Gap between title and description. Defaults to `1`. |
+
+## Title Props
+
+The main heading for the empty state. Passes through to `Heading`.
+
+| Prop     | Type                  | Description                                    |
+| -------- | --------------------- | ---------------------------------------------- |
+| `as`     | `'h1' \| ... \| 'h6'` | Heading level. Defaults to `h3`.               |
+| `size`   | `'1' \| ... \| '9'`   | Text size. Defaults to `5`.                    |
+| `weight` | `HeadingWeight`       | Font weight. Defaults to `medium`.             |
+| `align`  | `TextAlign`           | Text alignment. Defaults to `center`.          |
+
+## Description Props
+
+Supporting text explaining the empty state. Passes through to `Text`.
+
+| Prop    | Type         | Description                                    |
+| ------- | ------------ | ---------------------------------------------- |
+| `size`  | `'1' \| '2'` | Text size. Defaults to `2`.                    |
+| `color` | `Color`      | Text color. Defaults to `gray`.                |
+| `align` | `TextAlign`  | Text alignment. Defaults to `center`.          |
+
+## Actions Props
+
+Container for action buttons. Passes through to `Flex`.
+
+| Prop      | Type                | Description                                    |
+| --------- | ------------------- | ---------------------------------------------- |
+| `gap`     | `Responsive<Space>` | Gap between buttons. Defaults to `2`.          |
+| `align`   | `FlexAlign`         | Alignment. Defaults to `center`.               |
+| `justify` | `FlexJustify`       | Justification. Defaults to `center`.           |
+
+## Alignment
+
+Use the `align` prop on Root to control content alignment. Defaults to `center`.
+
+### Center (Default)
+
+Most common for empty states that fill a container.
+
+```tsx
+<EmptyState.Root align="center">
+  <EmptyState.Content>
+    <EmptyState.Title>No results</EmptyState.Title>
+  </EmptyState.Content>
+</EmptyState.Root>
+```
+
+### Start
+
+For inline empty states or when left alignment fits the layout.
+
+```tsx
+<EmptyState.Root align="start">
+  <EmptyState.Content>
+    <EmptyState.Title align="left">No items</EmptyState.Title>
+    <EmptyState.Description align="left">Add items to see them here</EmptyState.Description>
+  </EmptyState.Content>
+</EmptyState.Root>
+```
+
+## Examples
+
+### With Icon
+
+Add visual context with an icon.
+
+```tsx
+<EmptyState.Root>
+  <EmptyState.Icon>
+    <HugeiconsIcon icon={FolderOpenIcon} strokeWidth={1.25} />
+  </EmptyState.Icon>
+  <EmptyState.Content>
+    <EmptyState.Title>No files</EmptyState.Title>
+    <EmptyState.Description>Upload files to get started</EmptyState.Description>
+  </EmptyState.Content>
+  <EmptyState.Actions>
+    <Button size="2" highContrast>Upload Files</Button>
+  </EmptyState.Actions>
+</EmptyState.Root>
+```
+
+### Multiple Actions
+
+Offer primary and secondary actions.
+
+```tsx
+<EmptyState.Root>
+  <EmptyState.Content>
+    <EmptyState.Title>No team members</EmptyState.Title>
+    <EmptyState.Description>Invite colleagues to collaborate</EmptyState.Description>
+  </EmptyState.Content>
+  <EmptyState.Actions>
+    <Button size="2" variant="soft" color="gray" highContrast>Learn More</Button>
+    <Button size="2" highContrast>Invite Members</Button>
+  </EmptyState.Actions>
+</EmptyState.Root>
+```
+
+## Accessibility
+
+EmptyState provides semantic structure for screen readers.
+
+### Heading Hierarchy
+
+- Title uses `h3` by default; adjust with the `as` prop to fit your page structure
+- Description provides context for the empty state
+
+### Focus Management
+
+- Action buttons are keyboard accessible
+- Tab order follows visual layout
