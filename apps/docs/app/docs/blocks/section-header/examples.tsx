@@ -212,7 +212,10 @@ export function SectionHeaderExamples() {
                     Overview
                   </Tabs.Trigger>
                   <Tabs.Trigger value="traffic">
-                    <HugeiconsIcon icon={ChartLineData01Icon} strokeWidth={1.75} />
+                    <HugeiconsIcon
+                      icon={ChartLineData01Icon}
+                      strokeWidth={1.75}
+                    />
                     Traffic
                   </Tabs.Trigger>
                   <Tabs.Trigger value="conversions">

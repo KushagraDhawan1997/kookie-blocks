@@ -29,7 +29,10 @@ import type {
   ShikiConfig,
   PreviewBackgroundProps,
 } from "./types.js";
-import { extractTextFromChildren, extractLanguageFromChildren } from "./types.js";
+import {
+  extractTextFromChildren,
+  extractLanguageFromChildren,
+} from "./types.js";
 import { useCodeCard } from "./use-code-card.js";
 import { LanguageBadge } from "./language-badge.js";
 
@@ -154,9 +157,9 @@ const CodeCard = memo(function CodeCard({
 
   return (
     <Box position="relative">
-      <Card size="1" variant="soft">
+      <Card size="1" variant="soft" inset>
         <Flex direction="column">
-          <Flex justify="between" align="start" gap="2">
+          <Flex justify="between" align="start" gap="2" p="2">
             <Flex align="center" gap="2">
               {showLanguage && <LanguageBadge language={language} />}
               {file && (
@@ -210,7 +213,7 @@ const CodeCard = memo(function CodeCard({
               maxHeight: collapsible ? `${contentMaxHeight}px` : undefined,
             }}
           >
-            <Box ref={contentRef} className={contentClassName}>
+            <Box ref={contentRef} className={contentClassName} p="2">
               {isLoading ? <CodeSkeleton /> : children}
             </Box>
           </ScrollArea>
@@ -314,7 +317,10 @@ const RuntimeCodeSection = memo(function RuntimeCodeSection({
       isLoading={isInitialLoading}
     >
       {highlighted ? (
-        <Box className="shiki-wrapper" dangerouslySetInnerHTML={{ __html: highlighted }} />
+        <Box
+          className="shiki-wrapper"
+          dangerouslySetInnerHTML={{ __html: highlighted }}
+        />
       ) : null}
     </CodeCard>
   );
