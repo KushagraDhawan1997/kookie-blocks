@@ -15,6 +15,7 @@ import {
   Flex,
 } from "@kushagradhawan/kookie-ui";
 import NextLink from "next/link";
+import { Testimonial } from "@/components/testimonial";
 
 export default function Page() {
   const currentYear = new Date().getFullYear();
@@ -49,7 +50,13 @@ export default function Page() {
             </Hero.Description>
 
             <Hero.Actions>
-              <Button asChild highContrast color="gray" variant="solid" size="2">
+              <Button
+                asChild
+                highContrast
+                color="gray"
+                variant="solid"
+                size="2"
+              >
                 <NextLink href="/docs/installation">
                   Get Started with Blocks
                   <HugeiconsIcon icon={ArrowUpRight01Icon} strokeWidth={1.5} />
@@ -59,6 +66,15 @@ export default function Page() {
           </Hero.Root>
         </Container>
       </Section>
+
+      <Separator size="4" light />
+
+      <Testimonial
+        quote="Kookie Blocks takes the foundations of Kookie UI and turns them into ready-to-use building blocks. Instead of assembling components from scratch every time, we now have powerful, composable patterns that just work. It's going to change how we build interfaces."
+        author="Anuj"
+        designation="Software Engineer at Womp"
+        avatar="https://media.licdn.com/dms/image/v2/D5603AQGWSOGxFf3cCw/profile-displayphoto-shrink_400_400/B56ZSwejfaGoAg-/0/1738127590217?e=1769040000&v=beta&t=set7ygl1nzZiXozOoibgjTYfIsenO28wVGcw1dK8sCw"
+      />
 
       <Box mb="9">
         <Separator size="4" light />
@@ -96,7 +112,10 @@ export default function Page() {
                     <Text size="2" color="gray">
                       © {currentYear} Kushagra Dhawan. Licensed under MIT.
                     </Text>
-                    <Footer.Link href="https://github.com/KushagraDhawan1997/kookie-blocks" target="_blank">
+                    <Footer.Link
+                      href="https://github.com/KushagraDhawan1997/kookie-blocks"
+                      target="_blank"
+                    >
                       GitHub
                     </Footer.Link>
                     <Footer.Link href="/sitemap.xml">Sitemap</Footer.Link>
