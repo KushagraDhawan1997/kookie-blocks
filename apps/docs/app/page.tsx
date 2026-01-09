@@ -100,7 +100,7 @@ export default function Page() {
                     </Footer.Link>
                     {" + "}
                     <Footer.Link
-                      href="https://blocks.hellokookie.com/"
+                      href="https://kookieblocks.com/"
                       target="_blank"
                       underline="always"
                     >
@@ -134,7 +134,7 @@ export default function Page() {
                     Kookie UI
                   </Footer.Link>
                   <Footer.Link
-                    href="https://blocks.hellokookie.com/"
+                    href="https://kookieblocks.com/"
                     target="_blank"
                   >
                     Kookie Blocks
