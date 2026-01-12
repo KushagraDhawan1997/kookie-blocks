@@ -2,7 +2,7 @@
 
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
-import { Hero, Footer } from "@kushagradhawan/kookie-blocks";
+import { Hero, Footer, Testimonial } from "@kushagradhawan/kookie-blocks";
 import {
   Avatar,
   Button,
@@ -15,7 +15,6 @@ import {
   Flex,
 } from "@kushagradhawan/kookie-ui";
 import NextLink from "next/link";
-import { Testimonial } from "@/components/testimonial";
 
 export default function Page() {
   const currentYear = new Date().getFullYear();
@@ -69,12 +68,29 @@ export default function Page() {
 
       <Separator size="4" light />
 
-      <Testimonial
-        quote="Kookie Blocks takes the foundations of Kookie UI and turns them into ready-to-use building blocks. Instead of assembling components from scratch every time, we now have powerful, composable patterns that just work. It's going to change how we build interfaces."
-        author="Anuj"
-        designation="Software Engineer at Womp"
-        avatar="https://media.licdn.com/dms/image/v2/D5603AQGWSOGxFf3cCw/profile-displayphoto-shrink_400_400/B56ZSwejfaGoAg-/0/1738127590217?e=1769040000&v=beta&t=set7ygl1nzZiXozOoibgjTYfIsenO28wVGcw1dK8sCw"
-      />
+      <Section size="4">
+        <Container size="3" px={{ initial: "4", sm: "6" }}>
+          <Testimonial.Root py="6">
+            <Testimonial.Quote>
+              Kookie Blocks takes the foundations of Kookie UI and turns them
+              into ready-to-use building blocks. Instead of assembling
+              components from scratch every time, we now have powerful,
+              composable patterns that just work. It's going to change how we
+              build interfaces.
+            </Testimonial.Quote>
+            <Testimonial.Author>
+              <Testimonial.Avatar
+                src="https://media.licdn.com/dms/image/v2/D5603AQGWSOGxFf3cCw/profile-displayphoto-shrink_400_400/B56ZSwejfaGoAg-/0/1738127590217?e=1769040000&v=beta&t=set7ygl1nzZiXozOoibgjTYfIsenO28wVGcw1dK8sCw"
+                fallback="A"
+              />
+              <Testimonial.Details>
+                <Testimonial.Name>Anuj</Testimonial.Name>
+                <Testimonial.Role>Software Engineer at Womp</Testimonial.Role>
+              </Testimonial.Details>
+            </Testimonial.Author>
+          </Testimonial.Root>
+        </Container>
+      </Section>
 
       <Box mb="9">
         <Separator size="4" light />
