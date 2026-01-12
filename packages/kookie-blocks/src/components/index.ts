@@ -6,3 +6,4 @@ export * from './hero/index.js';
 export * from './markdown/index.js';
 export * from './page-header/index.js';
 export * from './section-header/index.js';
+export * from './testimonial/index.js';
