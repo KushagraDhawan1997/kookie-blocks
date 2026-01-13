@@ -31,6 +31,7 @@ export const docsNavigation: DocsNavigationConfig = {
       items: [
         { href: "/docs/blocks/hero", title: "Hero", icon: Asterisk02Icon, badge: alphaBadge },
         { href: "/docs/blocks/footer", title: "Footer", icon: Asterisk02Icon, badge: alphaBadge },
+        { href: "/docs/blocks/testimonial", title: "Testimonial", icon: Asterisk02Icon, badge: alphaBadge },
       ],
     },
     {
