@@ -1,0 +1,327 @@
+---
+title: Testimonial
+description: A composable testimonial component for displaying customer quotes and social proof.
+source: https://github.com/KushagraDhawan1997/kookie-blocks/tree/main/packages/kookie-blocks/src/components/testimonial
+---
+
+Display customer testimonials with consistent styling and flexible composition. Perfect for landing pages, marketing sections, and anywhere you need to showcase social proof.
+
+Built with compound components for maximum flexibility—mix and match Quote, Author, Avatar, Name, and Role to create any testimonial layout.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-blocks
+```
+
+## Usage
+
+```tsx
+import { Testimonial } from '@kushagradhawan/kookie-blocks';
+
+export function MyTestimonial() {
+  return (
+    <Testimonial.Root>
+      <Testimonial.Quote>
+        This product changed how our team works. Highly recommended!
+      </Testimonial.Quote>
+      <Testimonial.Author>
+        <Testimonial.Avatar src="/avatar.jpg" fallback="JD" />
+        <Testimonial.Details>
+          <Testimonial.Name>Jane Doe</Testimonial.Name>
+          <Testimonial.Role>CEO at Acme Inc</Testimonial.Role>
+        </Testimonial.Details>
+      </Testimonial.Author>
+    </Testimonial.Root>
+  );
+}
+```
+
+## Anatomy
+
+Testimonial is a compound component with these parts:
+
+```tsx
+<Testimonial.Root>
+  <Testimonial.Quote>{/* Quote text */}</Testimonial.Quote>
+  <Testimonial.Author>
+    <Testimonial.Avatar />{/* Author's avatar */}
+    <Testimonial.Details>
+      <Testimonial.Name>{/* Author's name */}</Testimonial.Name>
+      <Testimonial.Role>{/* Author's role/title */}</Testimonial.Role>
+    </Testimonial.Details>
+  </Testimonial.Author>
+</Testimonial.Root>
+```
+
+## Props
+
+### Testimonial.Root
+
+Main container for testimonial content. Extends Kookie UI's Flex component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `direction` | `'row' \| 'column'` | `'column'` | Layout direction |
+| `align` | `'start' \| 'center' \| 'end'` | `'center'` | Content alignment |
+| `justify` | `'start' \| 'center' \| 'end'` | `'center'` | Content justification |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'6'` | Spacing between children |
+
+All other Flex props from Kookie UI are supported.
+
+### Testimonial.Quote
+
+The quote text. Extends Kookie UI's Heading component. Automatically wraps content in quotation marks.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'7'` | Heading size |
+| `weight` | `'light' \| 'regular' \| 'medium' \| 'bold'` | `'medium'` | Font weight |
+| `align` | `'left' \| 'center' \| 'right'` | `'center'` | Text alignment |
+
+All other Heading props from Kookie UI are supported.
+
+### Testimonial.Author
+
+Container for author information. Extends Kookie UI's Flex component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `direction` | `'row' \| 'column'` | `'column'` | Layout direction |
+| `align` | `'start' \| 'center' \| 'end'` | `'center'` | Alignment of children |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'2'` | Spacing between children |
+
+All other Flex props from Kookie UI are supported.
+
+### Testimonial.Avatar
+
+Author's avatar image. Extends Kookie UI's Avatar component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'4'` | Avatar size |
+| `radius` | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'` | `'full'` | Border radius |
+| `src` | `string` | - | Image source URL |
+| `fallback` | `string` | - | Fallback text when image fails to load |
+
+All other Avatar props from Kookie UI are supported.
+
+### Testimonial.Name
+
+Author's name. Extends Kookie UI's Text component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'3'` | Text size |
+| `weight` | `'light' \| 'regular' \| 'medium' \| 'bold'` | `'medium'` | Font weight |
+
+All other Text props from Kookie UI are supported.
+
+### Testimonial.Role
+
+Author's role or designation. Extends Kookie UI's Text component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'2'` | Text size |
+| `color` | `string` | `'gray'` | Text color |
+
+All other Text props from Kookie UI are supported.
+
+### Testimonial.Details
+
+Container for name and role. Extends Kookie UI's Flex component.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `direction` | `'row' \| 'column'` | `'column'` | Layout direction |
+| `align` | `'start' \| 'center' \| 'end'` | `'center'` | Alignment of children |
+| `gap` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'1'` | Spacing between children |
+
+All other Flex props from Kookie UI are supported.
+
+## Examples
+
+### Basic Testimonial
+
+Simple centered testimonial with quote and author:
+
+```tsx showLineNumbers
+import { Testimonial } from '@kushagradhawan/kookie-blocks';
+
+export function BasicTestimonial() {
+  return (
+    <Testimonial.Root>
+      <Testimonial.Quote>
+        The best investment we made this year.
+      </Testimonial.Quote>
+      <Testimonial.Author>
+        <Testimonial.Avatar fallback="JD" />
+        <Testimonial.Details>
+          <Testimonial.Name>John Doe</Testimonial.Name>
+          <Testimonial.Role>Product Manager</Testimonial.Role>
+        </Testimonial.Details>
+      </Testimonial.Author>
+    </Testimonial.Root>
+  );
+}
+```
+
+### With Avatar Image
+
+Include an avatar image for visual credibility:
+
+```tsx showLineNumbers
+import { Testimonial } from '@kushagradhawan/kookie-blocks';
+
+export function AvatarTestimonial() {
+  return (
+    <Testimonial.Root>
+      <Testimonial.Quote>
+        Kookie Blocks transformed our development workflow.
+      </Testimonial.Quote>
+      <Testimonial.Author>
+        <Testimonial.Avatar
+          src="/team/sarah.jpg"
+          fallback="SC"
+        />
+        <Testimonial.Details>
+          <Testimonial.Name>Sarah Chen</Testimonial.Name>
+          <Testimonial.Role>Engineering Lead at TechCorp</Testimonial.Role>
+        </Testimonial.Details>
+      </Testimonial.Author>
+    </Testimonial.Root>
+  );
+}
+```
+
+### Left-Aligned
+
+Align content to the start for editorial layouts:
+
+```tsx showLineNumbers
+import { Testimonial } from '@kushagradhawan/kookie-blocks';
+
+export function LeftAlignedTestimonial() {
+  return (
+    <Testimonial.Root align="start">
+      <Testimonial.Quote align="left">
+        Finally, a component library that understands our needs.
+      </Testimonial.Quote>
+      <Testimonial.Author align="start">
+        <Testimonial.Avatar fallback="MR" />
+        <Testimonial.Details align="start">
+          <Testimonial.Name>Mike Rodriguez</Testimonial.Name>
+          <Testimonial.Role>CTO at StartupXYZ</Testimonial.Role>
+        </Testimonial.Details>
+      </Testimonial.Author>
+    </Testimonial.Root>
+  );
+}
+```
+
+### Horizontal Author Layout
+
+Display author info in a row instead of column:
+
+```tsx showLineNumbers
+import { Testimonial } from '@kushagradhawan/kookie-blocks';
+
+export function HorizontalAuthorTestimonial() {
+  return (
+    <Testimonial.Root>
+      <Testimonial.Quote>
+        Incredible attention to detail in every component.
+      </Testimonial.Quote>
+      <Testimonial.Author direction="row" gap="3">
+        <Testimonial.Avatar fallback="AL" />
+        <Testimonial.Details align="start">
+          <Testimonial.Name>Alex Lee</Testimonial.Name>
+          <Testimonial.Role>Designer at Agency Co</Testimonial.Role>
+        </Testimonial.Details>
+      </Testimonial.Author>
+    </Testimonial.Root>
+  );
+}
+```
+
+### With Custom Styling
+
+Customize sizes and spacing:
+
+```tsx showLineNumbers
+import { Testimonial } from '@kushagradhawan/kookie-blocks';
+
+export function StyledTestimonial() {
+  return (
+    <Testimonial.Root gap="8" py="6">
+      <Testimonial.Quote size="8">
+        A game-changer for our product team.
+      </Testimonial.Quote>
+      <Testimonial.Author gap="3">
+        <Testimonial.Avatar size="5" fallback="EP" />
+        <Testimonial.Details>
+          <Testimonial.Name size="4">Emma Parker</Testimonial.Name>
+          <Testimonial.Role size="3">VP of Product</Testimonial.Role>
+        </Testimonial.Details>
+      </Testimonial.Author>
+    </Testimonial.Root>
+  );
+}
+```
+
+### In Section and Container
+
+Combine with Kookie UI layout components:
+
+```tsx showLineNumbers
+import { Testimonial } from '@kushagradhawan/kookie-blocks';
+import { Section, Container } from '@kushagradhawan/kookie-ui';
+
+export function LayoutTestimonial() {
+  return (
+    <Section size="4">
+      <Container size="3">
+        <Testimonial.Root py="6">
+          <Testimonial.Quote>
+            The composable approach makes customization a breeze.
+          </Testimonial.Quote>
+          <Testimonial.Author>
+            <Testimonial.Avatar fallback="DW" />
+            <Testimonial.Details>
+              <Testimonial.Name>David Wilson</Testimonial.Name>
+              <Testimonial.Role>Senior Developer</Testimonial.Role>
+            </Testimonial.Details>
+          </Testimonial.Author>
+        </Testimonial.Root>
+      </Container>
+    </Section>
+  );
+}
+```
+
+## Accessibility
+
+Testimonial provides semantic HTML structure for screen readers:
+
+### Semantic HTML
+
+- `Testimonial.Quote` uses `<h1>` by default (customizable with `as` prop)
+- Proper heading hierarchy preserved
+- Semantic Flex container structure
+
+### Screen Readers
+
+- Quote announces as heading with appropriate level
+- Logical reading order maintained by flex layout
+- Author information provides context for the quote
+
+## Changelog
+
+### Added
+
+- Initial release with compound component architecture
+- Added `Testimonial.Root`, `Testimonial.Quote`, `Testimonial.Author`, `Testimonial.Avatar`, `Testimonial.Name`, `Testimonial.Role`, `Testimonial.Details` components
+- Built-in sensible defaults while maintaining full customization
+- Support for left, center, right alignment
+- Automatic quotation marks around quote text
