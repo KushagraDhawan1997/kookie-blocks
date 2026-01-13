@@ -1,6 +1,11 @@
 "use client";
 
-import { Testimonial, PreviewBlock, CodeBlock, SectionHeader } from "@kushagradhawan/kookie-blocks";
+import {
+  Testimonial,
+  PreviewBlock,
+  CodeBlock,
+  SectionHeader,
+} from "@kushagradhawan/kookie-blocks";
 import { Flex, Separator } from "@kushagradhawan/kookie-ui";
 
 export function TestimonialExamples() {
@@ -133,7 +138,9 @@ export function TestimonialExamples() {
               />
               <Testimonial.Details align="start">
                 <Testimonial.Name>Sarah Chen</Testimonial.Name>
-                <Testimonial.Role>Engineering Lead at TechCorp</Testimonial.Role>
+                <Testimonial.Role>
+                  Engineering Lead at TechCorp
+                </Testimonial.Role>
               </Testimonial.Details>
             </Testimonial.Author>
           </Testimonial.Root>
@@ -240,7 +247,9 @@ export function TestimonialExamples() {
               />
               <Testimonial.Details>
                 <Testimonial.Name size="4">Emma Parker</Testimonial.Name>
-                <Testimonial.Role size="3">VP of Product at StartupXYZ</Testimonial.Role>
+                <Testimonial.Role size="3">
+                  VP of Product at StartupXYZ
+                </Testimonial.Role>
               </Testimonial.Details>
             </Testimonial.Author>
           </Testimonial.Root>
@@ -286,9 +295,9 @@ export function TestimonialExamples() {
             <Testimonial.Quote size="6">
               Simple, elegant, and powerful. Exactly what we needed.
             </Testimonial.Quote>
-            <Testimonial.Author gap="2">
+            <Testimonial.Author direction="row" gap="2">
               <Testimonial.Avatar size="3" fallback="DW" />
-              <Testimonial.Details>
+              <Testimonial.Details align="start">
                 <Testimonial.Name size="2">David Wilson</Testimonial.Name>
                 <Testimonial.Role size="1">Senior Developer</Testimonial.Role>
               </Testimonial.Details>
@@ -300,9 +309,9 @@ export function TestimonialExamples() {
   <Testimonial.Quote size="6">
     Simple, elegant, and powerful. Exactly what we needed.
   </Testimonial.Quote>
-  <Testimonial.Author gap="2">
+  <Testimonial.Author direction="row" gap="2">
     <Testimonial.Avatar size="3" fallback="DW" />
-    <Testimonial.Details>
+    <Testimonial.Details align="start">
       <Testimonial.Name size="2">David Wilson</Testimonial.Name>
       <Testimonial.Role size="1">Senior Developer</Testimonial.Role>
     </Testimonial.Details>

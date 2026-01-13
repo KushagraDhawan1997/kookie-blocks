@@ -75,7 +75,7 @@ TestimonialRole.displayName = "Testimonial.Role";
 // Testimonial.Details - Container for name and role
 type TestimonialDetailsProps = FlexProps;
 const TestimonialDetails = React.forwardRef<HTMLDivElement, TestimonialDetailsProps>(
-  ({ direction = "column", align = "center", gap = "1", ...props }, ref) => {
+  ({ direction = "column", align = "center", gap = "0", ...props }, ref) => {
     return (
       <Flex ref={ref} direction={direction} align={align} gap={gap} {...props} />
     );
