@@ -7,6 +7,8 @@ import { Copy01Icon } from "@hugeicons/core-free-icons";
 import { PageHeader } from "../page-header/page-header.js";
 import type { DocsPageMeta } from "./types.js";
 
+type SpaceScale = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+
 export interface DocsPageHeaderProps {
   /** Page metadata */
   meta: DocsPageMeta;
@@ -16,6 +18,12 @@ export interface DocsPageHeaderProps {
   showCopyButton?: boolean;
   /** Optional tabs element to render below header */
   tabs?: React.ReactNode;
+  /** Gap between content items (meta, title, description) */
+  contentGap?: SpaceScale;
+  /** Gap on the root header wrapper */
+  rootGap?: SpaceScale;
+  /** Show a separator at the bottom of the header */
+  separator?: boolean;
 }
 
 export function DocsPageHeader({
@@ -23,6 +31,9 @@ export function DocsPageHeader({
   actions,
   showCopyButton = true,
   tabs,
+  contentGap = "4",
+  rootGap = "4",
+  separator = false,
 }: DocsPageHeaderProps) {
   const handleCopyPage = useCallback(() => {
     const contentArea = document.querySelector("[data-content-area]");
@@ -47,12 +58,12 @@ export function DocsPageHeader({
   }, [meta.title, meta.description, meta.source]);
 
   return (
-    <PageHeader.Root gap="4">
+    <PageHeader.Root gap={rootGap} separator={separator}>
       <PageHeader.Main
         layout={{ initial: "stacked", md: "inline" }}
         align={{ initial: "start", md: "center" }}
       >
-        <PageHeader.Content gap="4">
+        <PageHeader.Content gap={contentGap}>
           {meta.category && (
             <PageHeader.Meta>
               <Text size="2" weight="medium">

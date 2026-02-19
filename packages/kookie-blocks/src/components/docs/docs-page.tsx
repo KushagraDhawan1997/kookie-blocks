@@ -50,6 +50,12 @@ export interface DocsPageProps {
     initial?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
     sm?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
   };
+  /** Gap between header content items (meta, title, description) */
+  headerContentGap?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+  /** Gap on the header root wrapper */
+  headerRootGap?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+  /** Show a separator between header and content */
+  headerSeparator?: boolean;
 }
 
 export function DocsPage({
@@ -70,6 +76,9 @@ export function DocsPage({
   contentGap = "8",
   outerMargin = "6",
   contentPadding = { initial: "2", sm: "4" },
+  headerContentGap,
+  headerRootGap,
+  headerSeparator,
 }: DocsPageProps) {
   const currentYear = new Date().getFullYear();
   const showHeader = header || meta;
@@ -109,6 +118,9 @@ export function DocsPage({
                       meta={meta}
                       actions={headerActions}
                       tabs={headerTabs}
+                      contentGap={headerContentGap}
+                      rootGap={headerRootGap}
+                      separator={headerSeparator}
                     />
                   )}
 
