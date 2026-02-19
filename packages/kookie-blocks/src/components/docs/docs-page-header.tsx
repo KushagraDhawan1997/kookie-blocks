@@ -59,54 +59,54 @@ export function DocsPageHeader({
 
   return (
     <PageHeader.Root gap={rootGap} separator={separator}>
-      <PageHeader.Main
-        layout={{ initial: "stacked", md: "inline" }}
-        align={{ initial: "start", md: "center" }}
-      >
-        <PageHeader.Content gap={contentGap}>
-          {meta.category && (
-            <PageHeader.Meta>
-              <Text size="2" weight="medium">
-                {meta.category}
-              </Text>
-            </PageHeader.Meta>
-          )}
+      <PageHeader.Content gap={contentGap}>
+        {meta.category && (
+          <PageHeader.Meta>
+            <Text size="2" weight="medium">
+              {meta.category}
+            </Text>
+          </PageHeader.Meta>
+        )}
+        <PageHeader.Main
+          layout={{ initial: "stacked", md: "inline" }}
+          align={{ initial: "start", md: "center" }}
+        >
           <PageHeader.Title>{meta.title}</PageHeader.Title>
-          {meta.description && (
-            <PageHeader.Description size="3">
-              {meta.description}
-            </PageHeader.Description>
-          )}
-          {meta.source && (
-            <Link
-              size="3"
-              href={meta.source}
-              target="_blank"
-              color="gray"
-              highContrast
-              rel="noreferrer"
-            >
-              View source →
-            </Link>
-          )}
-        </PageHeader.Content>
-        <PageHeader.Actions gap="4">
-          {actions}
-          {showCopyButton && (
-            <Button
-              size="2"
-              variant="ghost"
-              color="gray"
-              highContrast
-              onClick={handleCopyPage}
-              aria-label="Copy page content"
-            >
-              <HugeiconsIcon icon={Copy01Icon} />
-              Copy page
-            </Button>
-          )}
-        </PageHeader.Actions>
-      </PageHeader.Main>
+          <PageHeader.Actions gap="4">
+            {actions}
+            {showCopyButton && (
+              <Button
+                size="2"
+                variant="ghost"
+                color="gray"
+                highContrast
+                onClick={handleCopyPage}
+                aria-label="Copy page content"
+              >
+                <HugeiconsIcon icon={Copy01Icon} />
+                Copy page
+              </Button>
+            )}
+          </PageHeader.Actions>
+        </PageHeader.Main>
+        {meta.description && (
+          <PageHeader.Description size="3">
+            {meta.description}
+          </PageHeader.Description>
+        )}
+        {meta.source && (
+          <Link
+            size="3"
+            href={meta.source}
+            target="_blank"
+            color="gray"
+            highContrast
+            rel="noreferrer"
+          >
+            View source →
+          </Link>
+        )}
+      </PageHeader.Content>
       {tabs && <PageHeader.Tabs mt="4">{tabs}</PageHeader.Tabs>}
     </PageHeader.Root>
   );
