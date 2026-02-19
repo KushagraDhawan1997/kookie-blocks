@@ -97,7 +97,7 @@ type HeroMediaProps = FlexProps & {
   position?: "left" | "right" | "below" | "background";
 };
 const HeroMedia = React.forwardRef<HTMLDivElement, HeroMediaProps>(
-  ({ position = "below", ...props }, ref) => {
+  ({ position: _position = "below", ...props }, ref) => {
     // For now, just render as a Flex container
     // Position handling will be done by parent layout
     return <Flex ref={ref} {...props} />;

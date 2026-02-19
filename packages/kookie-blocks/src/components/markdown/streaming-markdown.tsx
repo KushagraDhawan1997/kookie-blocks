@@ -1,6 +1,6 @@
 "use client";
 
-import React, { memo, useMemo, type ReactNode } from "react";
+import React, { memo, useMemo } from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";

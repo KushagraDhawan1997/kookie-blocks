@@ -4,7 +4,7 @@ import type { FlexProps } from "@kushagradhawan/kookie-ui/components/flex";
 import type { TextProps } from "@kushagradhawan/kookie-ui/components/text";
 import type { LinkProps } from "@kushagradhawan/kookie-ui/components/link";
 import type { IconButtonProps } from "@kushagradhawan/kookie-ui/components/icon-button";
-import type { HeadingProps } from "@kushagradhawan/kookie-ui/components/heading";
+
 
 // Footer.Root Props
 type FooterRootProps = FlexProps & {

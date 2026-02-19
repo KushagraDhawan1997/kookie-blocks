@@ -2,7 +2,6 @@ import React from "react";
 import {
   Flex,
   Box,
-  Separator,
   Container,
   Text,
   Link,
@@ -81,7 +80,6 @@ export function DocsPage({
   headerSeparator,
 }: DocsPageProps) {
   const currentYear = new Date().getFullYear();
-  const showHeader = header || meta;
 
   return (
     <Flex
@@ -123,8 +121,6 @@ export function DocsPage({
                       separator={headerSeparator}
                     />
                   )}
-
-              {/* {showHeader && <Separator size="4" />} */}
 
               <Flex direction="column" gap="0" style={{ minWidth: 0 }}>
                 {children}

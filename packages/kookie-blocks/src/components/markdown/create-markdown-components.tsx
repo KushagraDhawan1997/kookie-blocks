@@ -1,6 +1,6 @@
 import React, { type ReactNode } from "react";
 import type { Components } from "react-markdown";
-import { Blockquote, Box, Code, Flex, Heading, Text, Table, Separator } from "@kushagradhawan/kookie-ui";
+import { Blockquote, Box, Code, Heading, Text, Table, Separator } from "@kushagradhawan/kookie-ui";
 import { CodeBlock } from "../code/index.js";
 import type { MarkdownComponentOptions, MarkdownChildrenProps } from "./types.js";
 

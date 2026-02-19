@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useCallback, useRef, memo } from 'react';
-import { Box, Text, Link, Flex } from '@kushagradhawan/kookie-ui';
+import { Text, Link, Flex } from '@kushagradhawan/kookie-ui';
 import type { TocItem } from './types.js';
 
 // Generate slug from heading text
