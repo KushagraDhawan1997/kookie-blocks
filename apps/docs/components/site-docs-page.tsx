@@ -22,8 +22,10 @@ interface SiteDocsPageProps {
 export function SiteDocsPage(props: SiteDocsPageProps) {
   return (
     <DocsPage
-      {...props}
       containerSize="2"
+      {...props}
+      headerContentGap="5"
+      headerSeparator={!props.headerTabs}
       showFooter
       footerCopyright={{
         name: "Kushagra Dhawan",

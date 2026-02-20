@@ -9,7 +9,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       grayColor="auto"
       material="solid"
       radius="medium"
-      fontFamily="sans"
+      fontFamily="mono"
     >
       {children}
       <ThemePanel defaultOpen={false} />
