@@ -27,6 +27,38 @@ export interface DocsShellProps {
   pathname?: string;
   /** Link component to use (defaults to 'a') */
   linkComponent?: React.ComponentType<{ href: string; children: React.ReactNode; prefetch?: boolean; 'aria-label'?: string }>;
+  /** Whether to show a thin/expanded toggle in the sidebar footer */
+  sidebarToggle?: boolean;
+}
+
+function SidebarThinToggle() {
+  const { sidebarMode, setSidebarMode } = Shell.useSidebarMode();
+  const isThin = sidebarMode === 'thin';
+
+  return (
+    <IconButton
+      variant="ghost"
+      size="2"
+      highContrast
+      color="gray"
+      onClick={() => setSidebarMode(isThin ? 'expanded' : 'thin')}
+      aria-label={isThin ? 'Expand sidebar' : 'Collapse sidebar'}
+    >
+      {isThin ? (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <line x1="9" y1="3" x2="9" y2="21" />
+          <polyline points="14 9 17 12 14 15" />
+        </svg>
+      ) : (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <line x1="9" y1="3" x2="9" y2="21" />
+          <polyline points="17 9 14 12 17 15" />
+        </svg>
+      )}
+    </IconButton>
+  );
 }
 
 export function DocsShell({
@@ -41,8 +73,16 @@ export function DocsShell({
   mobileTriggerIcon,
   pathname = '',
   linkComponent,
+  sidebarToggle = false,
 }: DocsShellProps) {
   const [sidebarPresentation, setSidebarPresentation] = useState<'thin' | 'expanded'>('expanded');
+
+  const composedFooter = sidebarToggle ? (
+    <Flex justify="between" align="center" width="100%" gap="1">
+      {sidebarFooter}
+      <SidebarThinToggle />
+    </Flex>
+  ) : sidebarFooter;
 
   return (
     <Shell.Root height={height}>
@@ -59,7 +99,7 @@ export function DocsShell({
           logo={logo}
           presentation={sidebarPresentation}
           headerActions={headerActions}
-          footer={sidebarFooter}
+          footer={composedFooter}
           pathname={pathname}
           linkComponent={linkComponent}
         />

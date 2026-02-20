@@ -102,7 +102,7 @@
     "shiki": "^1.24.2"
   },
   "peerDependencies": {
-    "@kushagradhawan/kookie-ui": ">=0.3.8",
+    "@kushagradhawan/kookie-ui": ">=0.3.10",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
   },

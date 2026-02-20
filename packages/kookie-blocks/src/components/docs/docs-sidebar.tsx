@@ -1,6 +1,6 @@
 'use client';
 
-import React, { isValidElement } from 'react';
+import React, { isValidElement, useState, useMemo } from 'react';
 import { Sidebar, Flex, Avatar } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
 import type { DocsNavigationConfig, DocsLogoConfig } from './types.js';
@@ -75,6 +75,21 @@ export function DocsSidebar({
   linkComponent: LinkComponent = 'a' as any,
 }: DocsSidebarProps) {
 
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredGroups = useMemo(() => {
+    if (!searchQuery.trim()) return navigation.groups;
+    const query = searchQuery.toLowerCase();
+    return navigation.groups
+      .map((group) => ({
+        ...group,
+        items: group.items.filter((item) => item.title.toLowerCase().includes(query)),
+      }))
+      .filter((group) => group.items.length > 0);
+  }, [navigation.groups, searchQuery]);
+
+  const isSearching = searchQuery.trim().length > 0;
+
   // Helper to check if icon is HugeIcons IconSvgObject format
   const isIconSvgObject = (icon: unknown): icon is IconSvgObject => {
     return Array.isArray(icon) && icon.length > 0 && Array.isArray(icon[0]);
@@ -122,65 +137,98 @@ export function DocsSidebar({
         </Sidebar.Header>
       )}
 
+      <Sidebar.Search value={searchQuery} onValueChange={setSearchQuery} placeholder="Search...">
+        {/* Thin mode: filtered results render inside the popover */}
+        {presentation === 'thin' && isSearching && (
+          <Sidebar.Menu>
+            {filteredGroups.flatMap((group) =>
+              group.items.map((item) => (
+                <Sidebar.MenuItem key={item.href}>
+                  <Sidebar.MenuButton asChild isActive={pathname === item.href}>
+                    <LinkComponent href={item.href}>
+                      {renderIcon(item.icon)}
+                      <span className="rt-SidebarMenuLabel">{item.title}</span>
+                    </LinkComponent>
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              )),
+            )}
+          </Sidebar.Menu>
+        )}
+      </Sidebar.Search>
+
       <Sidebar.Content>
         <Sidebar.Menu>
-          {navigation.groups.map((group) => (
-            <Sidebar.Group key={group.label}>
-              <Sidebar.GroupLabel>{group.label}</Sidebar.GroupLabel>
-              <Sidebar.GroupContent>
-                {group.items.map((item) => {
-                  // Check if this item or any nested item is active
-                  const hasNestedItems = item.items && item.items.length > 0;
-                  const isNestedActive = hasNestedItems
-                    ? item.items!.some((subItem) => pathname === subItem.href)
-                    : false;
+          {isSearching
+            ? // Flat list when searching (no group headers)
+              filteredGroups.flatMap((group) =>
+                group.items.map((item) => (
+                  <Sidebar.MenuItem key={item.href}>
+                    <Sidebar.MenuButton asChild isActive={pathname === item.href} badge={item.badge}>
+                      <LinkComponent href={item.href}>
+                        {renderIcon(item.icon)}
+                        <span className="rt-SidebarMenuLabel">{item.title}</span>
+                      </LinkComponent>
+                    </Sidebar.MenuButton>
+                  </Sidebar.MenuItem>
+                )),
+              )
+            : // Normal grouped rendering
+              filteredGroups.map((group) => (
+                <Sidebar.Group key={group.label}>
+                  <Sidebar.GroupLabel>{group.label}</Sidebar.GroupLabel>
+                  <Sidebar.GroupContent>
+                    {group.items.map((item) => {
+                      const hasNestedItems = item.items && item.items.length > 0;
+                      const isNestedActive = hasNestedItems
+                        ? item.items!.some((subItem) => pathname === subItem.href)
+                        : false;
 
-                  if (hasNestedItems) {
-                    return (
-                      <Sidebar.MenuItem key={item.href}>
-                        <Sidebar.MenuSub defaultOpen={isNestedActive}>
-                          <Sidebar.MenuSubTrigger>
-                            {renderIcon(item.icon)}
-                            {item.title}
-                          </Sidebar.MenuSubTrigger>
-                          <Sidebar.MenuSubContent>
-                            {item.items!.map((subItem) => (
-                              <Sidebar.MenuButton
-                                asChild
-                                key={subItem.href}
-                                isActive={pathname === subItem.href}
-                              >
-                                <LinkComponent href={subItem.href}>
-                                  {renderIcon(subItem.icon)}
-                                  <span className="rt-SidebarMenuLabel">{subItem.title}</span>
-                                </LinkComponent>
-                              </Sidebar.MenuButton>
-                            ))}
-                          </Sidebar.MenuSubContent>
-                        </Sidebar.MenuSub>
-                      </Sidebar.MenuItem>
-                    );
-                  }
+                      if (hasNestedItems) {
+                        return (
+                          <Sidebar.MenuItem key={item.href}>
+                            <Sidebar.MenuSub defaultOpen={isNestedActive}>
+                              <Sidebar.MenuSubTrigger>
+                                {renderIcon(item.icon)}
+                                {item.title}
+                              </Sidebar.MenuSubTrigger>
+                              <Sidebar.MenuSubContent>
+                                {item.items!.map((subItem) => (
+                                  <Sidebar.MenuButton
+                                    asChild
+                                    key={subItem.href}
+                                    isActive={pathname === subItem.href}
+                                  >
+                                    <LinkComponent href={subItem.href}>
+                                      {renderIcon(subItem.icon)}
+                                      <span className="rt-SidebarMenuLabel">{subItem.title}</span>
+                                    </LinkComponent>
+                                  </Sidebar.MenuButton>
+                                ))}
+                              </Sidebar.MenuSubContent>
+                            </Sidebar.MenuSub>
+                          </Sidebar.MenuItem>
+                        );
+                      }
 
-                  // Regular menu item
-                  return (
-                    <Sidebar.MenuItem key={item.href}>
-                      <Sidebar.MenuButton
-                        asChild
-                        isActive={pathname === item.href}
-                        badge={item.badge}
-                      >
-                        <LinkComponent href={item.href}>
-                          {renderIcon(item.icon)}
-                          <span className="rt-SidebarMenuLabel">{item.title}</span>
-                        </LinkComponent>
-                      </Sidebar.MenuButton>
-                    </Sidebar.MenuItem>
-                  );
-                })}
-              </Sidebar.GroupContent>
-            </Sidebar.Group>
-          ))}
+                      return (
+                        <Sidebar.MenuItem key={item.href}>
+                          <Sidebar.MenuButton
+                            asChild
+                            isActive={pathname === item.href}
+                            badge={item.badge}
+                          >
+                            <LinkComponent href={item.href}>
+                              {renderIcon(item.icon)}
+                              <span className="rt-SidebarMenuLabel">{item.title}</span>
+                            </LinkComponent>
+                          </Sidebar.MenuButton>
+                        </Sidebar.MenuItem>
+                      );
+                    })}
+                  </Sidebar.GroupContent>
+                </Sidebar.Group>
+              ))}
         </Sidebar.Menu>
       </Sidebar.Content>
 
