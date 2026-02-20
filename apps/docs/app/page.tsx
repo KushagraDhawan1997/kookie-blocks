@@ -142,7 +142,7 @@ export default function Page() {
             >
               <Heading
                 align="left"
-                size={{ initial: "8", sm: "9" }}
+                size={{ initial: "6", sm: "8", lg: "9" }}
                 weight="medium"
                 style={{ textWrap: "balance" }}
               >
