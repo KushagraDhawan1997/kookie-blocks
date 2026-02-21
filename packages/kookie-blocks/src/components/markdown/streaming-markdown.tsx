@@ -141,7 +141,9 @@ MarkdownBlock.displayName = "MarkdownBlock";
  * }
  * ```
  */
-export function StreamingMarkdown({ content, id, options = {} }: StreamingMarkdownProps) {
+const EMPTY_OPTIONS: StreamingMarkdownOptions = {};
+
+export function StreamingMarkdown({ content, id, options = EMPTY_OPTIONS }: StreamingMarkdownProps) {
   const {
     defaultOrigin: customOrigin,
     enableBlockMemoization = true,

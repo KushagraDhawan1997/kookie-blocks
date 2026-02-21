@@ -48,10 +48,12 @@ interface PreviewSectionProps {
   backgroundProps?: PreviewBackgroundProps;
 }
 
+const EMPTY_BACKGROUND_PROPS: PreviewBackgroundProps = {};
+
 function PreviewSection({
   children,
   background = "none",
-  backgroundProps = {},
+  backgroundProps = EMPTY_BACKGROUND_PROPS,
 }: PreviewSectionProps) {
   const {
     dotSize = 24,

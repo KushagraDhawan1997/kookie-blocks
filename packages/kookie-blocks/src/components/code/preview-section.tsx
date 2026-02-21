@@ -14,7 +14,9 @@ interface PreviewSectionProps {
   };
 }
 
-export function PreviewSection({ children, background = "none", backgroundProps = {} }: PreviewSectionProps) {
+const EMPTY_BACKGROUND_PROPS: PreviewSectionProps["backgroundProps"] = {};
+
+export function PreviewSection({ children, background = "none", backgroundProps = EMPTY_BACKGROUND_PROPS }: PreviewSectionProps) {
   const { dotSize = 24, color = "var(--gray-10)", backgroundColor = "var(--gray-2)", height, width = "100%", radius = "3" } = backgroundProps;
 
   // Render with no background (default card styling)
