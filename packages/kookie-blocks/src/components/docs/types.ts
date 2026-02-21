@@ -74,6 +74,7 @@ export interface DocsLogoConfig {
   src: string;
   alt?: string;
   href?: string;
+  size?: '1' | '2' | '3' | '4' | '5';
 }
 
 // Table of contents types

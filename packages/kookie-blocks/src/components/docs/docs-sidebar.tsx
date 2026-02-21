@@ -124,7 +124,7 @@ export function DocsSidebar({
             {logo && (
               <LinkComponent href={logo.href || '/'} aria-label={logo.alt || 'Home'}>
                 <Flex align="center" gap="2">
-                  <Avatar fallback={logo.alt?.[0] || 'K'} size="3" src={logo.src} />
+                  <Avatar fallback={logo.alt?.[0] || 'K'} size={logo.size || '3'} src={logo.src} />
                 </Flex>
               </LinkComponent>
             )}
