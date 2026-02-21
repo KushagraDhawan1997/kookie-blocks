@@ -82,7 +82,7 @@ export function HeroExamples() {
                 fallback="K"
                 size="2"
                 color="gray"
-                src="/kookie-blocks-logo.svg"
+                src="/logos/kookie-blocks/kookie-blocks.png"
               />
             </Hero.Meta>
 
@@ -115,7 +115,7 @@ export function HeroExamples() {
       fallback="K"
       size="2"
       color="gray"
-      src="/kookie-blocks-logo.svg"
+      src="/logos/kookie-blocks/kookie-blocks.png"
     />
   </Hero.Meta>
 
@@ -521,7 +521,7 @@ export function HeroExamples() {
                 fallback="K"
                 size="2"
                 color="gray"
-                src="/kookie-blocks-logo.svg"
+                src="/logos/kookie-blocks/kookie-blocks.png"
               />
             </Hero.Meta>
             <Hero.Meta gap="2">
@@ -546,7 +546,7 @@ export function HeroExamples() {
       fallback="K"
       size="2"
       color="gray"
-      src="/kookie-blocks-logo.svg"
+      src="/logos/kookie-blocks/kookie-blocks.png"
     />
   </Hero.Meta>
   <Hero.Meta gap="2">
@@ -646,7 +646,7 @@ export function HeroExamples() {
                 fallback="K"
                 size="2"
                 color="blue"
-                src="/kookie-blocks-logo.svg"
+                src="/logos/kookie-blocks/kookie-blocks.png"
               />
             </Hero.Meta>
             <Hero.Title size={{ initial: "7", sm: "8", md: "9" }}>
@@ -677,7 +677,7 @@ export function HeroExamples() {
       fallback="K"
       size="2"
       color="blue"
-      src="/kookie-blocks-logo.svg"
+      src="/logos/kookie-blocks/kookie-blocks.png"
     />
   </Hero.Meta>
   <Hero.Title size={{ initial: "7", sm: "8", md: "9" }}>

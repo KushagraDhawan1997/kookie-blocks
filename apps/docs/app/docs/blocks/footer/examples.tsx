@@ -218,7 +218,7 @@ export function FooterExamples() {
                   fallback="K"
                   size="3"
                   color="indigo"
-                  src="/kookie-blocks-logo.svg"
+                  src="/logos/kookie-blocks/kookie-blocks.png"
                 />
               </Footer.Brand>
               <Footer.Links>
@@ -309,7 +309,7 @@ export function FooterExamples() {
                   fallback="K"
                   size="3"
                   color="indigo"
-                  src="/kookie-blocks-logo.svg"
+                  src="/logos/kookie-blocks/kookie-blocks.png"
                 />
                 <Footer.Tagline style={{ maxWidth: "20rem" }}>
                   Making the world a better place through constructing elegant

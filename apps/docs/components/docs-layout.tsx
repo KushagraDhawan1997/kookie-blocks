@@ -15,7 +15,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
     <DocsShell
       navigation={docsNavigation}
       logo={{
-        src: "/kookie-blocks-logo.svg",
+        src: "/logos/kookie-blocks/kookie-blocks.png",
         alt: "Kookie Blocks",
         href: "/",
       }}

@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Kookie Blocks",
     images: [
       {
-        url: "/kookie-blocks-logo.png",
+        url: "/logos/kookie-blocks/kookie-blocks.png",
         width: 1200,
         height: 630,
         alt: "Kookie Blocks",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "Kookie Blocks – Higher-Level Components for Kookie UI",
     description:
       "Higher-level composed components built on Kookie UI. Documentation shells, markdown rendering, code blocks, and more.",
-    images: ["/kookie-blocks-logo.png"],
+    images: ["/logos/kookie-blocks/kookie-blocks.png"],
     site: "@kookieblocks",
     creator: "@kushagradhawan",
   },

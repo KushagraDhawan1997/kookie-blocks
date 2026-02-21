@@ -300,9 +300,9 @@ export default function Page() {
             <Footer.Brand gap="6">
               <Avatar
                 fallback="K"
-                size="3"
+                size="4"
                 color="gray"
-                src="/kookie-blocks-logo.svg"
+                src="/logos/kookie-blocks/kookie-blocks.png"
               />
               <Flex direction="column" gap="4">
                 <Footer.Tagline>
