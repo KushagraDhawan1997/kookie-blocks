@@ -14,7 +14,7 @@ interface PreviewSectionProps {
   };
 }
 
-const EMPTY_BACKGROUND_PROPS: PreviewSectionProps["backgroundProps"] = {};
+const EMPTY_BACKGROUND_PROPS: NonNullable<PreviewSectionProps["backgroundProps"]> = {};
 
 export function PreviewSection({ children, background = "none", backgroundProps = EMPTY_BACKGROUND_PROPS }: PreviewSectionProps) {
   const { dotSize = 24, color = "var(--gray-10)", backgroundColor = "var(--gray-2)", height, width = "100%", radius = "3" } = backgroundProps;
