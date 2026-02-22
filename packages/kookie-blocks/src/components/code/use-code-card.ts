@@ -31,12 +31,20 @@ export function useCodeCard({ code, collapsedHeight }: UseCodeCardOptions): UseC
   const shouldShowToggle = contentHeight > collapsedHeight;
   const contentMaxHeight = isExpanded ? contentHeight : collapsedHeight;
 
-  // Measure content height on mount and when content changes
+  // Measure content height via ResizeObserver (only fires when size actually changes)
   useEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(contentRef.current.scrollHeight);
-    }
-  });
+    const element = contentRef.current;
+    if (!element) return;
+
+    setContentHeight(element.scrollHeight);
+
+    const observer = new ResizeObserver(() => {
+      setContentHeight(element.scrollHeight);
+    });
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [code]);
 
   // Cleanup timeout on unmount
   useEffect(() => {

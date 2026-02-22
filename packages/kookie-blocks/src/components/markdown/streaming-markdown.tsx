@@ -19,6 +19,8 @@ const HardenedMarkdown = hardenReactMarkdown(ReactMarkdown);
 const LINK_PREFIXES = ["https://", "http://", "/"];
 const IMAGE_PREFIXES = ["https://", "http://", "/", "data:"];
 const ALLOWED_PROTOCOLS = ["mailto:", "tel:", "data:", "http:", "https:"];
+const REMARK_PLUGINS = [remarkGfm];
+const REHYPE_PLUGINS = [rehypeRaw];
 const DEFAULT_APP_ORIGIN = typeof window !== "undefined" && window.location?.origin ? window.location.origin : "https://app.kookie.ai";
 
 /**
@@ -98,8 +100,8 @@ const MarkdownBlock = memo(
           allowedProtocols={ALLOWED_PROTOCOLS}
           allowDataImages
           components={components}
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeRaw]}
+          remarkPlugins={REMARK_PLUGINS}
+          rehypePlugins={REHYPE_PLUGINS}
         >
           {content}
         </HardenedMarkdown>
